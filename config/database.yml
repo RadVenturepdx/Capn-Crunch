@@ -21,5 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: Dev1
+  username: pdxcapstone
+  password: 
+  host: development.c3dwzraw1jcj.us-west-2.rds.amazonaws.com
