@@ -36,5 +36,5 @@ rails dbconsole [test|development|production]
 rake test
 ```
 
-## Creadits
+## Credits
 Some codes in this project is used from [railstutorial.org](https://www.railstutorial.org/book) book by Michael Hartl
