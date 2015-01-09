@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  # Using Michael Hartl examples from railstutorial.org book
   before_save { self.email = email.downcase }
 
   validates :name, presence: true,
