@@ -38,3 +38,4 @@ rake test
 
 ## Credits
 Some codes in this project is used from [railstutorial.org](https://www.railstutorial.org/book) book by Michael Hartl
+## Test comment
