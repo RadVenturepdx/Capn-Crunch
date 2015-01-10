@@ -11,6 +11,17 @@ rails server --environmnet [test|development|production]
 # production connect to aws database, yes this is **production**,
 # so mess around in development in sqlite database :-D
 ```
+## Database Configuration
+In database.yml
+- To use sqlite3, make sure lines 1-21 are uncommented and 23-34 are
+- To use postgres/pgadmin, make sure lines 1-21 are commented out and 23-34 are not
+- You may need to set up an a root username in pgadmin after you create the DB
+
+## Database Seeding
+- Ensure your rails server is shutdown and you disconnect from the server in PG Admin
+- From your console run: ```bundle exec rake db:migrate:reset RAILS_ENV=development```
+- Followed by: ```bundle exec db:seed```
+- Database should now have 100 records, with unique e-mails and non-unique locations
 
 
 ## Configurations
