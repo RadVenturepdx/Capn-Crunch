@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  before_save { self.email = email.downcase }
+  before_save { self.email = email.downcase
+  self.location = location.split.map(&:capitalize).join(' ') }
 
   validates :name, presence: true,
                    length: { maximum: 50 }
@@ -9,7 +10,12 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  validates :location, presence: true,
+            length: { maximum: 50 }
+
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+
 
 end
