@@ -6,7 +6,7 @@ The very first few steps to run the app locally
 - Install required gems: ```bundle install ```
 - Run rails server in different environment:
 ```shell
-rails server --environmnet [test|development|production]
+rails server --environment [test|development|production]
 # test & development creates test|development.sqlite3 in db folder
 # production connect to aws database, yes this is **production**,
 # so mess around in development in sqlite database :-D
