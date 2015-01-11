@@ -40,6 +40,7 @@ rails console --sandbox
 
 # Run tests
 rake test
+rake test TEST=/the/test/path # Runs only one test
 ```
 
 ## Credits
