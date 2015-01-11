@@ -1,33 +1,34 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user) do |formElement| %>
   <form class='form-horizontal'>
     <%= render 'shared/error_messages' %>
+
     <div class='form-group'>
-      <%= f.label :name, class: 'col-sm-2 control-label' %>
-      <%= f.text_field :name %>
+      <%= formElement.label :name, class: 'col-sm-2 control-label' %>
+      <%= formElement.text_field :name %>
     </div>
 
     <div class='form-group'>
-      <%= f.label :email, class: 'col-sm-2 control-label' %>
-      <%= f.email_field :email %>
+      <%= formElement.label :email, class: 'col-sm-2 control-label' %>
+      <%= formElement.email_field :email %>
     </div>
 
     <div class='form-group'>
-      <%= f.label :password, class: 'col-sm-2 control-label' %>
-      <%= f.password_field :password %>
+      <%= formElement.label :password, class: 'col-sm-2 control-label' %>
+      <%= formElement.password_field :password %>
     </div>
 
     <div class='form-group'>
-      <%= f.label :password_confirmation, 'Confirmation',
-          class: 'col-sm-2 control-label'
-      %>
-      <%= f.password_field :password_confirmation %>
-    </div>
+      <%= formElement.label :password_confirmation, 'Confirmation',
+      class: 'col-sm-2 control-label'
+        %>
+        <%= formElement.password_field :password_confirmation %>
+      </div>
 
-    <div class='form-group'>
-      <%= f.submit 'Create my account'%>
-    </div>
+      <div class='form-group'>
+        <%= formElement.submit 'Create my account'%>
+      </div>
   </form>
 <% end %>
