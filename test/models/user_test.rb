@@ -9,8 +9,8 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
-                     location: "Portland", password: "foobar",
-                     password_confirmation: "foobar")
+                     location: "Portland", phone_number: "503-555-4353",
+                     password: "foobar", password_confirmation: "foobar")
   end
 
   test "should be valid" do
@@ -32,6 +32,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "phone number should be present" do
+    @user.phone_number = "    "
+    assert_not @user.valid?
+  end
+
   test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
@@ -47,7 +52,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "email validation should accept valid addresses" do
+    test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                       first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|

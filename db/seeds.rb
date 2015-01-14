@@ -14,9 +14,11 @@
       location = 'Mount Bachelor'
   end
   password = "password"
+  phone_number = Faker::Base.numerify("(###) ###-####")
   User.create!(name: name,
                email: email,
                location: location,
+               phone_number: phone_number,
                password:              password,
                password_confirmation: password)
 end
