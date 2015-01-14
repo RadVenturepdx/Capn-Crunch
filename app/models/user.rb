@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase
-  self.location = location.split.map(&:capitalize).join(' ') }
+                self.location = location.split.map(&:capitalize).join(' ') }
 
   validates :name, presence: true,
                    length: { maximum: 50 }

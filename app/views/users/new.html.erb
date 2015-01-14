@@ -16,7 +16,8 @@
 
     <div class='form-group'>
       <%= f.label :location, class: 'col-sm-2 control-label' %>
-      <%= f.text_field :location %>
+      <%= f.select(:location, options_for_select([['Mount Hood Ski Bowl', 'Mount Hood Ski Bowl'], ['Mount Hood Meadows', 'Mount Hood Meadows'],
+                                                 ['Timberline Lodge', 'Timberline Lodge'], ['Mount Bachelor', 'Mount Bachelor']])) %>
     </div>
 
     <div class='form-group'>

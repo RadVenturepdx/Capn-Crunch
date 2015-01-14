@@ -1,14 +1,18 @@
 # Users
-User.create!(name:  "Brad Beazley",
-             email: "beazley2@pdx.edu",
-             location: "Portland",
-             password:              "foobar",
-             password_confirmation: "foobar")
 
 99.times do |n|
-  name = Faker::name
-  email = "#{name}#{n}@example.com"
-  location = "Location#{n % 5 + 1}"
+  name = Faker::Name.name
+  email = Faker::Internet.email
+  case n % 4
+    when 0
+      location = 'Mount Hood Ski Bowl'
+    when 1
+      location = 'Mount Hood Meadows'
+    when 2
+      location = 'Timberline Lodge'
+    when 3
+      location = 'Mount Bachelor'
+  end
   password = "password"
   User.create!(name: name,
                email: email,
