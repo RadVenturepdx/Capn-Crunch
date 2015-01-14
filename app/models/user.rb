@@ -21,5 +21,8 @@ class User < ActiveRecord::Base
             length: { minimum: 10 }
    #         format: { with: VAILD_PHONE_REGEX }
 
+  validates :age, presence: true,
+            numericality: { only_integer: true, greater_than: 0, less_than: 130 }
+
 
 end
