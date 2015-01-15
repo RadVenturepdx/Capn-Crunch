@@ -16,13 +16,15 @@
   password = "password"
   age = rand(75) + 18
   phone_number = Faker::Base.numerify("(###) ###-####")
+  profile = Faker::Lorem.sentences(3).join(" ")
   User.create!(name: name,
                email: email,
                location: location,
                phone_number: phone_number,
                age: age,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               profile: profile)
 end
 
 

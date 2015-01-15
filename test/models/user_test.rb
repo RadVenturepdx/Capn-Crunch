@@ -42,6 +42,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "profile should be present" do
+    @user.profile = "    "
+    assert_not @user.valid?
+  end
+
   test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
@@ -95,6 +100,16 @@ class UserTest < ActiveSupport::TestCase
 
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
+  end
+
+  test "phone number should have a minimum length" do
+    @user.phone_number = @user.phone_number = "2" * 9
+    assert_not @user.valid?
+  end
+
+  test "profile should have a maximum length" do
+    @user.profile = "b" * 1000
     assert_not @user.valid?
   end
 end
