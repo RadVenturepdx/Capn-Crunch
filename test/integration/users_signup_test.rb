@@ -11,6 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, user: {
         name:  "",
         email: "user@invalid",
+        location: "",
         password:              "foo",
         password_confirmation: "bar"
       }
@@ -24,6 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post_via_redirect users_path, user: {
         name:  "Example User",
         email: "user@example.com",
+        location: "Portland",
         password:              "password",
         password_confirmation: "password"
       }
