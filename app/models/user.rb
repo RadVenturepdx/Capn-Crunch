@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :guide
   before_save { self.email = email.downcase }
 
   validates :name, presence: true,

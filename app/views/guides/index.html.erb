@@ -1,0 +1,25 @@
+<h1>Listing Guides</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Location</th>
+    <th colspan="100"></th>
+  </tr>
+  </thead>
+
+  <% @guides.each do |guides| %>
+    <tr>
+      <td><%= guides.user.name %></td>
+      <td><%= guides.user.email %></td>
+      <td><%= guides.location %></td>
+      <td><%= link_to 'Show', guides %></td>
+
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
