@@ -24,6 +24,21 @@ class User < ActiveRecord::Base
   validates :profile, presence: true,
             length: { maximum: 999 }
 
+  validates :address, presence: true,
+            length: { maximum: 50 }
+
+  validates :city, presence: true,
+            length: { maximum: 30 }
+
+  validates :state, presence: true,
+            length: { maximum: 30 }
+
+  validates :zipcode, presence: true,
+            length: { minimum: 5, maximum: 10 }
+
+  validates :country, presence: true,
+            length: { maximum: 50 }
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

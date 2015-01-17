@@ -42,6 +42,31 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "address should be present" do
+    @user.address = "    "
+    assert_not @user.valid?
+  end
+
+  test "city should be present" do
+    @user.city = "    "
+    assert_not @user.valid?
+  end
+
+  test "state should be present" do
+    @user.state = "    "
+    assert_not @user.valid?
+  end
+
+  test "zipcode should be present" do
+    @user.zipcode = "    "
+    assert_not @user.valid?
+  end
+
+  test "country should be present" do
+    @user.country = "    "
+    assert_not @user.valid?
+  end
+
   test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
@@ -54,6 +79,36 @@ class UserTest < ActiveSupport::TestCase
 
   test "age should not be too high" do
     @user.age = 1234
+    assert_not @user.valid?
+  end
+
+  test "address should not be too long" do
+    @user. = "a" * 51
+    assert_not @user.valid?
+  end
+
+  test "city should not be too long" do
+    @user.city = "a" * 31
+    assert_not @user.valid?
+  end
+
+  test "state should not be too long" do
+    @user.state = "a" * 31
+    assert_not @user.valid?
+  end
+
+  test "zipcode should not be too long" do
+    @user.zipcode = "3" * 11
+    assert_not @user.valid?
+  end
+
+  test "zipcode should not be too short" do
+    @user.zipcode = "a" * 4
+    assert_not @user.valid?
+  end
+
+  test "country should not be too long" do
+    @user.country = "a" * 51
     assert_not @user.valid?
   end
 
