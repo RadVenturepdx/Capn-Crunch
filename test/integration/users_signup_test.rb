@@ -11,9 +11,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, user: {
         name:  "",
         email: "user@invalid",
-        location: "",
         password:              "foo",
-        password_confirmation: "bar"
+        password_confirmation: "bar",
+        age: -1,
+        phone_number: "",
+        profile: "",
+        address: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        country: ""
       }
       end
       assert_template 'users/new'
@@ -25,9 +32,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post_via_redirect users_path, user: {
         name:  "Example User",
         email: "user@example.com",
-        location: "Portland",
         password:              "password",
-        password_confirmation: "password"
+        password_confirmation: "password",
+        age: 24,
+        phone_number: "5035551212",
+        profile: "test profile",
+        address: "123 1st ave",
+        city: "Portland",
+        state: "OR",
+        zipcode: "97123",
+        country: "USA"
       }
       end
       assert_template 'users/show'

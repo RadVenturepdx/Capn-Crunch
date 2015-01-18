@@ -8,9 +8,11 @@ class UserTest < ActiveSupport::TestCase
   # Using Michael Hartl examples from railstutorial.org book
 
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com",
+    @user = User.new(name: "Example User", email: "user7@example.com",
                      phone_number: "503-555-4353", age: 32, password: "foobar",
-                     password_confirmation: "foobar", profile: 'Profile')
+                     password_confirmation: "foobar", profile: 'Profile',
+                     address: '123 Main St', city: 'Anytown', state: 'AL',
+                     zipcode: '97124', country: 'USA')
   end
 
   test "should be valid" do
@@ -83,7 +85,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "address should not be too long" do
-    @user. = "a" * 51
+    @user.address = "a" * 51
     assert_not @user.valid?
   end
 
