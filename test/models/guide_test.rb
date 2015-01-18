@@ -2,15 +2,28 @@ require 'test_helper'
 
 class GuideTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Example User2", email: "user2@example.com",
-                       phone_number: "503-555-4353", age: 32, password: "foobar",
-                       password_confirmation: "foobar", profile: 'Profile')
-    #@guide = @user.guides.build(location: "Mount Hood Meadows")
-    @guide = Guide.new(user_id: @user.id, location: 'Mount Hood Meadows')
-    @guide.id = @user.id
+    @user = User.new(
+      id: 1,
+      name: "Example User",
+      email: "user7@example.com",
+      phone_number: "503-555-4353",
+      age: 32,
+      password: "foobar",
+      password_confirmation: "foobar",
+      profile: 'Profile',
+      address: '123 Main St',
+      city: 'Anytown',
+      state: 'AL',
+      zipcode: '97124',
+      country: 'USA'
+    )
+
+    @guide = Guide.new(
+      user: @user,
+      location: 'Mount Hood Meadows'
+    )
   end
 
-  # This test fails and I cannot figure out why
   test "should be valid" do
     assert @guide.valid?
   end
