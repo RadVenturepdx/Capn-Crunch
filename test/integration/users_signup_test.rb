@@ -11,7 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, user: {
         name:  "",
         email: "user@invalid",
-        password:              "foo",
+        password: "foo",
         password_confirmation: "bar",
         age: -1,
         phone_number: "",
@@ -32,7 +32,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post_via_redirect users_path, user: {
         name:  "Example User",
         email: "user@example.com",
-        password:              "password",
+        password: "password",
         password_confirmation: "password",
         age: 24,
         phone_number: "5035551212",
