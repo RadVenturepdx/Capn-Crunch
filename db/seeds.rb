@@ -46,7 +46,20 @@ users.each { |user|
     else
       location = 'Mount Bachelor'
   end
-  Guide.create!(user_id: user.id, location: location )
+  n = rand(3)
+  case n
+    when 0
+      specialty = 'Downhill Skiing'
+    when 1
+      specialty = 'Crosscountry Skiing'
+    else
+      specialty = 'Snowboarding'
+  end
+  rate = rand(20) + 15
+  Guide.create!(user_id: user.id,
+                location: location,
+                specialty: specialty,
+                rate: rate)
 }
 
 

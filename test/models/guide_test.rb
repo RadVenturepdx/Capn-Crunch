@@ -20,7 +20,10 @@ class GuideTest < ActiveSupport::TestCase
 
     @guide = Guide.new(
       user: @user,
-      location: 'Mount Hood Meadows'
+      location: 'Mount Hood Meadows',
+      specialty: 'Downhill Skiing',
+      rate: 25
+
     )
   end
 
@@ -38,9 +41,37 @@ class GuideTest < ActiveSupport::TestCase
     assert_not @guide.valid?
   end
 
+  test "specialty should be present" do
+    @guide.specialty = "    "
+    assert_not @guide.valid?
+  end
+
+  test "rate should be present" do
+    @guide.rate = nil
+    assert_not @guide.valid?
+  end
+
   test "location should not be too long" do
     @guide.location = "a" * 51
     assert_not @guide.valid?
   end
+
+  test "specialty should not be too long" do
+    @guide.specialty = "a" * 51
+    assert_not @guide.valid?
+  end
+
+  test "rate should be at least 0" do
+    @guide.rate = -1
+    assert_not @guide.valid?
+  end
+
+  test "rate should not higher than 999" do
+    @guide.rate = 1000
+    assert_not @guide.valid?
+  end
+
+
+
 
 end
