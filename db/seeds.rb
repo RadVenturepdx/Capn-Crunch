@@ -56,10 +56,23 @@ users.each { |user|
       specialty = 'Snowboarding'
   end
   rate = rand(20) + 15
+  i = 0
+  availability = Array.new(7)
+  availability.each do
+    x = rand(2)
+    case x
+      when 0
+        availability[i] = true
+      else
+        availability[i] = false
+    end
+    i += 1
+  end
   Guide.create!(user_id: user.id,
                 location: location,
                 specialty: specialty,
-                rate: rate)
+                rate: rate,
+                availability: availability)
 }
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119222927) do
+ActiveRecord::Schema.define(version: 20150119232618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 20150119222927) do
   create_table "guides", force: true do |t|
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.string   "specialty"
     t.float    "rate"
+    t.boolean  "availability", default: [false, false, false, false, false, false, false],              array: true
   end
 
   add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree

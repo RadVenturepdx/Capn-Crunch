@@ -28,7 +28,8 @@ class GuidesController < ApplicationController
     params.require(:guide).permit(:user_id,
                                   :location,
                                   :specialty,
-                                  :rate)
+                                  :rate,
+                                  :availability )
   end
 
 end

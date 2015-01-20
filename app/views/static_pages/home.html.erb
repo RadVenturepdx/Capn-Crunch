@@ -6,9 +6,8 @@
     <div class="thumbnail">
       <%= image_tag("http://radventurepdx.github.io/img/guide-n-location/guide1.jpg", size: "242x200", alt: "guide-image") %>
       <div class="caption">
-        <h3>Guide Title</h3>
+        <h3><%= guides.user.name %></h3>
         <ul>
-          <li><%= guides.user.name %></li>
           <li><%= guides.user.email %></li>
           <li><%= guides.location %></li>
           <li><%= guides.specialty %></li>

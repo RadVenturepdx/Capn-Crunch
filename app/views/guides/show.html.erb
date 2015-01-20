@@ -4,3 +4,39 @@
 <%= @guide.user.phone_number %>,
 <%= @guide.user.age %>,
 <%= @guide.location %>
+<br>
+<legend>Availability</legend>
+<% if @guide.availability[0] %>
+  <b>Sunday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[1] %>
+  <b>Monday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[2] %>
+  <b>Tuesday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[3] %>
+  <b>Wednesday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[4] %>
+  <b>Thursday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[5] %>
+  <b>Friday</b>
+  <br>
+<% end %>
+
+<% if @guide.availability[6] %>
+  <b>Saturday</b>
+  <br>
+<% end %>

@@ -71,7 +71,10 @@ class GuideTest < ActiveSupport::TestCase
     assert_not @guide.valid?
   end
 
-
+  test "availability should be present" do
+    @guide.availability = nil
+    assert_not @guide.valid?
+  end
 
 
 end
