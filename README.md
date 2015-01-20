@@ -20,9 +20,10 @@ In database.yml
 ## Database Seeding
 - Ensure your rails server is shutdown and you disconnect from the server in PG Admin
 - From your console run: ```bundle exec rake db:migrate:reset RAILS_ENV=development```
-- Followed by: ```bundle exec db:seed```
-- Database should now have 100 records, with unique e-mails and non-unique locations
-
+- Followed by: ```bundle exec rake db:seed```
+- Database should now have 99 records, and 40 of them are guides
+- Note that seeds are cumulative; running ```rake db:seed``` three times will grant 297 records
+- To clear DB, simply run ```rake db:migrate:reset``` again
 
 ## Configurations
 Since we are running this app locally and our repository is public we should
@@ -53,6 +54,10 @@ rails console --sandbox
 rake test
 rake test TEST=/the/test/path # Runs only one test
 ```
+## "A server is already running" error
+If you forget to shutdown your server after a coding session and get this error,
+simply go to temp/pids/server.pid and delete this file. Then run ```rails server```
+again.
 
 ## Credits
 Some codes in this project is used from

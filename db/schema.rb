@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110195030) do
+ActiveRecord::Schema.define(version: 20150119232618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guides", force: true do |t|
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
+    t.string   "specialty"
+    t.float    "rate"
+    t.boolean  "availability", default: [false, false, false, false, false, false, false],              array: true
+  end
+
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -22,7 +34,14 @@ ActiveRecord::Schema.define(version: 20150110195030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.string   "location"
+    t.string   "phone_number"
+    t.integer  "age"
+    t.text     "profile"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
