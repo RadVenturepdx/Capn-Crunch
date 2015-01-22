@@ -1,25 +1,26 @@
 <% provide(:title, 'Log in') %>
-<h1>Log in</h1>
-
+<h1>Login</h1>
 <%= form_for(:session, url: login_path) do |formElement| %>
-  <form class='form-horizontal'>
-    <!--%= render 'shared/error_messages' %-->
 
-    <div class='form-group'>
-      <%= formElement.label :email, class: 'col-sm-2 control-label' %>
-      <%= formElement.email_field :email %>
-    </div>
+<form>
+  <!--%= render 'shared/error_messages' %-->
 
-    <div class='form-group'>
-      <%= formElement.label :password, class: 'col-sm-2 control-label' %>
-      <%= formElement.password_field :password %>
-    </div>
+  <div>
+    <%= formElement.label :Username %>
+    <%= "/" %>
+    <%= formElement.label :email%>
+    <%= formElement.email_field :email,  class: 'form-control', id: 'Username', placeholder: 'radventureit@gmail.com' %>
+  </div>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <div>
+    <%= formElement.label :password%>
+    <%= formElement.password_field :password, class: 'form-control', id: 'Password', placeholder: 'Password' %>
+  </div>
+  <br></br>
+  <div class='form-group'>
+    <button class="btn btn-danger"> Reset </button>
+    <%= formElement.submit "Submit", class: 'btn btn-success' %>
+  </div>
 
-    <div class='form-group'>
-    <%= formElement.submit "Log in" %>
-    </div>
-
-  </form>
+</form>
 <% end %>
