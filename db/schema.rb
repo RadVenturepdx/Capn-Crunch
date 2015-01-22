@@ -13,20 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20150119232618) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "guides", force: true do |t|
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",                                                               null: false
-    t.datetime "updated_at",                                                               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "specialty"
     t.float    "rate"
-    t.boolean  "availability", default: [false, false, false, false, false, false, false],              array: true
+    t.boolean  "availability", default: false
   end
 
-  add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -36,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150119232618) do
     t.string   "password_digest"
     t.string   "phone_number"
     t.integer  "age"
-    t.text     "profile"
+    t.text     "profile",         limit: 255
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -44,6 +41,6 @@ ActiveRecord::Schema.define(version: 20150119232618) do
     t.string   "country"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
