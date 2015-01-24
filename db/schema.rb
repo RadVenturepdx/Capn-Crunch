@@ -13,49 +13,44 @@
 
 ActiveRecord::Schema.define(version: 20150121223419) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "guides", force: true do |t|
-    t.string   "location"
-    t.integer  "user_id"
-    t.datetime "created_at",                                                               null: false
-    t.datetime "updated_at",                                                               null: false
-    t.string   "specialty"
-    t.float    "rate"
-    t.boolean  "availability", default: [false, false, false, false, false, false, false],              array: true
+  create_table "guides", force: true do |tableObject|
+    tableObject.string "location"
+    tableObject.integer "user_id"
+    tableObject.datetime "created_at", null: false
+    tableObject.datetime "updated_at", null: false
+    tableObject.string "specialty"
+    tableObject.float "rate"
+    tableObject.boolean "availability", default: [false, false, false, false, false, false, false], array: true
   end
 
   add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
 
-  create_table "reviews", force: true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "guide_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "reviews", force: true do |tableObject|
+    tableObject.text "content"
+    tableObject.integer "user_id"
+    tableObject.integer "guide_id"
+    tableObject.datetime "created_at"
+    tableObject.datetime "updated_at"
   end
 
   add_index "reviews", ["guide_id", "created_at"], name: "index_reviews_on_guide_id_and_created_at", using: :btree
   add_index "reviews", ["guide_id"], name: "index_reviews_on_guide_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "phone_number"
-    t.integer  "age"
-    t.text     "profile"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.string   "country"
+  create_table "users", force: true do |tableObject|
+    tableObject.string "name"
+    tableObject.string "email"
+    tableObject.datetime "created_at"
+    tableObject.datetime "updated_at"
+    tableObject.string "password_digest"
+    tableObject.string "phone_number"
+    tableObject.integer "age"
+    tableObject.text "profile"
+    tableObject.string "address"
+    tableObject.string "city"
+    tableObject.string "state"
+    tableObject.string "zipcode"
+    tableObject.string "country"
   end
-
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
 end
