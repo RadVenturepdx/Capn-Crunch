@@ -43,7 +43,8 @@ class ReviewTest < ActiveSupport::TestCase
 
     @review = Review.new(user: @user2,
                          guide: @guide,
-                         content: 'This guy was terrible.'
+                         content: 'This guy was terrible.',
+                         rating: 4
     )
   end
 

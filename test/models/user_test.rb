@@ -197,7 +197,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated reviews should be deleted" do
     @user.save
-    @user.reviews.create!(guide: @guide, content: "Test test test")
+    @user.reviews.create!(guide: @guide, content: "Test test test", rating: 3)
     assert_difference 'Review.count', -1 do
       @user.destroy
     end
