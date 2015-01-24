@@ -66,8 +66,23 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not @review.valid?
   end
 
+  test 'rating should be present' do
+    @review.rating = nil
+    assert_not @review.valid?
+  end
+
   test 'content should be less than 1000 characters' do
     @review.content = 'a' * 1000
+    assert_not @review.valid?
+  end
+
+  test 'rating should be greater or equal to 1' do
+    @review.rating = 0
+    assert_not @review.valid?
+  end
+
+  test 'rating should be less than or equal to 5' do
+    @review.rating = 6
     assert_not @review.valid?
   end
 

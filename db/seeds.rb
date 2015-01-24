@@ -75,14 +75,16 @@ users.each { |user|
                 availability: availability)
 }
 
-reviewers = User.where(id: 41..50)
+reviewers = User.where(id: 41..60)
 10.times do
   reviewers.each { |reviewer|
     content = Faker::Lorem.sentences(5).join(" ")
     guide_id = rand(40) + 1
+    rating = rand(5) + 1
     Review.create!(user_id: reviewer.id,
                    guide_id: Guide.find(guide_id).id,
-                   content: content)
+                   content: content,
+                   rating: rating)
   }
 end
 
