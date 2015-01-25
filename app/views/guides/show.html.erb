@@ -40,3 +40,55 @@
   <b>Saturday</b>
   <br>
 <% end %>
+
+<br>
+
+<!-- Rating Star display code starts here -->
+
+<strong>Overall Rating: </strong>
+<% if @guide.reviews.any? %>
+  <% average = @guide.reviews.average(:rating) %>
+<% else %>
+  <% average = 0 %>
+<% end %>
+
+<% parts = average.divmod(1) %>
+<% stars = parts[0] %>
+
+<% if parts[1] >= 0.5 %>
+  <% halfStar = true %>
+  <% blankStars = 4 - stars %>
+<% else %>
+  <% halfStar = false %>
+  <% blankStars = 5 - stars %>
+<% end %>
+
+<% stars.to_i.times do  %>
+  <!-- Uncomment below when Bootstrap is moved from Front End -->
+  <!-- <span class="fa fa-star"></span> -->
+  <span><b>FS</b></span>
+<% end %>
+
+<% if halfStar %>
+  <!-- Uncomment below when Bootstrap is moved from Front End -->
+  <!-- <span class="fa fa-star-half-o"></span> -->
+  <span><b>HS</b></span>
+<% end %>
+
+<% blankStars.to_i.times do %>
+  <!-- Uncomment below when Bootstrap is moved from Front End -->
+  <!-- <span class="fa fa-star-o"></span> -->
+  <span><b>BS</b></span>
+<% end %>
+
+<!-- Rating Star display ends here -->
+
+  <div class="col-md-8">
+  <% if @guide.reviews.any? %>
+    <h3>Reviews (<%= @guide.reviews.count %>)</h3>
+    <ol class="reviews">
+      <%= render @reviews %>
+    </ol>
+    <%= will_paginate @reviews %>
+  <% end %>
+</div>

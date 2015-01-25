@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+good:
+  content: "This guy was alright."
+  created_at: <%= 10.minutes.ago %>
+
+bad:
+  content: "This was awful."
+  created_at: <%= 5.minutes.ago %>
+
+most_recent:
+  content: "This was just posted."
+  created_at: <%= Time.zone.now %>
