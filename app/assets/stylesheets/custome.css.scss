@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  padding-top: 60px;
+  padding-left: 20px;
+}
+
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
 
