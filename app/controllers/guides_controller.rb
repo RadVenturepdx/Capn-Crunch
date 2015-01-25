@@ -5,6 +5,7 @@ class GuidesController < ApplicationController
 
   def show
     @guide = Guide.find(params[:id])
+    @reviews = @guide.reviews.paginate(page: params[:page])
   end
 
   def new

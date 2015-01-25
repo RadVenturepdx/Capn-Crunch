@@ -22,6 +22,30 @@ class UserTest < ActiveSupport::TestCase
       zipcode: '97124',
       country: 'USA'
     )
+
+    @user1 = User.new(id: 1,
+                      name: "Example Guide",
+                      email: "guide@example.com",
+                      phone_number: "503-555-4353",
+                      age: 32,
+                      password: "foobar",
+                      password_confirmation: "foobar",
+                      profile: 'Profile',
+                      address: '123 Main St',
+                      city: 'Anytown',
+                      state: 'AL',
+                      zipcode: '97124',
+                      country: 'USA'
+    )
+
+    @guide = Guide.new(id: 1,
+                       user: @user,
+                       location: 'Mount Hood Meadows',
+                       specialty: 'Downhill Skiing',
+                       rate: 25,
+                       availability: [true, false, false, true, true, false, true]
+
+    )
   end
 
   test "should be valid" do
@@ -168,4 +192,16 @@ class UserTest < ActiveSupport::TestCase
     @user.profile = "b" * 1000
     assert_not @user.valid?
   end
+
+  # Ensures deletion of reviews on deletion of a user
+
+  test "associated reviews should be deleted" do
+    @user.save
+    @user.reviews.create!(guide: @guide, content: "Test test test", rating: 3)
+    assert_difference 'Review.count', -1 do
+      @user.destroy
+    end
+  end
+
+
 end
