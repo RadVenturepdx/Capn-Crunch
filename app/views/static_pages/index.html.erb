@@ -93,89 +93,26 @@
       <!-- /.row -->
 
       <!-- Portfolio Section - Panels for Guide & Location-->
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="page-header">Guides & Locations</h2>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/guide1.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Guide: Jane Doe </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="page-header">Guides & Locations</h2>
           </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/guide2.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Guide: Johnny Jones </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
+        <% home_guides.each do |guide| %>
+          <div class="col-md-4 col-sm-6">
+            <div class="panel panel-default">
+              <a href="portfolio-item.html">
+                <div class="panel-heading">
+                  <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/guide1.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
+                  <h3>Guide: <%= guide.specialty %> </h3>
+                  <p>
+                    <%= guide.location %>
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
+        <% end %>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/guide3.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Guide: Jeff Jefferson </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/location1.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Place 1 </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/location2.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Place 2 </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="panel panel-default">
-            <a href="portfolio-item.html">
-              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover" src="img/guide-n-location/location3.jpg" style="height:200px; width:400px;  margin-bottom: 0px;" alt="">
-                <h3>Place 3 </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, iusto errem congue sed an, simul exerci tibique et vix. Mel ea doctus iudicabit, has stet velit torquatos et. Argumentum consectetuer nam te, at quo dicunt deterruisset. Commodo minimum recusabo at pro. Enim meis necessitatibus te quo, clita fabellas honestatis at his, magna populo facilisi id eos. Molestie tractatos eos ne.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
       <!-- /.row -->
 
       <!-- Features Section -->

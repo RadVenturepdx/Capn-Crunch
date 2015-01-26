@@ -14,12 +14,4 @@ class StaticPagesController < ApplicationController
   def faq
     #
   end
-
-  def registration_user
-    #
-  end
-
-  def registration_guide
-    #
-  end
 end
