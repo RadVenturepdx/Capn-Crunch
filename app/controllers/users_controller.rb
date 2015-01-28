@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  @@change_pass
-
   def show
     @user = User.find(params[:id])
   end
