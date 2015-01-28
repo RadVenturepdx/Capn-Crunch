@@ -22,8 +22,14 @@ class GuideTest < ActiveSupport::TestCase
       user: @user,
       location: 'Mount Hood Meadows',
       specialty: 'Downhill Skiing',
-      rate: 25
-
+      rate: 25,
+      sun_avail: 'Unavailable',
+      mon_avail: '8am - 5pm',
+      tues_avail: '11am - 4pm',
+      wed_avail: 'Unavailable',
+      thurs_avail: '7am - 4pm',
+      fri_avail: '9am - 9pm',
+      sat_avail: 'Varies'
     )
   end
 
@@ -71,10 +77,74 @@ class GuideTest < ActiveSupport::TestCase
     assert_not @guide.valid?
   end
 
-  test "availability should be present" do
-    @guide.availability = nil
+  test "Sunday availability should be present" do
+    @guide.sun_avail = nil
     assert_not @guide.valid?
   end
 
+  test "Monday availability should be present" do
+    @guide.mon_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Tuesday availability should be present" do
+    @guide.tues_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Wednesday availability should be present" do
+    @guide.wed_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Thursday availability should be present" do
+    @guide.thurs_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Friday availability should be present" do
+    @guide.fri_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Saturday availability should be present" do
+    @guide.sat_avail = nil
+    assert_not @guide.valid?
+  end
+
+  test "Sunday availability should not be too long" do
+    @guide.sun_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Monday availability should not be too long" do
+    @guide.mon_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Tuesday availability should not be too long" do
+    @guide.tues_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Wednesday availability should not be too long" do
+    @guide.wed_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Thursday availability should not be too long" do
+    @guide.thurs_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Friday availability should not be too long" do
+    @guide.fri_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
+
+  test "Saturday availability should not be too long" do
+    @guide.sat_avail = 'a'* 41
+    assert_not @guide.valid?
+  end
 
 end

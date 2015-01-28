@@ -6,40 +6,20 @@
 <%= @guide.location %>
 <br>
 <legend>Availability</legend>
-<% if @guide.availability[0] %>
-  <b>Sunday</b>
+  <b>Sunday: </b> <%= @guide.sun_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[1] %>
-  <b>Monday</b>
+  <b>Monday: </b> <%= @guide.mon_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[2] %>
-  <b>Tuesday</b>
+  <b>Tuesday: </b> <%= @guide.tues_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[3] %>
-  <b>Wednesday</b>
+  <b>Wednesday: </b> <%= @guide.wed_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[4] %>
-  <b>Thursday</b>
+  <b>Thursday: </b> <%= @guide.thurs_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[5] %>
-  <b>Friday</b>
+  <b>Friday: </b> <%= @guide.fri_avail %>
   <br>
-<% end %>
-
-<% if @guide.availability[6] %>
-  <b>Saturday</b>
+  <b>Saturday: </b> <%= @guide.sat_avail %>
   <br>
-<% end %>
 
 <br>
 
