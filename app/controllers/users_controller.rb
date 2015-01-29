@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-  @@change_pass
+  before_action :logged_in_user, only: [:edit, :update, :change_password]
+  before_action :correct_user,   only: [:edit, :update, :change_password]
 
   def show
     @user = User.find(params[:id])
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
         # if the password box is blank, it is given a value that
         # will fail the minimum length test
         if params[:user][:password].blank?
-          params[:user][:password] = 'a'
+          params[:user][:password] = :a
         end
         if @user.update_attributes(user_params)
           flash[:success] = 'Password changed'
@@ -84,5 +84,20 @@ class UsersController < ApplicationController
         :country
       )
     end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
 end
