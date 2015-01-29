@@ -30,7 +30,13 @@ class GuidesController < ApplicationController
                                   :location,
                                   :specialty,
                                   :rate,
-                                  :availability )
+                                  :sun_avail,
+                                  :mon_avail,
+                                  :tues_avail,
+                                  :wed_avail,
+                                  :thurs_avil,
+                                  :fri_avail,
+                                  :sat_avail)
   end
 
 end
