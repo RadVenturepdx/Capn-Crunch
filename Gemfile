@@ -41,9 +41,10 @@ gem 'spring',        group: :development
 gem 'bcrypt', '3.1.9'
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'pg', '~> 0.18.1'
-gem 'faker'
+gem 'faker', '~> 1.4.3'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'font-awesome-rails', '~> 4.3.0.0'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
