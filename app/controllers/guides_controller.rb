@@ -34,7 +34,7 @@ class GuidesController < ApplicationController
                                   :mon_avail,
                                   :tues_avail,
                                   :wed_avail,
-                                  :thurs_avil,
+                                  :thurs_avail,
                                   :fri_avail,
                                   :sat_avail)
   end
