@@ -28,42 +28,48 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    # the edit view will return 'false'
-    if params[:changing_password] == 'false'
-      params[:user].delete :password
-      params[:user].delete :password_confirmation
-      if @user.update_attributes(user_params)
+    if params[:user][:password].blank?
+      if @user.update(user_params)
+        flash[:success] = 'Profile has been updated'
         redirect_to @user
       else
-        # rendering edit will change URL, possibly
-        # breaking button to 'Change password' in 'edit' view
-        # FIXME: correct URL in later version
         render 'edit'
       end
-
-    # the change_password view will return 'true'
     else
-      if @user.try(:authenticate, params[:current_password])
-        # if the password box is blank, it is given a value that
-        # will fail the minimum length test
-        if params[:user][:password].blank?
-          params[:user][:password] = :a
-        end
-        if @user.update_attributes(user_params)
-          flash[:success] = 'Password changed'
-          redirect_to :action => 'edit'
+      if not @user.authenticate(params[:current_password])
+        flash[:danger] = 'You old password is not valid'
+        render 'change_password'
+      elsif params[:user][:password] != params[:user][:password_confirmation]
+        flash[:danger] = 'Unmatch new password'
+        render 'change_password'
+      else
+        if @user.update(user_params)
+          flash[:success] = 'Your password has been updated'
+          redirect_to @user
         else
           render 'change_password'
         end
-      else
-        flash[:danger] = "Current password is incorrect"
-        render 'change_password'
       end
     end
   end
 
   def change_password
     @user = User.find(params[:id])
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 
   private
@@ -84,20 +90,5 @@ class UsersController < ApplicationController
         :country
       )
     end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-  # Confirms the correct user.
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
 
 end

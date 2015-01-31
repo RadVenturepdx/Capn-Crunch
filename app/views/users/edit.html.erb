@@ -1,7 +1,7 @@
 <% provide(:title, 'Update account information') %>
 <h1>Update profile information</h1>
 
-<%= button_to 'Change password', 'change_password', :method => 'get' %>
+<%= link_to "Change Password", change_password_url(id: @user.id),  class: "btn btn-default"%>
 <br></br>
 
 <%= form_for(@user) do |formElement| %>
