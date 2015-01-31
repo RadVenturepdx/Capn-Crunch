@@ -29,7 +29,7 @@
               <h1><strong><%= @guide.user.name %></strong></h1>
               <h3><strong>Location: </strong><%= @guide.location %></h3>
               <h3><strong>Sports: </strong><%= @guide.specialty %></h3>
-              <h3><strong>Pricing: </strong>$<%= @guide.rate %>/hour</h3>
+              <h3><strong>Pricing: </strong><%= number_to_currency(@guide.rate) %>/hour</h3>
               <h3><strong>Rating: </strong>
                 <% stars = overall_rating_stars(@guide.reviews) %>
                 <% stars.times do |i| %>
