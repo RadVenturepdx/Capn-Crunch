@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Radventure</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="../css/modern-business.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">RADVENTURE</a>
+    </div>
+
+    <div class="collapse navbar-collapse nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="../about.html">About</a>
+        </li>
+        <li>
+          <a href="../contact.html">Contact</a>
+        </li>
+        <li class="dropdown">
+          <a href="home.html" class="dropdown-toggle" data-toggle="dropdown">Locations<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="../locations/mthood.html">Mt. Hood</a>
+            </li>
+            <li>
+              <a href="../locations/mtbachelor.html">Mt. Bachelor</a>
+            </li>
+            <li>
+              <a href="../locations/mtwhistler.html">Mt. Whistler</a>
+            </li>
+            <li>
+              <a href="">Tap</a>
+            </li>
+            <li>
+              <a href="">Dat</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="../search.html">Quick Search</a>
+        </li>
+        <li>
+          <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#signIn" style="margin-left:15px">
+            Sign In
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#signUp" style="margin-left:15px">
+            Sign Up
+          </button>
+        </li>
+        <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="signInModal">Sign In</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="Username">Username/Email</label>
+                    <input type="email" class="form-control" id="Username" placeholder="radventureit@gmail.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                  </div>
+                  <button type="reset" class="btn btn-default">Reset</button>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="signUpModal">Sign Up</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div>
+                    <a class="btn btn-default" href="../registration-user.html" >As a User</a>&nbsp &nbsp If you would like to start finding guides.
+                  </div>
+                  <br>
+                  <div>
+                    <a class="btn btn-default" href="../registration-guide.html">As a Guide</a>&nbsp &nbsp If you want to start guiding people.
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </li> -->
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Mt. Whistler
+      </h1>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/mtwhistler.jpg" alt="">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/whistler2.jpeg" alt="">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/whistler3.jpg" alt="">
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Location Description</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+      <h3>Location Details</h3>
+      <ul>
+        <li>Lorem Ipsum</li>
+        <li>Dolor Sit Amet</li>
+        <li>Consectetur</li>
+        <li>Adipiscing Elit</li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- Related Projects Row -->
+  <div class="row">
+
+    <div class="col-lg-12">
+      <h3 class="page-header">Top Guides for Mt. Whistler</h3>
+    </div>
+
+    <% top_guides = [] %>
+    <% @guides = Guide.all %>
+    <% @guides.where(:location => 'Mount Whistler').each do |guide| %>
+      <% average_rating = guide.reviews.average(:rating).round %>
+      <% if top_guides.empty? %>
+        <% top_guides[0] = guide %>
+      <% elsif top_guides[0].reviews.average(:rating).round < average_rating %>
+        <% top_guides[0] = guide %>
+      <% elsif top_guides[1].nil? %>
+        <% top_guides[1] = guide %>
+      <% elsif top_guides[1].reviews.average(:rating).round < average_rating %>
+        <% top_guides[1] = guide %>
+      <% elsif top_guides[2].nil? %>
+        <% top_guides[2] = guide %>
+      <% elsif top_guides[2].reviews.average(:rating).round < average_rating %>
+        <% top_guides[2] = guide %>
+      <% end%>
+    <% end %>
+
+    <div class="col-sm-3 col-xs-6">
+      <h3><%= link_to top_guides[0].user.name, top_guides[0] %></h3>
+      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+      <ul>
+        <li>Sports: <%= top_guides[0].specialty %></li>
+        <li>Rate: <%= number_to_currency(top_guides[0].rate) %></li>
+        <li>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+          <% stars.times do |i| %>
+            <span class="fa fa-star"></span>
+          <% end %>
+          <% (5 - stars).times do |i| %>
+            <span class="fa fa-star-o"></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+      <h3><%= link_to top_guides[1].user.name, top_guides[0] %></h3>
+      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+      <ul>
+        <li>Sports: <%= top_guides[1].specialty %></li>
+        <li>Rate: <%= number_to_currency(top_guides[1].rate) %></li>
+        <li>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+          <% stars.times do |i| %>
+            <span class="fa fa-star"></span>
+          <% end %>
+          <% (5 - stars).times do |i| %>
+            <span class="fa fa-star-o"></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+      <h3><%= link_to top_guides[2].user.name, top_guides[0] %></h3>
+      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+      <ul>
+        <li>Sports: <%= top_guides[2].specialty %></li>
+        <li>Rate: <%= number_to_currency(top_guides[2].rate) %></li>
+        <li>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
+          <% stars.times do |i| %>
+            <span class="fa fa-star"></span>
+          <% end %>
+          <% (5 - stars).times do |i| %>
+            <span class="fa fa-star-o"></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <hr>
+
+  <!-- Footer -->
+  <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+    <div class="row text-center center-block">
+      <div class="col-md-4">
+        <h4>User Information</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="">Get Started</a></li>
+          <li><a href="">Services</a></li>
+          <li><a href="">Guides</a></li>
+          <li><a href="">Locations</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Guide Information</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="">Become Guide</a></li>
+          <li><a href="">Payment Process</a></li>
+          <li><a href="">How It Works</a></li>
+          <li><a href="">Legal</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Corporate</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="../contact.html">Contact Us</a></li>
+          <li><a href="">Legal</a></li>
+          <li><a href="">Mission</a></li>
+          <li><a href="">Careers</a></li>
+          <li><a href="">Expansion</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center">
+      <p>
+        <br><br>
+        Copyright &copy; Radventure 2014
+      </p>
+    </div>
+  </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
