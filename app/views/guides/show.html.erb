@@ -31,7 +31,7 @@
               <h3><strong>Sports: </strong><%= @guide.specialty %></h3>
               <h3><strong>Pricing: </strong><%= number_to_currency(@guide.rate) %>/hour</h3>
               <h3><strong>Rating: </strong>
-                <% stars = overall_rating_stars(@guide.reviews) %>
+                <% stars = @guide.reviews.average(:rating).round %>
                 <% stars.times do |i| %>
                   <span class="fa fa-star"></span>
                 <% end %>
