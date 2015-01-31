@@ -86,12 +86,17 @@
     <% top_guides = [] %>
     <% @guides = Guide.all %>
     <% @guides.where(:location => 'Mount Bachelor').each do |guide| %>
-      <% average_rating = guide.reviews.average(:rating).round %>
-      <% if top_guides.empty? || top_guides[0].reviews.average(:rating).round < average_rating %>
+      <% average_rating = guide.reviews.average(:rating) %>
+      <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
+        <% if !top_guides[1].nil? %>
+          <% top_guides[2] = top_guides[1] %>
+        <% end %>
+        <% top_guides[1] = top_guides[0] %>
         <% top_guides[0] = guide %>
-      <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating).round < average_rating %>
+      <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating) < average_rating %>
+        <% top_guides[2] = top_guides[1] %>
         <% top_guides[1] = guide %>
-      <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating).round < average_rating %>
+      <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating) < average_rating %>
         <% top_guides[2] = guide %>
       <% end %>
     <% end %>
@@ -113,7 +118,7 @@
       </ul>
     </div>
     <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[1].user.name, top_guides[0] %></h3>
+      <h3><%= link_to top_guides[1].user.name, top_guides[1] %></h3>
       <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
       <ul>
         <li>Sports: <%= top_guides[1].specialty %></li>
@@ -129,7 +134,7 @@
       </ul>
     </div>
     <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[2].user.name, top_guides[0] %></h3>
+      <h3><%= link_to top_guides[2].user.name, top_guides[2] %></h3>
       <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
       <ul>
         <li>Sports: <%= top_guides[2].specialty %></li>
