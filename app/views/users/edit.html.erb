@@ -8,15 +8,10 @@
     <form class='form-horizontal'>
       <%= render 'shared/error_messages' %>
 
-      <%= hidden_field_tag(:changing_password, false) %>
-
       <div class='form-group'>
         <%= formElement.label :name, class: 'col-sm-2 control-label' %>
         <%= formElement.text_field :name %>
       </div>
-
-      <%= hidden_field(:password, :method => '') %>
-      <%= hidden_field(:password_confirmation, :method => '') %>
 
       <div class='form-group'>
         <%= formElement.label :email, class: 'col-sm-2 control-label' %>

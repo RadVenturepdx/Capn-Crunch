@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if params[:user][:password].blank?
+    if params[:user][:password].nil?
       if @user.update(user_params)
         flash[:success] = 'Profile has been updated'
         redirect_to @user
@@ -37,13 +37,16 @@ class UsersController < ApplicationController
       end
     else
       if not @user.authenticate(params[:current_password])
-        flash[:danger] = 'You old password is not valid'
-        render 'change_password'
-      elsif params[:user][:password] != params[:user][:password_confirmation]
-        flash[:danger] = 'Unmatch new password'
+        flash.now[:danger] = 'Your current password is not valid'
         render 'change_password'
       else
-        if @user.update(user_params)
+        if params[:user][:password].blank?
+          flash.now[:danger] = 'No new password entered'
+          render 'change_password'
+        elsif params[:user][:password] != params[:user][:password_confirmation]
+          flash.now[:danger] = 'New password does not match confirmation'
+          render 'change_password'
+        elsif @user.update(user_params)
           flash[:success] = 'Your password has been updated'
           redirect_to @user
         else
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "Please log in."
+      flash.now[:danger] = "Please log in."
       redirect_to login_url
     end
   end
