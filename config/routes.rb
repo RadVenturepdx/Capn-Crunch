@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  root                'static_pages#index'
-
-  get    'contact'    => 'static_pages#contact'
-  get    'about'      => 'static_pages#about'
-  get    'faq'        => 'static_pages#faq'
-  get    'users/:id/change_password' => 'users#change_password', as: 'change_password'
-  get    'mtbachelor' => 'static_pages#mtbachelor'
-  get    'mthood'     => 'static_pages#mthood'
-  get    'mtwhistler' => 'static_pages#mtwhistler'
-  get    'signup'     => 'users#new'
-  get    'login'      => 'sessions#new'
-  post   'login'      => 'sessions#create'
-  delete 'logout'     => 'sessions#destroy'
+  root                                  'static_pages#home'
+  get    'contact'                   => 'static_pages#contact'
+  get    'about'                     => 'static_pages#about'
+  get    'faq'                       => 'static_pages#faq'
+  get    'mtbachelor'                => 'static_pages#mtbachelor'
+  get    'mthood'                    => 'static_pages#mthood'
+  get    'mtwhistler'                => 'static_pages#mtwhistler'
+  get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
+  get    'signup'                    => 'users#new'
+  get    'login'                     => 'sessions#new'
+  post   'login'                     => 'sessions#create'
+  delete 'logout'                    => 'sessions#destroy'
 
   resources :users
   resources :guides
