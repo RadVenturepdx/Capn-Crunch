@@ -38,13 +38,11 @@ users.each { |user|
   n = rand(4)
   case n
     when 0
-      location = 'Mount Hood Ski Bowl'
+      location = 'Mount Hood'
     when 1
-      location = 'Mount Hood Meadows'
-    when 2
-      location = 'Timberline Lodge'
-    else
       location = 'Mount Bachelor'
+    else
+      location = 'Mount Whistler'
   end
   n = rand(3)
   case n
