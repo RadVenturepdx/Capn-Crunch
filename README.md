@@ -11,6 +11,9 @@ rails server --environment [test|development|production]
 # production connect to aws database, yes this is **production**,
 # so mess around in development in sqlite database :-D
 ```
+
+## If you get SSL errors use following link: https://gist.github.com/fnichol/867550
+
 ## Database Configuration
 In database.yml
 - To use sqlite3, make sure lines 1-21 are uncommented and 23-34 are
