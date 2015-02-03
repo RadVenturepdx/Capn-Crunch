@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 20150128222759) do
   create_table "guides", force: true do |t|
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.string   "specialty"
     t.float    "rate"
+    t.boolean  "availability", default: [false, false, false, false, false, false, false],              array: true
     t.string   "sun_avail"
     t.string   "mon_avail"
     t.string   "tues_avail"
