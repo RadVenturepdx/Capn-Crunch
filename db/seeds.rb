@@ -56,6 +56,10 @@ users.each { |user|
     else
       whistler = false
   end
+  if (!hood && !bachelor && !whistler)
+    hood = true
+  end
+
   n = rand(2)
   case n
     when 0
@@ -77,6 +81,10 @@ users.each { |user|
     else
       snowboard = false
   end
+  if (!downhill && !crosscountry && !snowboard)
+    downhill = true
+  end
+
   rate = rand(20) + 15
   i = 0
   availability = Array.new(7)
