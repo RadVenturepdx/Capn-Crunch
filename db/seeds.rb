@@ -35,23 +35,47 @@ end
 
 users = User.order(:created_at).take(40)
 users.each { |user|
-  n = rand(4)
+  n = rand(2)
   case n
     when 0
-      location = 'Mount Hood'
-    when 1
-      location = 'Mount Bachelor'
+      hood = true
     else
-      location = 'Mount Whistler'
+      hood = false
   end
-  n = rand(3)
+  n = rand(2)
   case n
     when 0
-      specialty = 'Downhill Skiing'
-    when 1
-      specialty = 'Crosscountry Skiing'
+      bachelor = true
     else
-      specialty = 'Snowboarding'
+      bachelor = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      whistler = true
+    else
+      whistler = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      downhill = true
+    else
+      downhill = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      crosscountry = true
+    else
+      crosscountry = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      snowboard = true
+    else
+      snowboard = false
   end
   rate = rand(20) + 15
   i = 0
@@ -71,8 +95,12 @@ users.each { |user|
     i += 1
   end
   Guide.create!(user_id: user.id,
-                location: location,
-                specialty: specialty,
+                hood: hood,
+                bachelor: bachelor,
+                whistler: whistler,
+                downhill: downhill,
+                crosscountry: crosscountry,
+                snowboard: snowboard,
                 rate: rate,
                 sun_avail: availability[0],
                 mon_avail: availability[1],

@@ -27,8 +27,12 @@ class GuidesController < ApplicationController
 
   def guide_params
     params.require(:guide).permit(:user_id,
-                                  :location,
-                                  :specialty,
+                                  :hood,
+                                  :bachelor,
+                                  :whistler,
+                                  :downhill,
+                                  :crosscountry,
+                                  :snowboard,
                                   :rate,
                                   :sun_avail,
                                   :mon_avail,
