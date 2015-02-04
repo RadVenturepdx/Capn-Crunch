@@ -38,5 +38,5 @@ production:
  encoding: unicode
  database: Dev1
  username: pdxcapstone
- password:
+ password: password
  host: development.c3dwzraw1jcj.us-west-2.rds.amazonaws.com
