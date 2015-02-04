@@ -27,46 +27,8 @@
             </div>
             <div class="col-sm-offset-1 col-xs-12 col-sm-6">
               <h1><strong><%= @guide.user.name %></strong></h1>
-              <h3><strong>Location: </strong>
-                <% need_comma = false %>
-                <% if @guide.hood %>
-                  Mount Hood
-                  <% need_comma = true %>
-                <% end %>
-                <% if @guide.bachelor %>
-                  <% if need_comma %>
-                    ,&nbsp;
-                  <% end %>
-                  Mount Bachelor
-                  <% need_comma = true %>
-                <% end %>
-                <% if @guide.whistler %>
-                  <% if need_comma %>
-                    ,&nbsp;
-                  <% end %>
-                  Whistler
-                <% end %>
-              </h3>
-              <h3><strong>Sports: </strong>
-                <% need_comma = false %>
-                <% if @guide.downhill %>
-                  Downhill Skiing
-                  <% need_comma = true %>
-                <% end %>
-                <% if @guide.crosscountry %>
-                  <% if need_comma %>
-                    ,&nbsp;
-                  <% end %>
-                  Crosscountry Skiiing
-                  <% need_comma = true %>
-                <% end %>
-                <% if @guide.snowboard %>
-                  <% if need_comma %>
-                    ,&nbsp;
-                  <% end %>
-                  Snowboarding
-                <% end %>
-              </h3>
+              <h3><strong>Location: </strong><%= location_string(@guide.hood, @guide.bachelor, @guide.whistler) %> </h3>
+              <h3><strong>Sports: </strong><%= sports_string(@guide.downhill, @guide.crosscountry, @guide.snowboard) %></h3>
               <h3><strong>Pricing: </strong><%= number_to_currency(@guide.rate) %>/hour</h3>
               <h3><strong>Rating: </strong>
                 <% stars = @guide.reviews.average(:rating).round %>
