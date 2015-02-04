@@ -69,7 +69,7 @@
     </div>
 
     <% top_guides = [] %>
-    <% local_guides('Mount Whistler').each do |guide| %>
+    <% whistler_guides.each do |guide| %>
       <% if guide.reviews.count > 0 %>
         <% average_rating = guide.reviews.average(:rating) %>
         <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
@@ -91,7 +91,7 @@
       <h3><%= link_to top_guides[0].user.name, top_guides[0] %></h3>
       <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
       <ul>
-        <li>Sports: <%= top_guides[0].specialty %></li>
+        <li>Sports: <%= sports_string(top_guides[0].downhill, top_guides[0].crosscountry, top_guides[0].snowboard) %></li>
         <li>Rate: <%= number_to_currency(top_guides[0].rate) %></li>
         <li>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
           <% stars.times do |i| %>
@@ -107,7 +107,7 @@
       <h3><%= link_to top_guides[1].user.name, top_guides[1] %></h3>
       <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
       <ul>
-        <li>Sports: <%= top_guides[1].specialty %></li>
+        <li>Sports: <%= sports_string(top_guides[1].downhill, top_guides[1].crosscountry, top_guides[1].snowboard) %></li>
         <li>Rate: <%= number_to_currency(top_guides[1].rate) %></li>
         <li>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
           <% stars.times do |i| %>
@@ -123,7 +123,7 @@
       <h3><%= link_to top_guides[2].user.name, top_guides[2] %></h3>
       <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
       <ul>
-        <li>Sports: <%= top_guides[2].specialty %></li>
+        <li>Sports: <%= sports_string(top_guides[2].downhill, top_guides[2].crosscountry, top_guides[2].snowboard) %></li>
         <li>Rate: <%= number_to_currency(top_guides[2].rate) %></li>
         <li>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
           <% stars.times do |i| %>
