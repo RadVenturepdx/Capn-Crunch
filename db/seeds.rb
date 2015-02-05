@@ -38,13 +38,11 @@ users.each { |user|
   n = rand(4)
   case n
     when 0
-      location = 'Mount Hood Ski Bowl'
+      location = 'Mount Hood'
     when 1
-      location = 'Mount Hood Meadows'
-    when 2
-      location = 'Timberline Lodge'
-    else
       location = 'Mount Bachelor'
+    else
+      location = 'Mount Whistler'
   end
   n = rand(3)
   case n
@@ -59,12 +57,16 @@ users.each { |user|
   i = 0
   availability = Array.new(7)
   availability.each do
-    x = rand(2)
+    x = rand(4)
     case x
       when 0
-        availability[i] = true
+        availability[i] = (rand(6) + 5).to_s + 'am to ' + (rand(10) + 1).to_s + 'pm'
+      when 1
+        availability[i] = (rand(2) + 5).to_s + 'am to ' + (rand(5) + 7).to_s + 'am and ' + (rand(6) + 1).to_s + 'pm to ' + (rand(4) + 5).to_s + 'pm'
+      when 2
+        availability[i] = 'Varies by week. Please contact me!'
       else
-        availability[i] = false
+        availability[i] = 'Unavailable'
     end
     i += 1
   end
@@ -72,7 +74,14 @@ users.each { |user|
                 location: location,
                 specialty: specialty,
                 rate: rate,
-                availability: availability)
+                sun_avail: availability[0],
+                mon_avail: availability[1],
+                tues_avail: availability[2],
+                wed_avail: availability[3],
+                thurs_avail: availability[4],
+                fri_avail: availability[5],
+                sat_avail: availability[6]
+  )
 }
 
 reviewers = User.where(id: 41..60)

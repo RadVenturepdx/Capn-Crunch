@@ -1,0 +1,215 @@
+<!-- Header Carousel -->
+<header id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="fill" style="background-image:url('img/skiing.jpg'); opacity: 0.6;"></div>
+      <div class="carousel-caption">
+        <h1 style="color:#000000"><strong>Skiing</strong></h1>
+      </div>
+    </div>
+    <div class="item">
+      <div class="fill" style="background-image:url('img/snowboarding.jpg');  opacity: 0.6;"></div>
+      <div class="carousel-caption">
+        <h1 style="color:#000000"><strong>Snowboarding</strong></h1>
+      </div>
+    </div>
+    <div class="item">
+      <div class="fill" style="background-image:url('img/whistler.jpg');  opacity: 0.6;"></div>
+      <div class="carousel-caption">
+        <h1 style="color:#000000"><strong>Your Confusing Map</strong></h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Marketing Icons Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        What is Radventure
+      </h1>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><i class="fa fa-fw fa-check"></i>About Us</h4>
+        </div>
+        <div class="panel-body">
+          <p>
+            You’re in a rad new place, but aren’t quite sure where to start.
+            You wish you had a local buddy to give you the inside scoop.
+            You chat with ski techs, bike shop staff, and bartenders, but what
+             you really want is local to show you the sick spots so you can
+             make the most your time outside.
+          </p>
+          <a href="about.html" class="btn btn-default">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><i class="fa fa-fw fa-check"></i>Our Mission</h4>
+          </div>
+          <div class="panel-body">
+            <p>
+              Lorem ipsum dolor sit amet, iusto errem congue sed an, simul
+              exerci tibique et vix. Mel ea doctus iudicabit, has stet velit
+              torquatos et. Argumentum consectetuer nam te, at quo dicunt
+              deterruisset. Commodo minimum recusabo at pro.
+              Enim meis necessitatibus te quo, clita fabellas honestatis at
+              his, magna populo facilisi id eos. Molestie tractatos eos ne.
+            </p>
+            <a href="" class="btn btn-default">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><i class="fa fa-fw fa-check"></i>Get Started</h4>
+          </div>
+          <div class="panel-body">
+            <p>
+              Lorem ipsum dolor sit amet, iusto errem congue sed an, simul
+              exerci tibique et vix. Mel ea doctus iudicabit, has stet velit
+              torquatos et. Argumentum consectetuer nam te, at quo dicunt
+              deterruisset. Commodo minimum recusabo at pro. Enim meis
+              necessitatibus te quo, clita fabellas honestatis at his,
+              magna populo facilisi id eos. Molestie tractatos eos ne.
+            </p>
+            <a href="" class="btn btn-default">Sign Up</a>
+            <a href="" class="btn btn-default" data-toggle="modal" data-target="#signIn">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Portfolio Section - Panels for Guide & Location-->
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="page-header">Guides & Locations</h2>
+        </div>
+        <% home_guides.each do |guide| %>
+          <div class="col-md-4 col-sm-6">
+            <div class="panel panel-default">
+              <a href="<%= guide_path(guide) %>">
+                <div class="panel-heading">
+                  <img class="img-responsive img-portfolio img-hover"
+                    src="img/guide-n-location/guide1.jpg"
+                    style="height:200px; width:400px;
+                    margin-bottom: 0px;" alt="">
+                  <h3>Guide: <%= guide.specialty %> </h3>
+                  <p>
+                    <%= guide.location %>
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <!-- /.row -->
+
+    <!-- Features Section -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Killa chinchilla</h2>
+      </div>
+      <div class="col-md-6">
+        <p>How it works:</p>
+        <ul>
+          <li><strong>Sign up</strong>
+          </li>
+          <li>Find a guide</li>
+          <li>Reach out to the guide</li>
+          <li>If mutual agreement, go have your adventure</li>
+          <li>Have a good time</li>
+          <li>Write a gudie review</li>
+        </ul>
+        <p>Ball Out. 1 hunnid.</p>
+      </div>
+      <div class="col-md-6">
+        <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+      <div class="row text-center center-block">
+        <div class="col-md-4">
+          <h4>User Information</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="">Get Started</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Guides</a></li>
+            <li><a href="">Locations</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Guide Information</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="">Become Guide</a></li>
+            <li><a href="">Payment Process</a></li>
+            <li><a href="">How It Works</a></li>
+            <li><a href="">Legal</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Corporate</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="">Legal</a></li>
+            <li><a href="">Mission</a></li>
+            <li><a href="">Careers</a></li>
+            <li><a href="">Expansion</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center">
+        <p>
+          <br><br>
+          Copyright &copy; Radventure 2014
+        </p>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.container -->
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Script to Activate the Carousel -->
+  <script>
+  $('.carousel').carousel({
+    interval: 5000 //changes the speed
+  })
+  </script>

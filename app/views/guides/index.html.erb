@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Location</th>
+    <th>Rating</th>
     <th colspan="100"></th>
   </tr>
   </thead>
@@ -15,6 +16,7 @@
       <td><%= guides.user.name %></td>
       <td><%= guides.user.email %></td>
       <td><%= guides.location %></td>
+      <td><%= guides.reviews.average(:rating).to_s %></td>
       <td><%= link_to 'Show', guides %></td>
 
     </tr>

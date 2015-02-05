@@ -43,8 +43,13 @@ class UserTest < ActiveSupport::TestCase
                        location: 'Mount Hood Meadows',
                        specialty: 'Downhill Skiing',
                        rate: 25,
-                       availability: [true, false, false, true, true, false, true]
-
+                       sun_avail: 'Unavailable',
+                       mon_avail: '8am - 5pm',
+                       tues_avail: '11am - 4pm',
+                       wed_avail: 'Unavailable',
+                       thurs_avail: '7am - 4pm',
+                       fri_avail: '9am - 9pm',
+                       sat_avail: 'Varies'
     )
   end
 
