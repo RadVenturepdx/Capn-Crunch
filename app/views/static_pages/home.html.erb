@@ -104,23 +104,81 @@
     <!-- Portfolio Section - Panels for Guide & Location-->
       <div class="row">
         <div class="col-lg-12">
-          <h2 class="page-header">Guides & Locations</h2>
+           <h2 class="page-header">Guides & Locations</h2>
         </div>
+
+        <div class="col-md-4 col-sm-6">
+           <div class="panel panel-default">
+             <div class="panel-heading">
+                <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mthood.jpg"
+                   style="height:200px; width:400px;
+                   margin-bottom: 0px;" alt="">
+                <h4><strong>Name: Mount Hood</strong></h4>
+                <h4>Location: Portland, Oregon</h4>
+                <a href="mthood.html" class="btn btn-primary">See More</a>
+             </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mtbachelor.jpg"
+                   style="height:200px; width:400px;
+                           margin-bottom: 0px;" alt="">
+              <h4><strong>Name: Mount Bachelor</strong></h4>
+              <h4>Location: Bend, Oregon</h4>
+              <a href="mtbachelor.html" class="btn btn-primary">See More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mtwhistler.jpg"
+                   style="height:200px; width:400px;
+                           margin-bottom: 0px;" alt="">
+              <h4><strong>Name: Mount Whistler</strong></h4>
+              <h4>Location: Vancouver, Canada</h4>
+              <a href="mtwhistler.html" class="btn btn-primary">See More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+
         <% home_guides.each do |guide| %>
           <div class="col-md-4 col-sm-6">
             <div class="panel panel-default">
-              <a href="<%= guide_path(guide) %>">
+            <!--  <a href="<%= guide_path(guide) %>"> -->
                 <div class="panel-heading">
                   <img class="img-responsive img-portfolio img-hover"
                     src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
                     style="height:200px; width:400px;
                     margin-bottom: 0px;" alt="">
-                  <h3>Guide: <%= guide.specialty %> </h3>
-                  <p>
-                    <%= guide.location %>
-                  </p>
+                  <h4>Name:  <%= guide.user.name %> </h4>
+                  <h4>Sport: <%= guide.specialty %> </h4>
+                  <h4>Location: <%= guide.location %></h4>
+
+                  <h4>Rating:
+                    <% stars = guide.reviews.average(:rating).round %>
+                    <% stars.times do |i| %>
+                        <span class="fa fa-star"></span>
+                    <% end %>
+                    <% (5 - stars).times do |i| %>
+                        <span class="fa fa-star-o"></span>
+                    <% end %>
+                  </h4>
+
+                  <a href="<%= guide_path(guide) %>" class="btn btn-primary">See More</a>
                 </div>
-              </a>
+            <!--  </a> -->
             </div>
           </div>
         <% end %>
