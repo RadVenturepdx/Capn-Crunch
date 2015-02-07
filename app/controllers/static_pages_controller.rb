@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  def index
+  def home
     #
   end
 
@@ -12,14 +12,6 @@ class StaticPagesController < ApplicationController
   end
 
   def faq
-    #
-  end
-
-  def registration_user
-    #
-  end
-
-  def registration_guide
     #
   end
 end

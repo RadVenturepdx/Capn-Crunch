@@ -16,12 +16,14 @@ class User < ActiveRecord::Base
     uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
+  validates :password, length: { minimum: 6 }, allow_blank: true, on: :update
 
   #VAILD_PHONE_REGEX = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]‌​|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/
   validates :phone_number,
     presence: true,
-    length: { minimum: 10 }
+    length: { minimum: 10 },
+    :if => :phone_number
   # format: { with: VAILD_PHONE_REGEX }
 
   validates :age,
