@@ -14,31 +14,20 @@
 
     <div class="collapse navbar-collapse nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="about.html">About</a>
-        </li>
-        <li>
-          <a href="contact.html">Contact</a>
-        </li>
+
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact", contact_path %></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Locations<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li>
-              <a href="mthood.html">Mt. Hood</a>
-            </li>
-            <li>
-              <a href="mtbachelor.html">Mt. Bachelor</a>
-            </li>
-            <li>
-              <a href="mtwhistler">Mt. Whistler</a>
-            </li>
+            <li><%= link_to "Mt. Hood", mthood_path %></li>
+            <li><%= link_to "Mt. Bachelor", mtbachelor_path %></li>
+            <li><%= link_to "Mt. Whistler", mtwhistler_path %></li>
           </ul>
         </li>
 
-        <li>
-          <a href="search.html">Quick Search</a>
-        </li>
+        <li><a href="search.html">Quick Search</a></li>
 
         <% if logged_in? %>
           <li class="dropdown">

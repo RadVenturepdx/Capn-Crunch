@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root                                  'static_pages#home'
-  get    'contact'                   => 'static_pages#contact'
   get    'about'                     => 'static_pages#about'
+  get    'contact'                   => 'static_pages#contact'
   get    'faq'                       => 'static_pages#faq'
-  get    'mtbachelor'                => 'static_pages#mtbachelor'
-  get    'mthood'                    => 'static_pages#mthood'
-  get    'mtwhistler'                => 'static_pages#mtwhistler'
+  get    'guides/mtbachelor'         => 'guides#mtbachelor', as: :mtbachelor
+  get    'guides/mthood'             => 'guides#mthood',     as: :mthood
+  get    'guides/mtwhistler'         => 'guides#mtwhistler', as: :mtwhistler
   get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
   get    'signup'                    => 'users#new'
   get    'guide-creation'            => 'guides#new', as: 'guide-creation'
