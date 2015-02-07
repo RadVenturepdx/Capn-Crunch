@@ -3,7 +3,7 @@
 
 <%= form_for(@user) do |formElement| %>
   <form class='form-horizontal'>
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/user_error_messages' %>
     <div class='form-group'>
       <%= formElement.label :name, class: 'col-sm-2 control-label' %>
       <%= formElement.text_field :name %>
