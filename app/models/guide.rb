@@ -1,6 +1,8 @@
 class Guide < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
+  has_many :reservations
+  has_many :users, through: :reservations
 
   validates :user_id,
     presence: true,
