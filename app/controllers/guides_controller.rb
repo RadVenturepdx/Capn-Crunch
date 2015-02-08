@@ -1,4 +1,8 @@
 class GuidesController < ApplicationController
+  include SessionsHelper
+  before_action :logged_in_user, only: [:new, :show, :edit, :update]
+  before_action :correct_user,   only: [:new, :edit, :update]
+
   def index
     @guides = Guide.all
   end
@@ -14,20 +18,42 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new(guide_params)
+
+    # converting array to string
+    location = params[:location]
+    if !location.nil?
+      @guide.location = location.join(', ')
+    end
+    specialty = params[:specialty]
+    if !specialty.nil?
+      @guide.specialty = specialty.join(', ')
+    end
+
+    @guide.user_id = current_user.id
+
     if @guide.save
-      log_in @guide
-      flash[:success] = "Welcome to Radventure"
+      user = current_user
+      log_out
+      log_in user
+      flash[:success] = "Congratulations! You are now a guide"
       redirect_to @guide
     else
       render 'new'
     end
   end
 
+  def edit
+
+  end
+
+  def update
+
+  end
+
   private
 
   def guide_params
-    params.require(:guide).permit(:user_id,
-                                  :location,
+    params.require(:guide).permit(:location,
                                   :specialty,
                                   :rate,
                                   :sun_avail,
