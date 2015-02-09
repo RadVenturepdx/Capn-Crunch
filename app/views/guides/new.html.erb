@@ -6,23 +6,33 @@
       <%= render 'shared/guide_error_messages' %>
 
       <div class='form-group'>
-        <%= formElement.label :location, class: 'col-sm-2 control-label' %>
-        <input value="bachelor" id="bachelor" name="location[]"
-               type="checkbox"><label for="bachelor">Bachelor</label>
-        <input value="hood" id="hood" name="location[]"
-               type="checkbox"><label for="hood">Hood</label>
-        <input value="whistler" id="whistler" name="location[]"
-               type="checkbox"><label for="whistler">Whistler</label>
+        <h3>Locations</h3>
+
+        <ul>
+          <li><%= formElement.check_box :hood %>
+          <%= formElement.label 'Mount Hood'%> </li>
+
+          <li><%= formElement.check_box :bachelor %>
+          <%= formElement.label 'Mount Bachelor' %> </li>
+
+          <li><%= formElement.check_box :whistler %>
+          <%= formElement.label 'Whistler'%> </li>
+        </ul>
       </div>
 
       <div class='form-group'>
-        <%= formElement.label :specialty, class: 'col-sm-2 control-label' %>
-        <input value="downhill" id="downhill" name="specialty[]"
-               type="checkbox"><label for="downhill">Downhill</label>
-        <input value="crosscountry" id="crosscountry" name="specialty[]"
-               type="checkbox"><label for="crosscountry">Crosscountry</label>
-        <input value="snowboard" id="snowboard" name="specialty[]"
-               type="checkbox"><label for="snowboard">Snowboarding</label>
+        <h3>Specialties</h3>
+
+        <ul>
+          <li><%= formElement.check_box :downhill %>
+          <%= formElement.label 'Downhill Skiing'%> </li>
+
+          <li><%= formElement.check_box :crosscountry %>
+          <%= formElement.label 'Crosscountry Skiing' %> </li>
+
+          <li><%= formElement.check_box :snowboard %>
+          <%= formElement.label 'Snowboarding'%> </li>
+        </ul>
       </div>
 
 <!--
