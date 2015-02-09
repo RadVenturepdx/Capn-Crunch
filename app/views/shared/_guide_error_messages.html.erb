@@ -1,0 +1,10 @@
+<% if @guide.errors.any? %>
+    <div id="error_explanation">
+      The form contains <%= pluralize(@guide.errors.count, "error") %>.
+      <ul>
+        <% @guide.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

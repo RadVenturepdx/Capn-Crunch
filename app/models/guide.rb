@@ -3,7 +3,8 @@ class Guide < ActiveRecord::Base
   has_many :reviews
 
   validates :user_id,
-    presence: true
+    presence: true,
+    uniqueness: { case_sensitive: true }
 
   validates :hood,
     :inclusion => { :in => [true, false] }
@@ -29,29 +30,29 @@ class Guide < ActiveRecord::Base
 
   validates :sun_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 
   validates :mon_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 
   validates :tues_avail,
       presence: true,
-      length: { maximum: 40 }
+      length: { maximum: 40 }, allow_blank: true
 
   validates :wed_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 
   validates :thurs_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 
   validates :fri_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 
   validates :sat_avail,
     presence: true,
-    length: { maximum: 40 }
+    length: { maximum: 40 }, allow_blank: true
 end
