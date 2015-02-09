@@ -17,11 +17,9 @@ ActiveRecord::Schema.define(version: 20150204220722) do
   enable_extension "plpgsql"
 
   create_table "guides", force: true do |t|
-    t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.string   "specialty"
     t.float    "rate"
     t.string   "sun_avail"
     t.string   "mon_avail"
