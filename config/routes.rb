@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get    'mtwhistler'                => 'static_pages#mtwhistler'
   get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
   get    'signup'                    => 'users#new'
+  get    'guide-creation'            => 'guides#new', as: 'guide-creation'
   get    'login'                     => 'sessions#new'
   post   'login'                     => 'sessions#create'
   delete 'logout'                    => 'sessions#destroy'
