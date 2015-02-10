@@ -1,6 +1,14 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+    guide = Guide.find_by(user_id: user.id)
+    if !guide.nil?
+      session[:guide_id] = guide.id
+    end
+  end
+
+  def current_guide
+    @current_guide ||= Guide.find_by(id: session[:guide_id])
   end
 
   def current_user
@@ -11,12 +19,20 @@ module SessionsHelper
     user == current_user
   end
 
+  def is_guide?
+    !current_guide.nil?
+  end
+
   def logged_in?
     !current_user.nil?
   end
 
   def log_out
     session.delete(:user_id)
+    if !:guide_id.nil?
+      session.delete(:guide_id)
+      @current_guide = nil
+    end
     @current_user = nil
   end
 
@@ -29,5 +45,20 @@ module SessionsHelper
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.url if request.get?
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 end
