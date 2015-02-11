@@ -32,26 +32,17 @@
             <legend>Account Information</legend>
 
             <div class="row">
-              <div class="control-group col-sm-6">
+              <div class="control-group col-sm-12">
                 <div class="controls">
 
                   <%= formElement.text_field :name, class: "form-control",
-                  placeholder: "First Name", id: "firstName", input: 'required
-                  data-validation-required-message="Please enter your first name"' %>
+                  placeholder: "Full Name", id: "fullName", input: 'required
+                  data-validation-required-message="Please enter your full name"' %>
                   <p class="help-block"></p>
 
                 </div>
               </div>
-              <div class="control-group col-sm-6">
-                <div class="controls">
 
-                  <%= formElement.text_field :name, class: "form-control",
-                  placeholder: "Last Name", id: "lastName", input: 'required
-                  data-validation-required-message="Please enter your last name"' %>
-                  <p class="help-block"></p>
-
-                </div>
-              </div>
             </div>
             <div class="control-group">
               <div class="controls">

@@ -13,16 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20150128222759) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "guides", force: true do |t|
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "specialty"
     t.float    "rate"
+    t.boolean  "availability", default: false
     t.string   "sun_avail"
     t.string   "mon_avail"
     t.string   "tues_avail"
@@ -32,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150128222759) do
     t.string   "sat_avail"
   end
 
-  add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.text     "content"
@@ -43,9 +41,9 @@ ActiveRecord::Schema.define(version: 20150128222759) do
     t.integer  "rating"
   end
 
-  add_index "reviews", ["guide_id", "created_at"], name: "index_reviews_on_guide_id_and_created_at", using: :btree
-  add_index "reviews", ["guide_id"], name: "index_reviews_on_guide_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "reviews", ["guide_id", "created_at"], name: "index_reviews_on_guide_id_and_created_at"
+  add_index "reviews", ["guide_id"], name: "index_reviews_on_guide_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -55,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150128222759) do
     t.string   "password_digest"
     t.string   "phone_number"
     t.integer  "age"
-    t.text     "profile"
+    t.text     "profile",         limit: 255
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -63,6 +61,6 @@ ActiveRecord::Schema.define(version: 20150128222759) do
     t.string   "country"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
