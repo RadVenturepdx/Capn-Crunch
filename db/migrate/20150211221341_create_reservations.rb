@@ -6,5 +6,7 @@ class CreateReservations < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :reservations, [:guide_id, :created_at]
+    add_index :reservations, [:user_id, :created_at]
   end
 end
