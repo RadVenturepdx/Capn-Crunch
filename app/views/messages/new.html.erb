@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Radventure</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">RADVENTURE</a>
+        </div>
+
+        <div class="collapse navbar-collapse nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Locations<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Mt. Hood</a>
+                        </li>
+                        <li>
+                            <a href="">Mt. Bachelor</a>
+                        </li>
+                        <li>
+                            <a href="">Mt. Whistler</a>
+                        </li>
+                        <li>
+                            <a href="">Tap</a>
+                        </li>
+                        <li>
+                            <a href="">Dat</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="search.html">Quick Search</a>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#signIn" style="margin-left:15px">
+                        Log In
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#signUp" style="margin-left:15px">
+                        Sign Up
+                    </button>
+                </li>
+                <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="signInModal">Sign In</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="Username">Username/Email</label>
+                                        <input type="email" class="form-control" id="Username" placeholder="radventureit@gmail.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Password">Password</label>
+                                        <input type="password" class="form-control" id="Password" placeholder="Password">
+                                    </div>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="signUpModal">Sign Up</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div>
+                                        <a class="btn btn-default" href="registration-user.html" >As a User</a>&nbsp &nbsp If you would like to start finding guides.
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <a class="btn btn-default" href="registration-guide.html">As a Guide</a>&nbsp &nbsp If you want to start guiding people.
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </li> -->
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Contact Us
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-8">
+                <!-- Embedded Google Map -->
+                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-4">
+                <h3>Contact Details</h3>
+                <p>
+                    Portland State University<br>Portland, OR 97201<br>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (503)-111-111</p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">radventureit@gmail.com</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <br>
+        <div id="contacts">
+            <div class="row">
+                <!-- Alignment -->
+                <div class="col-sm-offset-3 col-sm-6">
+                    <!-- Form itself -->
+                    <!-- <form name="sentMessage" class="well" id="contactForm"  novalidate> -->
+                        <legend>Contact me</legend>
+
+                        <%= form_for @message do |formElement| %>
+                          <% if @message.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= "#{pluralize(@message.errors.count, "error")} prohibited this message from being sent:" %></h2>
+                              <ul>
+                                <% @message.errors.full_messages.each do |msg| %>
+                                  <li><%= msg %></li>
+                                <% end %>
+                              <ul>
+                            </div>
+                          <% end %>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                  <%= formElement.label :name %>
+                                  <%= formElement.text_field :name, :required => true, class: 'form-control', id: 'name',
+                                    placeholder: 'Full Name' %>
+                                    <p class="help-block"></p>
+
+                              </div>
+                          </div>
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :email %>
+                                <%= formElement.email_field :email, :required => true, class: 'form-control', id: 'email',
+                                  placeholder: 'your_email@domain.com' %>
+
+                              </div>
+                          </div>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :subject %>
+                                <%= formElement.text_field :subject, :required => true, class: 'form-control', id: 'subject',
+                                  placeholder: 'Subject' %>
+
+                              </div>
+                          </div>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :content %>
+                                <%= formElement.text_area :content, :required => true, class: 'form-control', id: 'message',
+                                  placeholder: 'Message', :input_html => {:rows => 10, :cols => 100} %>
+
+                              </div>
+                          </div>
+
+                          <div id="success"> </div> <!-- For success/fail messages -->
+                          <%= formElement.submit 'Send', class: 'btn btn-primary pull-right', type: 'submit' %><br/>
+                        <% end %>
+
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jqBootstrapValidation.js"></script>
+    <script src="./js/contact_me.js"></script>
+        <hr>
+
+        <!-- Footer -->
+        <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+            <div class="row text-center center-block">
+                <div class="col-md-4">
+                    <h4>User Information</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="">Get Started</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Guides</a></li>
+                        <li><a href="">Locations</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Guide Information</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="">Become Guide</a></li>
+                        <li><a href="">Payment Process</a></li>
+                        <li><a href="">How It Works</a></li>
+                        <li><a href="">Legal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Corporate</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Mission</a></li>
+                        <li><a href="">Careers</a></li>
+                        <li><a href="">Expansion</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    <br><br>
+                    Copyright &copy; Radventure 2014
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+</body>
+
+</html>
