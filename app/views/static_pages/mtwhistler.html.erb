@@ -14,7 +14,7 @@
   <!-- Portfolio Item Row -->
   <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-8" style="padding-top:25px">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -48,14 +48,9 @@
 
     <div class="col-md-4">
       <h3>Location Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-      <h3>Location Details</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
-      </ul>
+      <p>Every year, thousands of skiers and boarders journey to the Westcoast for an unrivalled ski vacation in Whistler Blackcomb. They’re drawn by over 8100 skiable acres, a bustling pedestrian base village packed with shopping and dining choices, and a fantastic array of winter adventures.
+        Last season was one of our best ever, with record-breaking snow. Take advantage of these great deals and help us make the 2014-15 season even better.</p>
+
     </div>
 
   </div>
@@ -70,70 +65,90 @@
 
     <% top_guides = [] %>
     <% local_guides('Mount Whistler').each do |guide| %>
-      <% if guide.reviews.count > 0 %>
-        <% average_rating = guide.reviews.average(:rating) %>
-        <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
-          <% if !top_guides[1].nil? %>
-            <% top_guides[2] = top_guides[1] %>
-          <% end %>
-          <% top_guides[1] = top_guides[0] %>
-          <% top_guides[0] = guide %>
-        <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating) < average_rating %>
-          <% top_guides[2] = top_guides[1] %>
-          <% top_guides[1] = guide %>
-        <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating) < average_rating %>
-          <% top_guides[2] = guide %>
+        <% if guide.reviews.count > 0 %>
+            <% average_rating = guide.reviews.average(:rating) %>
+            <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
+                <% if !top_guides[1].nil? %>
+                    <% top_guides[2] = top_guides[1] %>
+                <% end %>
+                <% top_guides[1] = top_guides[0] %>
+                <% top_guides[0] = guide %>
+            <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating) < average_rating %>
+                <% top_guides[2] = top_guides[1] %>
+                <% top_guides[1] = guide %>
+            <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating) < average_rating %>
+                <% top_guides[2] = guide %>
+            <% end %>
         <% end %>
-      <% end %>
     <% end %>
 
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[0].user.name, top_guides[0] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[0].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[0].rate) %></li>
-        <li>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[0].user.name, top_guides[0] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[0].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[0].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[1].user.name, top_guides[1] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[1].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[1].rate) %></li>
-        <li>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[1].user.name, top_guides[1] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[1].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[1].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[2].user.name, top_guides[2] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[2].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[2].rate) %></li>
-        <li>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[2].user.name, top_guides[2] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[2].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[2].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
     </div>
   </div>
   <!-- /.row -->
