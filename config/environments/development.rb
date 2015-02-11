@@ -22,8 +22,8 @@ Rails.application.configure do
     domain: "smtp.gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "ouremail@example.com", # ENV["GMAIL_USERNAME"]
-    password: "password" # ENV["GMAIL_PASSWORD"]
+    user_name: "radventureit@gmail.com", # ENV["GMAIL_USERNAME"]
+    password: "radteamdelta" # ENV["GMAIL_PASSWORD"]
   }
 
   config.action_mailer.default_url_options = { :host => "localhost", :port => 3000 }
