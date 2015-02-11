@@ -14,7 +14,7 @@
   <!-- Portfolio Item Row -->
   <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-8" style="padding-top:25px">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -48,14 +48,9 @@
 
     <div class="col-md-4">
       <h3>Location Description</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-      <h3>Location Details</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Dolor Sit Amet</li>
-        <li>Consectetur</li>
-        <li>Adipiscing Elit</li>
-      </ul>
+      <p>Mt. Hood Meadows offers some of the most spectacular skiing and snowboarding in the Northwest! The resort is close to Portland - just 90 minutes away - but delivers a big mountain experience you'd expect to travel much farther to enjoy. Mt. Hood Meadows Ski Resort operates on a special use permit on the Mt. Hood National Forest, and the resort sprawls across Mt. Hood's southeast flank, the sunny, wind-protected side of Mt. Hood. Meadows' playful terrain welcomes and challenges all levels of skiers and snowboarders. We have a huge mountain with terrain for everyone, magnificent views and snowfall beyond belief. Our entire staff is committed to providing you with a truly memorable and unique experience that is Mt. Hood Meadows.</p>
+      <br>
+      <p>This is a big mountain experience, with enough acreage to keep you busy for days and enough character so you will respect and remember your time on these trails. "It's so much bigger than what I thought," is a common reaction of those hitting the slopes for the first time, knowing that they'll need to come back several times before they fully experience all Meadows has to offer.</p>
     </div>
 
   </div>
@@ -87,53 +82,73 @@
       <% end %>
     <% end %>
 
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[0].user.name, top_guides[0] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[0].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[0].rate) %></li>
-        <li>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:200px; width:400px;
+                         margin-bottom: 0px;" alt="">
+              <h4><%= link_to top_guides[0].user.name, top_guides[0] %></h4>
+              <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+                <h4>Sports: <%= top_guides[0].specialty %></h4>
+                <h4>Rate: <%= number_to_currency(top_guides[0].rate) %></h4>
+                <h4>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                  <% end %>
+                </h4>
+          </div>
+      </div>
     </div>
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[1].user.name, top_guides[1] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[1].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[1].rate) %></li>
-        <li>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:200px; width:400px;
+                         margin-bottom: 0px;" alt="">
+            <h4><%= link_to top_guides[1].user.name, top_guides[1] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h4>Sports: <%= top_guides[1].specialty %></h4>
+            <h4>Rate: <%= number_to_currency(top_guides[1].rate) %></h4>
+            <h4>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+              <% end %>
+            </h4>
+        </div>
+     </div>
     </div>
-    <div class="col-sm-3 col-xs-6">
-      <h3><%= link_to top_guides[2].user.name, top_guides[2] %></h3>
-      <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-      <ul>
-        <li>Sports: <%= top_guides[2].specialty %></li>
-        <li>Rate: <%= number_to_currency(top_guides[2].rate) %></li>
-        <li>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
-          <% stars.times do |i| %>
-            <span class="fa fa-star"></span>
-          <% end %>
-          <% (5 - stars).times do |i| %>
-            <span class="fa fa-star-o"></span>
-          <% end %>
-        </li>
-      </ul>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:200px; width:400px;
+                         margin-bottom: 0px;" alt="">
+              <h4><%= link_to top_guides[2].user.name, top_guides[2] %></h4>
+              <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+                <h4>Sports: <%= top_guides[2].specialty %></h4>
+                <h4>Rate: <%= number_to_currency(top_guides[2].rate) %></h4>
+                <h4>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                  <% end %>
+                </h4>
+           </div>
+        </div>
     </div>
   </div>
   <!-- /.row -->

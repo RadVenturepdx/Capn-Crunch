@@ -1,196 +1,172 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
-<%= form_for(@user) do |formElement| %>
-  <form class='form-horizontal'>
-    <%= render 'shared/user_error_messages' %>
-    <div class='form-group'>
-      <%= formElement.label :name, class: 'col-sm-2 control-label' %>
-      <%= formElement.text_field :name %>
-    </div>
-
-<!-- Page Content -->
-<div class="container">
-
-  <!-- Page Heading/Breadcrumbs -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header" style="text-align:center">User Registration</h1>
-    </div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header" style="text-align:center">Sign Up</h1>
   </div>
-  <!-- /.row -->
+</div>
 
-  <!-- Registration Section -->
-  <div id="guide">
-    <div class="row">
-      <!-- Alignment -->
-      <div class="col-sm-offset-3 col-sm-6">
-        <!-- Form itself -->
-        <%= form_for(@user) do |formElement| %>
-        <%= render 'shared/error_messages' %>
-          <form name="sentMessage" class="well" id="registrationForm"  novalidate>
+<div class="row">
+   <div class="col-sm-6 col-sm-offset-3 well" style="text-align:center">
+        <%= form_for(@user) do |formElement|%>
+          <form class='well'>
+            <%= render 'shared/error_messages' %>
+
+
             <legend>Account Information</legend>
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                    <div class='form-group'>
+                      <%= formElement.label :name, class: 'control-label' %>
+                      <%= formElement.text_field :name , class: 'form-control' %>
+                    </div>
+              </div>
+            </div>
 
             <div class="row">
-              <div class="control-group col-sm-6">
-                <div class="controls">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                    <div class='form-group'>
+                      <%= formElement.label :password, class: 'control-label' %>
+                      <%= formElement.password_field :password , class: 'form-control' %>
+                    </div>
+              </div>
+            </div>
 
-                  <%= formElement.text_field :name, class: "form-control",
-                  placeholder: "First Name", id: "firstName", input: 'required
-                  data-validation-required-message="Please enter your first name"' %>
-                  <p class="help-block"></p>
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                  <div class='form-group'>
+                      <%= formElement.label :password_confirmation, 'Confirmation',
+                                  class: 'control-label' %>
+                      <%= formElement.password_field :password_confirmation , class: 'form-control'%>
+                  </div>
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class='form-group'>
+                  <%= formElement.label :email, class: 'control-label' %>
+                  <%= formElement.email_field :email , class: 'form-control'%>
                 </div>
               </div>
-              <div class="control-group col-sm-6">
-                <div class="controls">
-
-                  <%= formElement.text_field :name, class: "form-control",
-                  placeholder: "Last Name", id: "lastName", input: 'required
-                  data-validation-required-message="Please enter your last name"' %>
-                  <p class="help-block"></p>
-
-                </div>
-              </div>
             </div>
-            <div class="control-group">
-              <div class="controls">
 
-                <%= formElement.password_field :password, class: "form-control",
-                placeholder: "Password", id: "password", input: 'required
-                data-validation-required-message="Please enter your password"' %>
-                <p class="help-block"></p>
-
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                  <div class='form-group'>
+                      <%= formElement.label :phone_number, class: 'control-label' %>
+                      <%= formElement.text_field :phone_number , class: 'form-control'%>
+                  </div>
               </div>
             </div>
 
-            <div class="control-group">
-              <div class="controls">
-
-                <%= formElement.password_field :password_confirmation, class: "form-control",
-                placeholder: "Confirm Password", id: "Password-Confirm", input: 'required
-                data-validation-required-message="Please confirm your password"' %>
-                <p class="help-block"></p>
-
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-
-                <%= formElement.email_field :email, class: "form-control",
-                placeholder: "Email", id: "email", input: 'required
-                data-validation-required-message="Please enter your email"' %>
-                <p class="help-block"></p>
-
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                  <div class='form-group'>
+                      <%= formElement.label :age, class: 'control-label' %>
+                      <%= formElement.text_field :age , class: 'form-control'%>
+                  </div>
               </div>
             </div>
 
-            <br>
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                 <div class='form-group'>
+                  <%= formElement.label :profile, class: 'control-label' %>
+                  <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 , class: 'form-control'%>
+                 </div>
+              </div>
+            </div>
+
             <legend>Personal Information</legend>
-            <p class="help-block">Your personal information will not be shared with anyone. It will only be used for payment information and personal security</p>
-            <!--schema address ... street number??? -->
-            <br>
+            <p class="help-block control-group col-sm-8 col-sm-offset-2">Your personal information will not be shared with anyone. It will only be used for payment information and personal security</p>
+            <br><br>
             <div class="row">
-              <div class="control-group">
-                <div class="controls">
-                  <p class="col-sm-3 help-block control-label">Phone Number</p>
-                  <div class="col-sm-5">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                 <div class='form-group'>
+                  <%= formElement.label :address, class: 'control-label' %>
+                  <%= formElement.text_field :address, 'size' => 103 , class: 'form-control'%>
+                 </div>
+              </div>
+            </div>
 
-                    <%= formElement.text_field :phone_number, class: "form-control bfh-phone",
-                    input: 'required data-validation-required-message=Please enter your phone number' %>
-                    <p class="help-block"></p>
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                 <div class='form-group'>
+                      <%= formElement.label :city, class: 'control-label' %>
+                      <%= formElement.text_field :city, class: 'form-control' %>
+                 </div>
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class='form-group'>
+                    <br>
+                    <%= formElement.label :state, class: 'control-label' %>
+                    <br>
+                    <%= formElement.select(:state, options_for_select(us_states))  %>
+                    <br><br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class='form-group'>
+                  <%= formElement.label :zipcode, class: 'control-label' %>
+                  <%= formElement.text_field :zipcode , class: 'form-control'%>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class='form-group'>
+                  <br>
+                  <%= formElement.label :country, class: 'control-label' %>
+                  <br>
+                  <%= formElement.select(:country, options_for_select(countries)) %>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class="control">
+                  By clicking <strong class="label label-primary">Create my account</strong>, you agree to the
+                  <a href="" data-toggle="modal" data-target="#termsconditions">Terms and Conditions</a>
+                  <p class="help-block"></p>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="termsconditions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="termsconditions">Terms & Conditions</h4>
+                  </div>
+                  <div class="modal-body">
+                      <div>
+                        <p>INSERT TERMS AND CONDITIONS HERE</p>
+                      </div>
+                      <button type="submit" class="btn btn-default">Okay</button>
                   </div>
                 </div>
               </div>
             </div>
+
+            <br>
             <div class="row">
-              <div class="control-group col-sm-4">
-                <div class="controls">
-
-                  <%= formElement.text_field :age, class: "form-control",
-                  placeholder: "Age", id: "age", input: 'required
-                  data-validation-required-message="Please enter your age"' %>
-                  <p class="help-block"></p>
-
-                </div>
+              <div class="control-group col-sm-8 col-sm-offset-2">
+              <div class='form-group'>
+                <%= formElement.submit 'Create my account' %>
+              </div>
               </div>
             </div>
-            <div class="control-group">
-              <div class="controls">
-
-                <%= formElement.text_area :profile, class: "form-control", 'rows' => 10, 'cols' => 100,
-                placeholder: "Write about yourself! :)", id: "address", input: 'required
-                data-validation-required-message="Please enter your address"' %>
-                <p class="help-block"></p>
-
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-
-                <%= formElement.text_field :address, 'size' => 103, class: "form-control",
-                placeholder: "Address Line i.e. 123 SW Main Street Ave", id: "address", input: 'required
-                data-validation-required-message="Please enter your address"' %>
-                <p class="help-block"></p>
-
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-
-                <%= formElement.text_field :city, class: "form-control",
-                placeholder: "City", id: "city", input: 'required
-                data-validation-required-message="Please enter your city"' %>
-                <p class="help-block"></p>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="control-group col-sm-6">
-                <div class="controls">
-                  <%= formElement.label :state, class: 'span6' %>
-                  <%= formElement.select(:state, options_for_select(us_states)) %>
-                  <p class="help-block"></p>
-
-                </div>
-              </div>
-              <div class="control-group col-sm-6">
-                <div class="controls">
-
-                  <%= formElement.text_field :zipcode, class: "form-control",
-                  placeholder: "Zip Code", id: "zip", input: 'required
-                  data-validation-required-message="Please enter your zip code"' %>
-                  <p class="help-block"></p>
-
-                </div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <%= formElement.label :country, class: 'span6' %>
-                <%= formElement.select(:country, options_for_select(countries)) %>
-                <p class="help-block"></p>
-
-              </div>
-            </div>
-
-            <br><br>
-            <div class="control">
-              By clicking <strong class="label label-primary">Register</strong>, you agree to the
-              <a href="#">Terms and Conditions</a>
-              <p class="help-block"></p>
-            </div>
-
-            <div id="success"> </div> <!-- For success/fail messages -->
-            <%= formElement.submit 'Register', class: 'btn btn-primary pull-right' %>
-
           </form>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <hr>
+   </div>
 </div>
