@@ -59,6 +59,10 @@ class GuidesController < ApplicationController
   def mtwhistler
   end
 
+  def reservation
+    @guide = Guide.find(params[:id])
+  end
+
   private
     def guide_params
       params.require(:guide).permit(:user_id,
