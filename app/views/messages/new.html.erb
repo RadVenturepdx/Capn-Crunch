@@ -71,7 +71,7 @@
                                 <%= formElement.label :email %>
                                 <%= formElement.email_field :email, :required => true, class: 'form-control', id: 'email',
                                   placeholder: 'your_email@domain.com' %>
-
+                                <p class="help-block"></p>
                               </div>
                           </div>
 
@@ -81,7 +81,7 @@
                                 <%= formElement.label :subject %>
                                 <%= formElement.text_field :subject, :required => true, class: 'form-control', id: 'subject',
                                   placeholder: 'Subject' %>
-
+                                <p class="help-block"></p>
                               </div>
                           </div>
 
@@ -91,10 +91,10 @@
                                 <%= formElement.label :content %>
                                 <%= formElement.text_area :content, :required => true, class: 'form-control', id: 'message',
                                   placeholder: 'Message', :input_html => {:rows => 10, :cols => 100} %>
-
+                                <p class="help-block"></p>
                               </div>
                           </div>
-
+                          <br>
                           <div id="success"> </div> <!-- For success/fail messages -->
                           <%= formElement.submit 'Send', class: 'btn btn-primary pull-right', type: 'submit' %><br/>
                         <% end %>
