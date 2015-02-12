@@ -1,6 +1,15 @@
 class MessageMailer < ActionMailer::Base
   default from: "donotreply@radventurepdx.com"
 
+  def message_it(msg)
+    @msg = msg
+
+    mail(to: 'radventureit@gmail.com', subject: "#{msg.name} #{msg.email} has sent a message", body: msg.content) do |format|
+      format.html
+      format.text
+    end
+  end
+
   def message_user(msg)
     @msg = msg
 
@@ -9,4 +18,5 @@ class MessageMailer < ActionMailer::Base
       format.text
     end
   end
+
 end
