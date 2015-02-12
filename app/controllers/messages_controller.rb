@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       MessageMailer.message_it(@message).deliver
       MessageMailer.message_user(@message).deliver
       flash[:success] = "Thank you for your message."
-      redirect_to new_message_path
+      redirect_to "/contact"
     else
       render 'new'
     end
