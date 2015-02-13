@@ -50,19 +50,32 @@ class GuidesController < ApplicationController
 
   end
 
-  private
-
-  def guide_params
-    params.require(:guide).permit(:location,
-                                  :specialty,
-                                  :rate,
-                                  :sun_avail,
-                                  :mon_avail,
-                                  :tues_avail,
-                                  :wed_avail,
-                                  :thurs_avail,
-                                  :fri_avail,
-                                  :sat_avail)
+  def mtbachelor
   end
+
+  def mthood
+  end
+
+  def mtwhistler
+  end
+
+  def reservation
+    @guide = Guide.find(params[:id])
+  end
+
+  private
+    def guide_params
+      params.require(:guide).permit(:user_id,
+                                    :location,
+                                    :specialty,
+                                    :rate,
+                                    :sun_avail,
+                                    :mon_avail,
+                                    :tues_avail,
+                                    :wed_avail,
+                                    :thurs_avail,
+                                    :fri_avail,
+                                    :sat_avail)
+    end
 
 end

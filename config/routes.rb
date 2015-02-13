@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  
   root                                  'static_pages#home'
-  get    'contact'                   => 'messages#new'
-  get    'contact'                   => 'messages#create'
-  get    'locations'                 => 'static_pages#locations'
   get    'about'                     => 'static_pages#about'
+  get    'contact'                   => 'static_pages#contact'
   get    'faq'                       => 'static_pages#faq'
-  get    'mtbachelor'                => 'static_pages#mtbachelor'
-  get    'mthood'                    => 'static_pages#mthood'
-  get    'mtwhistler'                => 'static_pages#mtwhistler'
+  get    'guides/mtbachelor'         => 'guides#mtbachelor', as: :mtbachelor
+  get    'guides/mthood'             => 'guides#mthood',     as: :mthood
+  get    'guides/mtwhistler'         => 'guides#mtwhistler', as: :mtwhistler
+  get    'guides/:id/reservation'    => 'guides#reservation', as: :reservation
   get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
   get    'signup'                    => 'users#new'
   get    'guide-creation'            => 'guides#new', as: 'guide-creation'
@@ -18,7 +16,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :guides
-  resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
