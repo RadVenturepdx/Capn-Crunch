@@ -84,7 +84,7 @@
       </div>
 
       <% top_guides = [] %>
-      <% local_guides('Mount Whistler').each do |guide| %>
+      <% whistler_guides.each do |guide| %>
           <% if guide.reviews.count > 0 %>
               <% average_rating = guide.reviews.average(:rating) %>
               <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
@@ -145,7 +145,7 @@
       </div>
 
       <% top_guides = [] %>
-      <% local_guides('Mount Bachelor').each do |guide| %>
+      <% bachelor_guides.each do |guide| %>
           <% if guide.reviews.count > 0 %>
               <% average_rating = guide.reviews.average(:rating) %>
               <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
@@ -207,7 +207,7 @@
 
 
       <% top_guides = [] %>
-      <% local_guides('Mount Hood').each do |guide| %>
+      <% hood_guides.each do |guide| %>
           <% if guide.reviews.count > 0 %>
               <% average_rating = guide.reviews.average(:rating) %>
               <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
