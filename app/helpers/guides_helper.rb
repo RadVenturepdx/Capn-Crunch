@@ -1,4 +1,17 @@
 module GuidesHelper
+  def hood_guides
+    guides = Guide.where(:hood => true)
+  end
+
+  def bachelor_guides
+    guides = Guide.where(:bachelor => true)
+  end
+
+  def whistler_guides
+    guides = Guide.where(:whistler => true)
+  end
+
+
   def location_string(hood, bachelor, whistler)
     comma = false
     str = ''
