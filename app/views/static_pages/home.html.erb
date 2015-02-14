@@ -10,19 +10,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <div class="fill" style="background-image:url('img/skiing.jpg'); opacity: 0.6;"></div>
+      <div class="fill" style="background-image:url('http://web.cecs.pdx.edu/~ankgupta/skiing.jpg'); opacity: 0.6;"></div>
       <div class="carousel-caption">
         <h1 style="color:#000000"><strong>Skiing</strong></h1>
       </div>
     </div>
     <div class="item">
-      <div class="fill" style="background-image:url('img/snowboarding.jpg');  opacity: 0.6;"></div>
+      <div class="fill" style="background-image:url('http://web.cecs.pdx.edu/~ankgupta/snowboarding.jpg');  opacity: 0.6;"></div>
       <div class="carousel-caption">
         <h1 style="color:#000000"><strong>Snowboarding</strong></h1>
       </div>
     </div>
     <div class="item">
-      <div class="fill" style="background-image:url('img/whistler.jpg');  opacity: 0.6;"></div>
+      <div class="fill" style="background-image:url('http://web.cecs.pdx.edu/~ankgupta/whistler.jpg');  opacity: 0.6;"></div>
       <div class="carousel-caption">
         <h1 style="color:#000000"><strong>Your Confusing Map</strong></h1>
       </div>
@@ -72,14 +72,11 @@
           </div>
           <div class="panel-body">
             <p>
-              Lorem ipsum dolor sit amet, iusto errem congue sed an, simul
-              exerci tibique et vix. Mel ea doctus iudicabit, has stet velit
-              torquatos et. Argumentum consectetuer nam te, at quo dicunt
-              deterruisset. Commodo minimum recusabo at pro.
-              Enim meis necessitatibus te quo, clita fabellas honestatis at
-              his, magna populo facilisi id eos. Molestie tractatos eos ne.
+              It is Radventure's mission to help travellers maximize their time, pocketbooks, and smiles while experiencing adventures in the great outdoors.
+              <br>
+              We’ve all been there. You’re in a rad new place, but aren’t quite sure where to start. You wish you had a local buddy to give you the inside scoop. You chat with ski techs, bike shop staff, and bartenders, but what you really want is local to show you the sick spots so you can make the most your time outside.
             </p>
-            <a href="" class="btn btn-default">Learn More</a>
+            <a href="about.html" class="btn btn-default">Learn More</a>
           </div>
         </div>
       </div>
@@ -89,16 +86,15 @@
             <h4><i class="fa fa-fw fa-check"></i>Get Started</h4>
           </div>
           <div class="panel-body">
-            <p>
-              Lorem ipsum dolor sit amet, iusto errem congue sed an, simul
-              exerci tibique et vix. Mel ea doctus iudicabit, has stet velit
-              torquatos et. Argumentum consectetuer nam te, at quo dicunt
-              deterruisset. Commodo minimum recusabo at pro. Enim meis
-              necessitatibus te quo, clita fabellas honestatis at his,
-              magna populo facilisi id eos. Molestie tractatos eos ne.
+            <p style="margin-left:25px">
+              <li>Create an account</li>
+              <li>View a <a href="locations.html"> Location</a></li>
+              <li>Find a guide</li>
+              <li>Book it!</li>
+              <li>Had a radventurous time!</li>
             </p>
-            <a href="" class="btn btn-default">Sign Up</a>
-            <a href="" class="btn btn-default" data-toggle="modal" data-target="#signIn">Login</a>
+            <a href="signup.html" class="btn btn-default">Sign Up</a>
+            <a href="faq.html" class="btn btn-default">Questions?</a>
           </div>
         </div>
       </div>
@@ -108,51 +104,85 @@
     <!-- Portfolio Section - Panels for Guide & Location-->
       <div class="row">
         <div class="col-lg-12">
-          <h2 class="page-header">Guides & Locations</h2>
+           <h2 class="page-header">Guides & Locations</h2>
         </div>
+
+        <div class="col-md-4 col-sm-6">
+           <div class="panel panel-default">
+             <div class="panel-heading">
+                <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mthood.jpg"
+                   style="height:200px; width:400px;
+                   margin-bottom: 0px;" alt="">
+                <h4><strong>Name: Mount Hood</strong></h4>
+                <h4>Location: Portland, Oregon</h4>
+                <a href="mthood.html" class="btn btn-primary">See More</a>
+             </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mtbachelor.jpg"
+                   style="height:200px; width:400px;
+                           margin-bottom: 0px;" alt="">
+              <h4><strong>Name: Mount Bachelor</strong></h4>
+              <h4>Location: Bend, Oregon</h4>
+              <a href="mtbachelor.html" class="btn btn-primary">See More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img class="img-responsive img-portfolio img-hover"
+                   src="http://radventurepdx.github.io/img/mtwhistler.jpg"
+                   style="height:200px; width:400px;
+                           margin-bottom: 0px;" alt="">
+              <h4><strong>Name: Mount Whistler</strong></h4>
+              <h4>Location: Vancouver, Canada</h4>
+              <a href="mtwhistler.html" class="btn btn-primary">See More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+
         <% home_guides.each do |guide| %>
           <div class="col-md-4 col-sm-6">
             <div class="panel panel-default">
-              <a href="<%= guide_path(guide) %>">
+            <!--  <a href="<%= guide_path(guide) %>"> -->
                 <div class="panel-heading">
                   <img class="img-responsive img-portfolio img-hover"
-                    src="img/guide-n-location/guide1.jpg"
+                    src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
                     style="height:200px; width:400px;
                     margin-bottom: 0px;" alt="">
-                  <h3>Guide: <%= guide.specialty %> </h3>
-                  <p>
-                    <%= guide.location %>
-                  </p>
+                  <h4>Name:  <%= guide.user.name %> </h4>
+                  <h4>Sport: <%= guide.specialty %> </h4>
+                  <h4>Location: <%= guide.location %></h4>
+
+                  <h4>Rating:
+                    <% stars = guide.reviews.average(:rating).round %>
+                    <% stars.times do |i| %>
+                        <span class="fa fa-star"></span>
+                    <% end %>
+                    <% (5 - stars).times do |i| %>
+                        <span class="fa fa-star-o"></span>
+                    <% end %>
+                  </h4>
+
+                  <a href="<%= guide_path(guide) %>" class="btn btn-primary">See More</a>
                 </div>
-              </a>
+            <!--  </a> -->
             </div>
           </div>
         <% end %>
       </div>
-    <!-- /.row -->
-
-    <!-- Features Section -->
-    <div class="row">
-      <div class="col-lg-12">
-        <h2 class="page-header">Killa chinchilla</h2>
-      </div>
-      <div class="col-md-6">
-        <p>How it works:</p>
-        <ul>
-          <li><strong>Sign up</strong>
-          </li>
-          <li>Find a guide</li>
-          <li>Reach out to the guide</li>
-          <li>If mutual agreement, go have your adventure</li>
-          <li>Have a good time</li>
-          <li>Write a gudie review</li>
-        </ul>
-        <p>Ball Out. 1 hunnid.</p>
-      </div>
-      <div class="col-md-6">
-        <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-      </div>
-    </div>
     <!-- /.row -->
 
     <hr>
@@ -166,8 +196,8 @@
             <li><a href="">Get Started</a></li>
             <li><a href="">Services</a></li>
             <li><a href="">Guides</a></li>
-            <li><a href="">Locations</a></li>
-            <li><a href="faq.html">FAQ</a></li>
+            <li><%= link_to "All Locations", locations_path %></li>
+            <li><%= link_to "FAQ", faq_path %></li>
           </ul>
         </div>
         <div class="col-md-4">
@@ -182,7 +212,7 @@
         <div class="col-md-4">
           <h4>Corporate</h4>
           <ul class="list-unstyled" style="color:#777777">
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><%= link_to "Contact Us", contact_path %></li>
             <li><a href="">Legal</a></li>
             <li><a href="">Mission</a></li>
             <li><a href="">Careers</a></li>
@@ -202,10 +232,12 @@
   <!-- /.container -->
 
   <!-- jQuery -->
-  <script src="js/jquery.js"></script>
+  <script src="../javascripts/jquery.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
+  <script src="../javascripts/bootstrap.min.js"></script>
+  <script src="../javascripts/bootstrap.js"></script>
+
 
   <!-- Script to Activate the Carousel -->
   <script>

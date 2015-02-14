@@ -39,12 +39,11 @@
                   <span class="fa fa-star-o"></span>
                 <% end %>
               </h3>
-              <a class="btn btn-primary" href="booking.html"><i class="fa fa-book">
-                </i><strong> Book Reservation </strong>
-              </a>
+              <%= link_to "Reservation", reservation_path, class: "btn btn-primary" %>
+              <!-- <i class="fa fa-book"></i> -->
               <button type="button" class="btn btn-primary"
                 data-toggle="modal" data-target="#contactGuide">
-                  <i class="fa fa-question-circle"></i>
+                  <!-- <i class="fa fa-question-circle"></i> -->
                   <strong>Ask Guide a Question</strong>
               </button>
               <div class="modal fade" id="contactGuide" tabindex="-1"

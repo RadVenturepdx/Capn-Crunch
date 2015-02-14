@@ -1,0 +1,158 @@
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="text-align:center">Contact Radventure
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-8">
+                <!-- Embedded Google Map -->
+                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-4">
+                <h3>Contact Details</h3>
+                <p>
+                    Portland State University<br>Portland, OR 97201<br>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (503)-111-111</p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">radventureit@gmail.com</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <br>
+        <div id="contacts">
+            <div class="row">
+                <!-- Alignment -->
+                <div class="col-sm-offset-3 col-sm-6 well">
+                    <!-- Form itself -->
+                    <!-- <form name="sentMessage" class="well" id="contactForm"  novalidate> -->
+                        <legend>Email Us</legend>
+
+                        <%= form_for @message do |formElement| %>
+                          <% if @message.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= "#{pluralize(@message.errors.count, "error")} prohibited this message from being sent:" %></h2>
+                              <ul>
+                                <% @message.errors.full_messages.each do |msg| %>
+                                  <li><%= msg %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                  <%= formElement.label :name %>
+                                  <%= formElement.text_field :name, :required => true, class: 'form-control', id: 'name',
+                                    placeholder: 'Full Name' %>
+                                    <p class="help-block"></p>
+
+                              </div>
+                          </div>
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :email %>
+                                <%= formElement.email_field :email, :required => true, class: 'form-control', id: 'email',
+                                  placeholder: 'your_email@domain.com' %>
+                                <p class="help-block"></p>
+                              </div>
+                          </div>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :subject %>
+                                <%= formElement.text_field :subject, :required => true, class: 'form-control', id: 'subject',
+                                  placeholder: 'Subject' %>
+                                <p class="help-block"></p>
+                              </div>
+                          </div>
+
+                          <div class="control-group">
+                              <div class="controls">
+
+                                <%= formElement.label :content %>
+                                <%= formElement.text_area :content, :required => true, class: 'form-control', id: 'message',
+                                  placeholder: 'Message', :input_html => {:rows => 10, :cols => 100} %>
+                                <p class="help-block"></p>
+                              </div>
+                          </div>
+                          <br>
+                          <div id="success"> </div> <!-- For success/fail messages -->
+                          <%= formElement.submit 'Send', class: 'btn btn-primary pull-right', type: 'submit' %><br/>
+                        <% end %>
+
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS FILES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jqBootstrapValidation.js"></script>
+    <script src="./js/contact_me.js"></script>
+        <hr>
+
+        <!-- Footer -->
+        <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+            <div class="row text-center center-block">
+                <div class="col-md-4">
+                    <h4>User Information</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="">Get Started</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Guides</a></li>
+                        <li><a href="">Locations</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Guide Information</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="">Become Guide</a></li>
+                        <li><a href="">Payment Process</a></li>
+                        <li><a href="">How It Works</a></li>
+                        <li><a href="">Legal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Corporate</h4>
+                    <ul class="list-unstyled" style="color:#777777">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="">Legal</a></li>
+                        <li><a href="">Mission</a></li>
+                        <li><a href="">Careers</a></li>
+                        <li><a href="">Expansion</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>
+                    <br><br>
+                    Copyright &copy; Radventure 2014
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->

@@ -1,0 +1,140 @@
+<body>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Guide Reservation
+        </h1>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Contact Guide -->
+    <!-- other files have "jQuery" and "Bootstrap Core JavaScript" section that breaks tabs code in profile.html-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="contactGuide">
+          <div class="row">
+            <!-- Alignment -->
+            <div class="col-sm-offset-3 col-sm-6">
+              <!-- Form itself -->
+              <form name="sentMessage" class="well" id="bookGuideForm"  novalidate>
+                <legend>To: <%= @guide.user.name %></legend>
+                <div class="control-group">
+                  <div class="controls">
+                    <input type="text" class="form-control"
+                      placeholder="Your Full Name" id="name" required
+                      data-validation-required-message="Please enter your name" />
+                    <p class="help-block"></p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <input type="email" class="form-control" placeholder="Your Email"
+                      id="email" required
+                      data-validation-required-message="Please enter your email" />
+                    <p class="help-block"></p>
+                  </div>
+                </div>
+
+                <!-- Calendar Reservation -->
+                <div class="control-group">
+                  <label for="reservationtime">Reservation Times:</label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" name="reservation" id="reservationtime" class="form-control" value="01/22/2015 1:00 PM - 01/22/2015 1:30 PM" />
+                  </div>
+                  <p class="help-block"></p>
+                </div>
+                  <script type="text/javascript">
+                      $(document).ready(function() {
+                          $('#reservationtime').daterangepicker({
+                              timePicker: true,
+                              timePickerIncrement: 30,
+                              format: 'MM/DD/YYYY h:mm A'
+                          }, function(start, end, label) {
+                              console.log(start.toISOString(), end.toISOString(), label);
+                          });
+                      });
+                  </script>
+
+                  <div class="control-group">
+                    <div class="controls">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                      <input type="number" class="form-control"
+                        placeholder="Number of People in Radventure Party" id="party" required
+                        min="1"
+                        data-validation-required-message="Please enter number of people in Radventure party" />
+                      </div>
+                      <p class="help-block"></p>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                        <textarea rows="10" cols="100" class="form-control"
+                          placeholder="Message to Guide" id="message" required
+                          data-validation-required-message="Please enter your message" minlength="0"
+                          data-validation-minlength-message="Min 0 characters"
+                          maxlength="999" style="resize:none"></textarea>
+                        <p class="help-block"></p>
+                    </div>
+                  </div>
+
+                  <div id="success"> </div> <!-- For success/fail messages -->
+                  <button type="submit" class="btn btn-primary pull-right">Send</button><br />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./row -->
+
+    <!-- Footer -->
+    <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+      <div class="row text-center center-block">
+        <div class="col-md-4">
+          <h4>User Information</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="">Get Started</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Guides</a></li>
+            <li><a href="">Locations</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Guide Information</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="">Become Guide</a></li>
+            <li><a href="">Payment Process</a></li>
+            <li><a href="">How It Works</a></li>
+            <li><a href="">Legal</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Corporate</h4>
+          <ul class="list-unstyled" style="color:#777777">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="">Legal</a></li>
+            <li><a href="">Mission</a></li>
+            <li><a href="">Careers</a></li>
+            <li><a href="">Expansion</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center">
+        <p>
+          <br><br>
+          Copyright &copy; Radventure 2014
+        </p>
+      </div>
+    </footer>
+
+  </div>
+  <!-- container -->
+</body>
