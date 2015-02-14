@@ -21,41 +21,40 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Locations<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Locations", locations_path %></li>
+            <li><%= link_to "All Locations", locations_path %></li>
             <li><%= link_to "Mt. Hood", mthood_path %></li>
             <li><%= link_to "Mt. Bachelor", mtbachelor_path %></li>
             <li><%= link_to "Mt. Whistler", mtwhistler_path %></li>
           </ul>
         </li>
 
-        <li><a href="search.html">Quick Search</a></li>
+     <!--   <li><a href="search.html">Quick Search</a></li> -->
 
         <% if logged_in? %>
-          <li class="dropdown">
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-              role="button" aria-expanded="false">Account
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                 role="button" aria-expanded="false">Account
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Update Profile", edit_user_path(current_user) %></li>
+                <li><%= link_to "Change Password", change_password_url(current_user.id) %></li>
 
-              <!-- <li><%= link_to "Update Profile", edit_user_path(current_user) %></li>
-              <li><%= link_to "Change Password", change_password_url(current_user.id) %></li>
-               -->
-              <li class="divider"></li>
-              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-            </ul>
-          </li>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              </ul>
+            </li>
         <% else %>
-          <li>
-            <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#LogIn" style="margin-left:15px">
-              Log in
-            </button>
-          </li>
-          <li>
-            <%= button_to "Sign up", signup_path, class: 'btn btn-md navbar-btn', style: 'margin-left:15px', method: 'get' %>
-          </li>
+            <li>
+              <button type="button" class="btn btn-md navbar-btn" data-toggle="modal" data-target="#LogIn" style="margin-left:15px">
+                Log in
+              </button>
+            </li>
+            <li>
+              <%= button_to "Sign up", signup_path, class: 'btn btn-md navbar-btn', style: 'margin-left:15px', method: 'get' %>
+            </li>
         <% end %>
 
         <div class="modal fade" id="LogIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:99999999999">
@@ -66,25 +65,25 @@
                 <h4 class="modal-title" id="LogInModal">Login</h4>
               </div>
               <div class="modal-body">
-              <%= form_for(:session, url: login_path) do |formElement| %>
-                <form>
-                  <!--%= render 'shared/error_messages' %-->
+                <%= form_for(:session, url: login_path) do |formElement| %>
+                    <form>
+                      <!--%= render 'shared/error_messages' %-->
 
-                  <div class='form-group'>
-                    <%= formElement.label :Email %>
-                    <%= formElement.email_field :email,  class: 'form-control', id: 'Username', placeholder: 'radventureit@gmail.com' %>
-                  </div>
+                      <div class='form-group'>
+                        <%= formElement.label :Email %>
+                        <%= formElement.email_field :email,  class: 'form-control', id: 'Username', placeholder: 'radventureit@gmail.com' %>
+                      </div>
 
-                  <div class='form-group'>
-                    <%= formElement.label :password%>
-                    <%= formElement.password_field :password, class: 'form-control', id: 'Password', placeholder: 'Password' %>
-                  </div>
-                  <div class='form-group'>
-                    <%= formElement.submit "Submit", class: 'btn btn-default' %>
-                  </div>
+                      <div class='form-group'>
+                        <%= formElement.label :password%>
+                        <%= formElement.password_field :password, class: 'form-control', id: 'Password', placeholder: 'Password' %>
+                      </div>
+                      <div class='form-group'>
+                        <%= formElement.submit "Submit", class: 'btn btn-default' %>
+                      </div>
 
-                </form>
-              <% end %>
+                    </form>
+                <% end %>
               </div>
             </div>
           </div>
@@ -92,5 +91,5 @@
 
       </ul>
     </div> <!-- /.navbar-collapse -->
-</div> <!-- /.container -->
+  </div> <!-- /.container -->
 </nav>
