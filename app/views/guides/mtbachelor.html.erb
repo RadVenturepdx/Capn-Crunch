@@ -1,0 +1,192 @@
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Heading/Breadcrumbs -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Mt. Bachelor
+      </h1>
+    </div>
+  </div>
+  <!-- /.row -->
+  <!-- Portfolio Item Row -->
+  <div class="row">
+    <div class="col-md-8" style="padding-top:25px">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/mtbachelor.jpg" alt="">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/bachelor2.jpg" alt="">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="http://radventurepdx.github.io/img/bachelor3.jpg" alt="">
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Location Description</h3>
+      <p>The recent snowfalls have really turned things around for Mt. Bachelor. That string of warm, wet weather had everyone shaking in their ski boots wondering how long winter would stick around for us, but luckily we are back in the snow and conditions are now great! With a total of 19-24" across the mountain since Friday, the trails healed very nicely and the snow surface has improved drastically. Maintenance and Patrol spent all day Tuesday getting Summit ready to go for Wednesday so as long as the weather does what it is supposed to, it should be a beautiful Summit day! Reports from patrollers are that the surface up there is a little wind scoured but there are some pockets of great snow so come up and be the first to hunt out those stashes. We look forward to seeing everyone up here!</p>
+    </div>
+  </div>
+  <!-- /.row -->
+  <!-- Related Projects Row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="page-header">Top Guides for Mt. Bachelor</h3>
+    </div>
+
+    <% top_guides = [] %>
+    <% local_guides('Mount Bachelor').each do |guide| %>
+        <% if guide.reviews.count > 0 %>
+            <% average_rating = guide.reviews.average(:rating) %>
+            <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
+                <% if !top_guides[1].nil? %>
+                    <% top_guides[2] = top_guides[1] %>
+                <% end %>
+                <% top_guides[1] = top_guides[0] %>
+                <% top_guides[0] = guide %>
+            <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating) < average_rating %>
+                <% top_guides[2] = top_guides[1] %>
+                <% top_guides[1] = guide %>
+            <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating) < average_rating %>
+                <% top_guides[2] = guide %>
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[0].user.name, top_guides[0] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[0].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[0].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[1].user.name, top_guides[1] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[1].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[1].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img class="img-responsive img-portfolio img-hover"
+               src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+               style="height:200px; width:400px;
+                       margin-bottom: 0px;" alt="">
+          <h4><%= link_to top_guides[2].user.name, top_guides[2] %></h4>
+          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+          <h4>Sports: <%= top_guides[2].specialty %></h4>
+          <h4>Rate: <%= number_to_currency(top_guides[2].rate) %></h4>
+          <h4>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
+            <% stars.times do |i| %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            <% (5 - stars).times do |i| %>
+                <span class="fa fa-star-o"></span>
+            <% end %>
+          </h4>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /.row -->
+  <hr>
+  <!-- Footer -->
+  <footer class="navbar container" style="width:100% ; background:#d3d3d3 ; max-width:inherit">
+    <div class="row text-center center-block">
+      <div class="col-md-4">
+        <h4>User Information</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="">Get Started</a></li>
+          <li><a href="">Services</a></li>
+          <li><a href="">Guides</a></li>
+          <li><a href="">Locations</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Guide Information</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="">Become Guide</a></li>
+          <li><a href="">Payment Process</a></li>
+          <li><a href="">How It Works</a></li>
+          <li><a href="">Legal</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Corporate</h4>
+        <ul class="list-unstyled" style="color:#777777">
+          <li><a href="../contact.html">Contact Us</a></li>
+          <li><a href="">Legal</a></li>
+          <li><a href="">Mission</a></li>
+          <li><a href="">Careers</a></li>
+          <li><a href="">Expansion</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center">
+      <p>
+        <br><br>
+        Copyright &copy; Radventure 2014
+      </p>
+    </div>
+  </footer>
+</div>
+<!-- /.container -->
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>

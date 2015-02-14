@@ -14,4 +14,8 @@ module StaticPagesHelper
   def whistler_guides
     guides = Guide.where(:whistler => true)
   end
+
+  def about_guides
+    guides = Guide.limit(6)
+  end
 end

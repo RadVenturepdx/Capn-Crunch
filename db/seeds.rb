@@ -133,4 +133,12 @@ reviewers = User.where(id: 41..60)
   }
 end
 
+reservers = User.where(id: 61..90)
+5.times do
+  reservers.each { |reserver|
+    guide_id = rand(40) + 1
+    Reservation.create!(user_id: reserver.id,
+                        guide_id: Guide.find(guide_id).id)
+    }
+end
 
