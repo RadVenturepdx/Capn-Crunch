@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20150214194807) do
   enable_extension "plpgsql"
 
   create_table "guides", force: true do |t|
-    t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -30,6 +29,12 @@ ActiveRecord::Schema.define(version: 20150214194807) do
     t.string   "thurs_avail"
     t.string   "fri_avail"
     t.string   "sat_avail"
+    t.boolean  "hood"
+    t.boolean  "bachelor"
+    t.boolean  "whistler"
+    t.boolean  "downhill"
+    t.boolean  "crosscountry"
+    t.boolean  "snowboard"
   end
 
   add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree

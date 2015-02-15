@@ -27,16 +27,20 @@
             </div>
             <div class="col-sm-offset-1 col-xs-12 col-sm-6">
               <h1><strong><%= @guide.user.name %></strong></h1>
-              <h3><strong>Location: </strong><%= @guide.location %></h3>
-              <h3><strong>Sports: </strong><%= @guide.specialty %></h3>
+              <h3><strong>Location: </strong><%= location_string(@guide.hood, @guide.bachelor, @guide.whistler) %> </h3>
+              <h3><strong>Sports: </strong><%= sports_string(@guide.downhill, @guide.crosscountry, @guide.snowboard) %></h3>
               <h3><strong>Pricing: </strong><%= number_to_currency(@guide.rate) %>/hour</h3>
               <h3><strong>Rating: </strong>
-                <% stars = @guide.reviews.average(:rating).round %>
-                <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-                <% end %>
-                <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
+                <% if @guide.reviews.count > 0 %>
+                  <% stars = @guide.reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                  <% end %>
+                <% else %>
+                  No one has reviewed this guide yet. Be the first!
                 <% end %>
               </h3>
               <%= link_to "Reservation", new_reservation_path, class: "btn btn-primary" %>
