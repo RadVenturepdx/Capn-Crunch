@@ -163,8 +163,8 @@
                     style="height:200px; width:400px;
                     margin-bottom: 0px;" alt="">
                   <h4>Name:  <%= guide.user.name %> </h4>
-                  <h4>Sport: <%= guide.specialty %> </h4>
-                  <h4>Location: <%= guide.location %></h4>
+                  <h4>Sports: <%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></h4>
+                  <h4>Location: <%= location_string(guide.hood, guide.bachelor, guide.whistler) %></h4>
 
                   <h4>Rating:
                     <% stars = guide.reviews.average(:rating).round %>

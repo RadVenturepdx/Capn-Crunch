@@ -1,23 +1,36 @@
 <h1>Listing Guides</h1>
 
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+  }
+
+th, td {
+  padding: 5px;
+}
+
+</style>
 <table>
   <thead>
   <tr>
     <th>Name</th>
     <th>Email</th>
-    <th>Location</th>
+    <th>Locations</th>
+    <th>Sports</th>
     <th>Rating</th>
-    <th colspan="100"></th>
+    <th>Link</th>
   </tr>
   </thead>
 
-  <% @guides.each do |guides| %>
+  <% @guides.each do |guide| %>
     <tr>
-      <td><%= guides.user.name %></td>
-      <td><%= guides.user.email %></td>
-      <td><%= guides.location %></td>
-      <td><%= guides.reviews.average(:rating).to_s %></td>
-      <td><%= link_to 'Show', guides %></td>
+      <td><%= guide.user.name %></td>
+      <td><%= guide.user.email %></td>
+      <td><%= location_string(guide.hood, guide.bachelor, guide.whistler) %></td>
+      <td><%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></td>
+      <td><%= guide.reviews.average(:rating).to_s %></td>
+      <td><%= link_to 'Show', guide %></td>
 
     </tr>
   <% end %>

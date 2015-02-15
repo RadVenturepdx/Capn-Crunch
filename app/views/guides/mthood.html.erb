@@ -63,24 +63,7 @@
       <h3 class="page-header">Top Guides for Mt. Hood</h3>
     </div>
 
-    <% top_guides = [] %>
-    <% local_guides('Mount Hood').each do |guide| %>
-      <% if guide.reviews.count > 0 %>
-        <% average_rating = guide.reviews.average(:rating) %>
-        <% if top_guides.empty? || top_guides[0].reviews.average(:rating) < average_rating %>
-          <% if !top_guides[1].nil? %>
-            <% top_guides[2] = top_guides[1] %>
-          <% end %>
-          <% top_guides[1] = top_guides[0] %>
-          <% top_guides[0] = guide %>
-        <% elsif top_guides[1].nil? || top_guides[1].reviews.average(:rating) < average_rating %>
-          <% top_guides[2] = top_guides[1] %>
-          <% top_guides[1] = guide %>
-        <% elsif top_guides[2].nil? || top_guides[2].reviews.average(:rating) < average_rating %>
-          <% top_guides[2] = guide %>
-        <% end %>
-      <% end %>
-    <% end %>
+    <% top_guides = top_guides(hood_guides) %>
 
     <div class="col-md-4 col-sm-6">
       <div class="panel panel-default">
@@ -91,7 +74,7 @@
                          margin-bottom: 0px;" alt="">
               <h4><%= link_to top_guides[0].user.name, top_guides[0] %></h4>
               <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-                <h4>Sports: <%= top_guides[0].specialty %></h4>
+                <h4>Sports: <%= sports_string(top_guides[0].downhill, top_guides[0].crosscountry, top_guides[0].snowboard) %></h4>
                 <h4>Rate: <%= number_to_currency(top_guides[0].rate) %></h4>
                 <h4>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
                   <% stars.times do |i| %>
@@ -114,7 +97,7 @@
                          margin-bottom: 0px;" alt="">
             <h4><%= link_to top_guides[1].user.name, top_guides[1] %></h4>
           <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h4>Sports: <%= top_guides[1].specialty %></h4>
+            <h4>Sports: <%= sports_string(top_guides[1].downhill, top_guides[1].crosscountry, top_guides[1].snowboard) %></h4>
             <h4>Rate: <%= number_to_currency(top_guides[1].rate) %></h4>
             <h4>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
               <% stars.times do |i| %>
@@ -137,7 +120,7 @@
                          margin-bottom: 0px;" alt="">
               <h4><%= link_to top_guides[2].user.name, top_guides[2] %></h4>
               <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-                <h4>Sports: <%= top_guides[2].specialty %></h4>
+                <h4>Sports: <%= sports_string(top_guides[2].downhill, top_guides[2].crosscountry, top_guides[2].snowboard) %></h4>
                 <h4>Rate: <%= number_to_currency(top_guides[2].rate) %></h4>
                 <h4>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
                   <% stars.times do |i| %>

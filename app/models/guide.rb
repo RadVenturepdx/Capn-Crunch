@@ -7,13 +7,23 @@ class Guide < ActiveRecord::Base
     presence: true,
     uniqueness: { case_sensitive: true }
 
-  validates :location,
-    presence: true,
-    length: { maximum: 50 }
+  validates :hood,
+    :inclusion => { :in => [true, false] }
 
-  validates :specialty,
-    presence: true,
-    length: { maximum: 50 }
+  validates :bachelor,
+    :inclusion => { :in => [true, false] }
+
+  validates :whistler,
+    :inclusion => { :in => [true, false] }
+
+  validates :downhill,
+    :inclusion => { :in => [true, false] }
+
+  validates :crosscountry,
+    :inclusion => { :in => [true, false] }
+
+  validates :snowboard,
+    :inclusion => { :in => [true, false] }
 
   validates :rate,
     presence: true,
