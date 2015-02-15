@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get    'guides/mtbachelor'         => 'guides#mtbachelor', as: :mtbachelor
   get    'guides/mthood'             => 'guides#mthood',     as: :mthood
   get    'guides/mtwhistler'         => 'guides#mtwhistler', as: :mtwhistler
-  get    'guides/:id/reservation'    => 'guides#reservation', as: :reservation
+  get    'guides/:id/new-reservation' => 'guides#new_reservation', as: :new_reservation
+  post   'guides/:id/create-reservation' => 'guides#create_reservation', as: :create_reservation
   get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
   get    'signup'                    => 'users#new'
   get    'guide-creation'            => 'guides#new', as: 'guide-creation'
