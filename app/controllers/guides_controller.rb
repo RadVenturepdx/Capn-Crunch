@@ -59,11 +59,29 @@ class GuidesController < ApplicationController
   def mtwhistler
   end
 
-  def reservation
+  def new_reservation
     @guide = Guide.find(params[:id])
   end
 
+  def create_reservation
+    @guide = Guide.find(params[:id])
+    guide_reservation = Reservation.new(
+      user_id: current_user.id,
+      guide_id: params[:id],
+      time: params[:guide][:reservations][:time],
+      number_of_people: params[:guide][:reservations][:number_of_people]
+    )
+
+    if guide_reservation.save
+      flash[:success] = "Your reservations has been submitted"
+      redirect_to @guide
+    else
+      render 'new'
+    end
+  end
+
   private
+
   def guide_params
     params.require(:guide).permit(:user_id,
                                   :hood,
@@ -81,6 +99,4 @@ class GuidesController < ApplicationController
                                   :fri_avail,
                                   :sat_avail)
   end
-
-
 end

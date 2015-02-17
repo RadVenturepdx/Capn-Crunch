@@ -1,22 +1,23 @@
 Rails.application.routes.draw do
-  
-  root                                  'static_pages#home'
-  get    'home'                      => 'static_pages#home'
-  get    'contact'                   => 'messages#new'
-  get    'contact'                   => 'messages#create'
-  get    'locations'                 => 'static_pages#locations'
-  get    'about'                     => 'static_pages#about'
-  get    'faq'                       => 'static_pages#faq'
-  get    'mtbachelor'                => 'guides#mtbachelor'
-  get    'mthood'                    => 'guides#mthood'
-  get    'mtwhistler'                => 'guides#mtwhistler'
-  get    'guides/:id/reservation'    => 'guides#reservation', as: :reservation
-  get    'users/:id/change-password' => 'users#change_password', as: 'change-password'
-  get    'signup'                    => 'users#new'
-  get    'guide-creation'            => 'guides#new', as: 'guide-creation'
-  get    'login'                     => 'sessions#new'
-  post   'login'                     => 'sessions#create'
-  delete 'logout'                    => 'sessions#destroy'
+
+  root                                       'static_pages#home'
+  get    'home'                           => 'static_pages#home'
+  get    'contact'                        => 'messages#new'
+  get    'contact'                        => 'messages#create'
+  get    'locations'                      => 'static_pages#locations'
+  get    'about'                          => 'static_pages#about'
+  get    'faq'                            => 'static_pages#faq'
+  get    'mtbachelor'                     => 'guides#mtbachelor'
+  get    'mthood'                         => 'guides#mthood'
+  get    'mtwhistler'                     => 'guides#mtwhistler'
+  get    'guides/:id/new-reservation'     => 'guides#new_reservation', as: :new_reservation
+  post   'guides/:id/create-reservation'  => 'guides#create_reservation', as: :create_reservation
+  get    'users/:id/change-password'      => 'users#change_password', as: 'change-password'
+  get    'signup'                         => 'users#new'
+  get    'guide-creation'                 => 'guides#new', as: 'guide-creation'
+  get    'login'                          => 'sessions#new'
+  post   'login'                          => 'sessions#create'
+  delete 'logout'                         => 'sessions#destroy'
 
   resources :users
   resources :guides
