@@ -23,7 +23,7 @@
 development:
  adapter: postgresql
  database: radventure_development
- username: root
+ username: postgres
  password: password
  host: localhost
 test:
