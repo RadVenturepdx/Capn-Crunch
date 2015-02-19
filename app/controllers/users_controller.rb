@@ -76,7 +76,7 @@ class UsersController < ApplicationController
         :city,
         :state,
         :zipcode,
-        :country
+        :country,
       )
     end
 

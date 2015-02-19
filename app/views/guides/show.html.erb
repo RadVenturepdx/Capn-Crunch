@@ -21,9 +21,9 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-12 col-sm-5">
-              <img class="img img-circle img-responsive full-width"
-                src="img/guide-n-location/guide1.jpg"
-                style="position:relative; overflow: hidden;" alt="">
+                <img class="img img-circle img-responsive full-width"
+                     src="img/guide-n-location/guide1.jpg"
+                     style="position:relative; overflow: hidden;" alt="">
             </div>
             <div class="col-sm-offset-1 col-xs-12 col-sm-6">
               <h1><strong><%= @guide.user.name %></strong></h1>
@@ -172,7 +172,7 @@
         <div class="row">
           <% for review in @guide.reviews %>
             <div class="col-md-1 text-center">
-              <p><i class="fa fa-user fa-4x"></i></p>
+             <!-- <p><i class="fa fa-user fa-4x"></i></p>-->
               <p><%= review.created_at %></p>
             </div>
             <div class="col-md-11">
