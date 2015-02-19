@@ -48,7 +48,7 @@
 
       <div class='form-group'>
         <%= formElement.label :state, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:state, options_for_select(us_states)) %>
+        <%= formElement.select(:state, options_for_select(us_states, current_user.state)) %>
       </div>
 
       <div class='form-group'>
@@ -58,7 +58,7 @@
 
       <div class='form-group'>
         <%= formElement.label :country, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:country, options_for_select(countries)) %>
+        <%= formElement.select(:country, options_for_select(countries, current_user.country)) %>
       </div>
 
       <div class='form-group'>
