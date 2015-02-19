@@ -137,8 +137,10 @@ reservers = User.where(id: 61..90)
 5.times do
   reservers.each { |reserver|
     guide_id = rand(40) + 1
+    number_of_people = rand(9) + 1
     Reservation.create!(user_id: reserver.id,
-                        guide_id: Guide.find(guide_id).id)
+                        guide_id: Guide.find(guide_id).id,
+                        number_of_people: number_of_people)
     }
 end
 
