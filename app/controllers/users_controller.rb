@@ -71,7 +71,6 @@ class UsersController < ApplicationController
         :age,
         :password,
         :password_confirmation,
-        :profile,
         :address,
         :city,
         :state,

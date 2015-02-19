@@ -6,7 +6,7 @@
   password = "password"
   age = rand(75) + 18
   phone_number = Faker::Base.numerify("(###) ###-####")
-  profile = Faker::Lorem.sentences(3).join(" ")
+
   address = Faker::Address.street_address
   city = Faker::Address.city
   state = Faker::Address.state_abbr
@@ -25,7 +25,6 @@
                age: age,
                password:              password,
                password_confirmation: password,
-               profile: profile,
                address: address,
                city: city,
                state: state,
@@ -86,6 +85,7 @@ users.each { |user|
   end
 
   rate = rand(20) + 15
+  profile = Faker::Lorem.sentences(3).join(" ")
   i = 0
   availability = Array.new(7)
   availability.each do
@@ -102,6 +102,7 @@ users.each { |user|
     end
     i += 1
   end
+
   Guide.create!(user_id: user.id,
                 hood: hood,
                 bachelor: bachelor,
@@ -110,6 +111,7 @@ users.each { |user|
                 crosscountry: crosscountry,
                 snowboard: snowboard,
                 rate: rate,
+                profile: profile,
                 sun_avail: availability[0],
                 mon_avail: availability[1],
                 tues_avail: availability[2],

@@ -68,15 +68,6 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="control-group col-sm-8 col-sm-offset-2">
-                 <div class='form-group'>
-                  <%= formElement.label :profile, class: 'control-label' %>
-                  <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 , class: 'form-control'%>
-                 </div>
-              </div>
-            </div>
-
             <legend>Personal Information</legend>
             <p class="help-block control-group col-sm-8 col-sm-offset-2">Your personal information will not be shared with anyone. It will only be used for payment information and personal security</p>
             <br><br>
@@ -161,7 +152,7 @@
             <div class="row">
               <div class="control-group col-sm-8 col-sm-offset-2">
               <div class='form-group'>
-                <%= formElement.submit 'Create my account' %>
+                <%= formElement.submit 'Create my account', class: "btn btn-default" %>
               </div>
               </div>
             </div>

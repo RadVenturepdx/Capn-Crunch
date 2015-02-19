@@ -15,6 +15,10 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def current_guide?(guide)
+    guide == current_guide
+  end
+
   def current_user?(user)
     user == current_user
   end
@@ -60,5 +64,11 @@ module SessionsHelper
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
+  end
+
+  # Confirms the correct guide.
+  def correct_guide
+    @guide = Guide.find(params[:id])
+    redirect_to(root_url) unless current_guide?(@guide )
   end
 end

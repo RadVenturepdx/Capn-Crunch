@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post   'guides/:id/create-reservation'  => 'guides#create_reservation', as: :create_reservation
   get    'users/:id/change-password'      => 'users#change_password', as: 'change-password'
   get    'signup'                         => 'users#new'
-  get    'guide-creation'                 => 'guides#new', as: 'guide-creation'
   get    'login'                          => 'sessions#new'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
