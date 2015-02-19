@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214194807) do
+ActiveRecord::Schema.define(version: 20150219051040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150214194807) do
     t.boolean  "downhill"
     t.boolean  "crosscountry"
     t.boolean  "snowboard"
+    t.text     "profile"
   end
 
   add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(version: 20150214194807) do
     t.string   "password_digest"
     t.string   "phone_number"
     t.integer  "age"
-    t.text     "profile"
     t.string   "address"
     t.string   "city"
     t.string   "state"
