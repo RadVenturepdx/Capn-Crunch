@@ -172,9 +172,6 @@
         <div class="row">
           <% for review in @guide.reviews %>
             <div class="col-md-1 text-center">
-              <%# api = Gravatar.new(review.user.email, :password => "testing1") %>
-              <%# if review.user.email == 'beazley2@pdx.edu' || review.user.email == 'gallione11@yahoo.com' %>
-              <%# if api.nil? %>
             <p><%= image_tag Gravatar.new(review.user.email).image_url %></p>
             <p><%= review.created_at %></p>
             </div>

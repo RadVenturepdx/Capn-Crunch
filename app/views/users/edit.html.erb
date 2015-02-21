@@ -2,12 +2,15 @@
 <h1>Update profile information</h1>
 
 <% if !is_guide? %>
-    <%= link_to "Become a guide", guide_creation_url(id: @user.id),  class: "btn btn-default"%>
-<br></br>
+    <%= link_to "Become a guide", guide_creation_url(id: @user.id),  class: "btn btn-default" %>
+<br>
 <% end %>
 
-<%= link_to "Change password", change_password_url(id: @user.id),  class: "btn btn-default"%>
-<br></br>
+<%= link_to "Change password", change_password_url(id: @user.id),  class: "btn btn-default" %>
+<br>
+
+<%= link_to "Upload avatar", upload_avatar_url(id: @user.id), class: "btn btn-default" %>
+<br>
 
 <%= form_for(@user) do |formElement| %>
     <form class='form-horizontal'>

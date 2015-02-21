@@ -64,5 +64,11 @@ module UsersHelper
     ]
   end
 
+  def gravatar_ratings
+      [
+          ['G', 'G'],
+          ['PG', 'PG']
+      ]
+  end
 
 end

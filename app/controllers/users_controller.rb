@@ -61,6 +61,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def upload_avatar
+    @user = User.find(params[:id])
+
+  end
+
   private
 
     def user_params

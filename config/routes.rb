@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get    'users/:id/change-password'      => 'users#change_password', as: 'change-password'
   get    'signup'                         => 'users#new'
   get    'guide-creation'                 => 'guides#new', as: 'guide-creation'
+  get    'users/:id/upload_avatar'        => 'users#upload_avatar', as: 'upload_avatar'
   get    'login'                          => 'sessions#new'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
