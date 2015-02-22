@@ -85,4 +85,10 @@ module GuidesHelper
     end
     return top_guides
   end
+
+  def replace_null_avail(avail)
+    if avail.blank?
+      avail.replace('Unavailable')
+    end
+  end
 end
