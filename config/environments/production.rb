@@ -75,4 +75,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # wwwhisper
+  config.middleware.insert 0, "Rack::WWWhisper"
 end
