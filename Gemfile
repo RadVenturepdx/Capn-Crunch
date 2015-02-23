@@ -43,6 +43,8 @@ gem 'bcrypt',                  '3.1.9'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
+gem 'coffee-script-source' ,   '1.8.0'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
 
