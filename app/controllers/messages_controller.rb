@@ -9,21 +9,25 @@ class MessagesController < ApplicationController
   def show
   end
 
+  def index
+    redirect_to root_url
+  end
+
   def create
     @message = Message.new(message_params)
 
     if @message.valid?
-      if @message.subject
+      if @message.subject <=> "Question"
+        MessageMailer.ask_question(@message).deliver
+        flash[:success] = "2ndThank you for your message."
+      else
         MessageMailer.message_it(@message).deliver
         MessageMailer.message_user(@message).deliver
-        flash[:success] = "Thank you for your message."
-        redirect_to "/contact"
-      else
-        MessageMailer.ask_question(@message).deliver
         flash[:success] = "Thank you for your message."
         redirect_to :back
       end
     else
+      flash[:danger] = "Message not valid"
       redirect_to :back
     end
   end
