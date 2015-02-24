@@ -22,7 +22,7 @@ class MessageMailer < ActionMailer::Base
   def ask_question(msg)
     @msg = msg
 
-    mail(to: @guide.user.email, subject: "#{msg.name} has a question for you", body: msg.content) do |format|
+    mail(to: msg.recipient_email, subject: "#{msg.name} has a question for you", body: msg.content) do |format|
       format.html
       format.text
     end
