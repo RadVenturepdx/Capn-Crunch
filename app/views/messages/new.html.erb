@@ -92,6 +92,10 @@
                                 <%= formElement.text_area :content, :required => true, class: 'form-control', id: 'message',
                                   placeholder: 'Message', :input_html => {:rows => 10, :cols => 100} %>
                                 <p class="help-block"></p>
+
+                                <%= formElement.hidden_field :recipient_name, value: "user" %>
+                                <%= formElement.hidden_field :recipient_email, value: "user@test.com" %>
+
                               </div>
                           </div>
                           <br>
