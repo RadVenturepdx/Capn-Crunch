@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
   def show
   end
-  
+
   def create
     @message = Message.new(message_params)
 
