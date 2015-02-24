@@ -13,8 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20150219051040) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "contact_forms", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "guides", force: true do |t|
     t.integer  "user_id"
@@ -37,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150219051040) do
     t.text     "profile"
   end
 
-  add_index "guides", ["user_id"], name: "index_guides_on_user_id", using: :btree
+  add_index "guides", ["user_id"], name: "index_guides_on_user_id"
 
   create_table "messages", force: true do |t|
     t.datetime "created_at"
@@ -54,10 +61,10 @@ ActiveRecord::Schema.define(version: 20150219051040) do
     t.string   "note"
   end
 
-  add_index "reservations", ["guide_id", "created_at"], name: "index_reservations_on_guide_id_and_created_at", using: :btree
-  add_index "reservations", ["guide_id"], name: "index_reservations_on_guide_id", using: :btree
-  add_index "reservations", ["user_id", "created_at"], name: "index_reservations_on_user_id_and_created_at", using: :btree
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+  add_index "reservations", ["guide_id", "created_at"], name: "index_reservations_on_guide_id_and_created_at"
+  add_index "reservations", ["guide_id"], name: "index_reservations_on_guide_id"
+  add_index "reservations", ["user_id", "created_at"], name: "index_reservations_on_user_id_and_created_at"
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.text     "content"
@@ -68,9 +75,9 @@ ActiveRecord::Schema.define(version: 20150219051040) do
     t.integer  "rating"
   end
 
-  add_index "reviews", ["guide_id", "created_at"], name: "index_reviews_on_guide_id_and_created_at", using: :btree
-  add_index "reviews", ["guide_id"], name: "index_reviews_on_guide_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "reviews", ["guide_id", "created_at"], name: "index_reviews_on_guide_id_and_created_at"
+  add_index "reviews", ["guide_id"], name: "index_reviews_on_guide_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -87,6 +94,6 @@ ActiveRecord::Schema.define(version: 20150219051040) do
     t.string   "country"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
