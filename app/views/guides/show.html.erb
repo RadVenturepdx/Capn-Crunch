@@ -55,38 +55,7 @@
                     <!-- <i class="fa fa-question-circle"></i> -->
                     <strong>Ask Guide a Question</strong>
                 </button>
-                <%= form_for(Message.new) do |formElement| %>
-                        <div class="control-group">
-                          <div class="controls">
-                            <div class='form-group'>
-                              <%= formElement.text_field :name, class:"form-control", placeholder:"Your Full Name" %>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="control-group">
-                          <div class="controls">
-                            <div class='form-group'>
-                              <%= formElement.text_field :email, class:"form-control", placeholder:"Your Email" %>
-                            </div>
-                          </div>
-                        </div>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class='form-group'>
-                                <%= formElement.text_area :content, 'rows' => 10, 'cols' => 100, class:'form-control' %>
-                                </div>
-                              </div>
-                              <p class="help-block"></p>
-                            </div>
-                          <div id="success"> </div> <!-- For success/fail messages -->
-                      	</div>
-                        <div class="modal-footer">
-                          <div class='form-group'>
-                            <%= formElement.submit 'Submit', class: 'btn btn-success'%>
-                          </div>
-                        </div>
-                <% end %>
-                <!-- <div class="modal fade" id="contactGuide" tabindex="-1"
+                <div class="modal fade" id="contactGuide" tabindex="-1"
                     role="dialog" aria-labelledby="myModalLabel"
                     aria-hidden="true" style="z-index:99999999999">
                   <div class="modal-dialog">
@@ -98,51 +67,60 @@
                         <h3 class="modal-title" id="contactGuide">Ask Guide a Question</h3>
                       </div>
                       <div class="modal-body">
-                        <form name="sentMessage" id="contactGuide"  novalidate>
-                          <%= form_for Message.new do |formElement| %>
-                            <div class="control-group">
-                              <div class="controls">
+                        <%= form_for(Message.new) do |formElement| %>
+                        <!--form name="sentMessage" id="contactGuide"  novalidate-->
+                        <div class="control-group">
+                          <div class="controls">
+                            <div class='form-group'>
 
-                                <%= formElement.label "From" %>
-                                    <%= formElement.text_field :name, required: true, class: 'form-control', id: 'name',
-                                      value: "#{current_user.name}", readonly: true %>
-                                <p class="help-block"></p>
+                              <%= formElement.label "From" %>
+                                   <%= formElement.text_field :name, required: true, class: 'form-control', id: 'name',
+                                     value: "#{current_user.name}", readonly: true %>
 
-                              </div>
                             </div>
-                            <div class="control-group">
-                              <div class="controls">
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <div class='form-group'>
 
-                                <%= formElement.label :email %>
+                              <%= formElement.label :email %>
                                   <%= formElement.email_field :email, required: true, class: 'form-control', id: 'email',
                                   value: "#{current_user.email}", readonly: true %>
-                                <p class="help-block"></p>
 
-                              </div>
+                              <!-- currenly viewing guide's email -->
+                              <%= formElement.hidden_field :recipient_name, value: "#{@guide.user.name}" %>
+                              <%= formElement.hidden_field :recipient_email, value: "#{@guide.user.email}" %>
+
                             </div>
+                          </div>
+                        </div>
                             <div class="control-group">
                               <div class="controls">
+                                <div class='form-group'>
 
-                                <%= formElement.label "Message" %>
+                                  <%= formElement.hidden_field :subject, value: "Question" %>
+                                  <%= formElement.label "Message" %>
                                   <%= formElement.text_area :content, required: true, class: 'form-control', id: 'message',
                                     placeholder: 'Question or Message', input_html: {rows: 10, cols: 100, minlength: '5',
                                     maxlength: '999', style: 'resize:none' } %>
-                                  <p class="help-block"></p>
 
+                                </div>
                               </div>
+                              <p class="help-block"></p>
                             </div>
-                            <div id="success"> </div> <!-- For success/fail messages -->
-                            <!-- <div class="modal-footer">
-
-                              <%= formElement.submit 'Send', class: 'btn btn-success', type: 'submit' %><br/>
-
-                            </div>
-                            <% end %>
-                        </form>
+                          <div id="success"> </div> <!-- For success/fail messages -->
+                        <!--/form-->
                       </div>
+                      <div class="modal-footer">
+                        <div class='form-group'>
+                          <%= formElement.submit 'Submit', class: 'btn btn-success'%>
+                        </div>
+                      </div>
+                      <% end %>
                     </div>
                   </div>
-                </div> --> -->
+                </div>
               <% end %>
 
             </div>
