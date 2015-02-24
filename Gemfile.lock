@@ -140,6 +140,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1.0)
   bootstrap-will_paginate (= 0.0.10)
   coffee-rails (~> 4.0.0)
+  coffee-script-source (= 1.8.0)
   faker (~> 1.4.3)
   font-awesome-rails (~> 4.3.0.0)
   gravatar-ultimate
