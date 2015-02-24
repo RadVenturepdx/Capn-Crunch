@@ -13,12 +13,18 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.valid?
-      MessageMailer.message_it(@message).deliver
-      MessageMailer.message_user(@message).deliver
-      flash[:success] = "Thank you for your message."
-      redirect_to "/contact"
+      if @message.subject
+        MessageMailer.message_it(@message).deliver
+        MessageMailer.message_user(@message).deliver
+        flash[:success] = "Thank you for your message."
+        redirect_to "/contact"
+      else
+        MessageMailer.ask_question(@message).deliver
+        flash[:success] = "Thank you for your message."
+        redirect_to :back
+      end
     else
-      render 'new'
+      redirect_to :back
     end
   end
 
