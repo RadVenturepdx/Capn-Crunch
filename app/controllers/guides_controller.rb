@@ -1,7 +1,13 @@
 class GuidesController < ApplicationController
   include SessionsHelper
   include GuidesHelper
-  before_action :logged_in_user, only: [:new, :edit, :update]
+  before_action :logged_in_user, only: [
+    :new,
+    :edit,
+    :update,
+    :new_reservation,
+    :create_reservation
+  ]
   before_action :correct_user,   only: [:new]
   before_action :correct_guide,  only: [:edit, :update]
 
@@ -78,43 +84,28 @@ class GuidesController < ApplicationController
 
   def new_reservation
     @guide = Guide.find(params[:id])
-  end
-
-  def create_reservation
-    @guide = Guide.find(params[:id])
-    guide_reservation = Reservation.new(
-      user_id: current_user.id,
-      guide_id: params[:id],
-      time: params[:guide][:reservations][:time],
-      number_of_people: params[:guide][:reservations][:number_of_people]
-    )
-
-    if guide_reservation.save
-      flash[:success] = "Your reservations has been submitted"
-      redirect_to @guide
-    else
-      render 'new'
-    end
+    @reservation = Reservation.new
   end
 
   private
-
-  def guide_params
-    params.require(:guide).permit(:user_id,
-                                  :hood,
-                                  :bachelor,
-                                  :whistler,
-                                  :downhill,
-                                  :crosscountry,
-                                  :snowboard,
-                                  :rate,
-                                  :profile,
-                                  :sun_avail,
-                                  :mon_avail,
-                                  :tues_avail,
-                                  :wed_avail,
-                                  :thurs_avail,
-                                  :fri_avail,
-                                  :sat_avail)
-  end
+    def guide_params
+      params.require(:guide).permit(
+        :user_id,
+        :hood,
+        :bachelor,
+        :whistler,
+        :downhill,
+        :crosscountry,
+        :snowboard,
+        :rate,
+        :profile,
+        :sun_avail,
+        :mon_avail,
+        :tues_avail,
+        :wed_avail,
+        :thurs_avail,
+        :fri_avail,
+        :sat_avail
+      )
+    end
 end
