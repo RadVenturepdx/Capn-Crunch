@@ -1,8 +1,8 @@
-<% if @guide.errors.any? %>
+<% if @reservation.errors.any? %>
 <div id="error_explanation">
-  The form contains <%= pluralize(@guide.errors.count, "error") %>.
+  The form contains <%= pluralize(@reservation.errors.count, "error") %>.
   <ul>
-    <% @guide.errors.full_messages.each do |msg| %>
+    <% @reservation.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
     <% end %>
   </ul>
