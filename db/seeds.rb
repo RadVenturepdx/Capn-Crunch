@@ -6,7 +6,7 @@
   password = "password"
   age = rand(75) + 18
   phone_number = Faker::Base.numerify("(###) ###-####")
-  profile = Faker::Lorem.sentences(3).join(" ")
+
   address = Faker::Address.street_address
   city = Faker::Address.city
   state = Faker::Address.state_abbr
@@ -25,7 +25,6 @@
                age: age,
                password:              password,
                password_confirmation: password,
-               profile: profile,
                address: address,
                city: city,
                state: state,
@@ -35,25 +34,58 @@ end
 
 users = User.order(:created_at).take(40)
 users.each { |user|
-  n = rand(4)
+  n = rand(2)
   case n
     when 0
-      location = 'Mount Hood'
-    when 1
-      location = 'Mount Bachelor'
+      hood = true
     else
-      location = 'Mount Whistler'
+      hood = false
   end
-  n = rand(3)
+  n = rand(2)
   case n
     when 0
-      specialty = 'Downhill Skiing'
-    when 1
-      specialty = 'Crosscountry Skiing'
+      bachelor = true
     else
-      specialty = 'Snowboarding'
+      bachelor = false
   end
+  n = rand(2)
+  case n
+    when 0
+      whistler = true
+    else
+      whistler = false
+  end
+  if (!hood && !bachelor && !whistler)
+    hood = true
+  end
+
+  n = rand(2)
+  case n
+    when 0
+      downhill = true
+    else
+      downhill = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      crosscountry = true
+    else
+      crosscountry = false
+  end
+  n = rand(2)
+  case n
+    when 0
+      snowboard = true
+    else
+      snowboard = false
+  end
+  if (!downhill && !crosscountry && !snowboard)
+    downhill = true
+  end
+
   rate = rand(20) + 15
+  profile = Faker::Lorem.sentences(3).join(" ")
   i = 0
   availability = Array.new(7)
   availability.each do
@@ -70,10 +102,16 @@ users.each { |user|
     end
     i += 1
   end
+
   Guide.create!(user_id: user.id,
-                location: location,
-                specialty: specialty,
+                hood: hood,
+                bachelor: bachelor,
+                whistler: whistler,
+                downhill: downhill,
+                crosscountry: crosscountry,
+                snowboard: snowboard,
                 rate: rate,
+                profile: profile,
                 sun_avail: availability[0],
                 mon_avail: availability[1],
                 tues_avail: availability[2],
@@ -97,4 +135,14 @@ reviewers = User.where(id: 41..60)
   }
 end
 
+reservers = User.where(id: 61..90)
+5.times do
+  reservers.each { |reserver|
+    guide_id = rand(40) + 1
+    number_of_people = rand(9) + 1
+    Reservation.create!(user_id: reserver.id,
+                        guide_id: Guide.find(guide_id).id,
+                        number_of_people: number_of_people)
+    }
+end
 

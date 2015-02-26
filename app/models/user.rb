@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :guide
   has_many :reviews, dependent: :destroy
+  has_many :reservations
 
   before_save { self.email = email.downcase }
 
@@ -29,10 +30,6 @@ class User < ActiveRecord::Base
   validates :age,
     presence: true,
     numericality: { only_integer: true, greater_than: 0, less_than: 130 }
-
-  validates :profile,
-    presence: true,
-    length: { maximum: 999 }
 
   validates :address,
     presence: true,

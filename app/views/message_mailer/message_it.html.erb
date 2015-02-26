@@ -1,0 +1,11 @@
+<h2>Hey Rad Team,</h2>
+<% if @msg.subject <=> "Question" %>
+<h3> <b><%= @msg.name %> </b> asked <%= @msg.recipient_name %> a question. Here is a copy of the message:</h3>
+<p><b>To:</b> <%= @msg.recipient_name %> <%= @msg.recipient_email %></p>
+<p><b>From:</b> <%= @msg.name %> <%= @msg.email %> </p>
+<% else %>
+<h3> <b><%= @msg.name %> <%= @msg.email %></b> has sent a message:</h3>
+<% end %>
+<p><b>Date:</b> <%= Time.now %></p>
+<p><b>Subject:</b> <%= @msg.subject %></p>
+<p><b>Message:</b> <%= @msg.content %></p>

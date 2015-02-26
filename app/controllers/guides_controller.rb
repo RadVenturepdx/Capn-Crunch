@@ -1,7 +1,9 @@
 class GuidesController < ApplicationController
   include SessionsHelper
-  before_action :logged_in_user, only: [:new, :show, :edit, :update]
-  before_action :correct_user,   only: [:new, :edit, :update]
+  include GuidesHelper
+  before_action :logged_in_user, only: [:new, :edit, :update]
+  before_action :correct_user,   only: [:new]
+  before_action :correct_guide,  only: [:edit, :update]
 
   def index
     @guides = Guide.all
@@ -19,17 +21,15 @@ class GuidesController < ApplicationController
   def create
     @guide = Guide.new(guide_params)
 
-    # converting array to string
-    location = params[:location]
-    if !location.nil?
-      @guide.location = location.join(', ')
-    end
-    specialty = params[:specialty]
-    if !specialty.nil?
-      @guide.specialty = specialty.join(', ')
-    end
-
     @guide.user_id = current_user.id
+
+    replace_null_avail(@guide.sun_avail)
+    replace_null_avail(@guide.mon_avail)
+    replace_null_avail(@guide.tues_avail)
+    replace_null_avail(@guide.wed_avail)
+    replace_null_avail(@guide.thurs_avail)
+    replace_null_avail(@guide.fri_avail)
+    replace_null_avail(@guide.sat_avail)
 
     if @guide.save
       user = current_user
@@ -43,19 +43,72 @@ class GuidesController < ApplicationController
   end
 
   def edit
-
+    @guide = Guide.find(params[:id])
   end
 
   def update
+    @guide = Guide.find(params[:id])
 
+    @guide.user_id = current_user.id
+
+    replace_null_avail(@guide.sun_avail)
+    replace_null_avail(@guide.mon_avail)
+    replace_null_avail(@guide.tues_avail)
+    replace_null_avail(@guide.wed_avail)
+    replace_null_avail(@guide.thurs_avail)
+    replace_null_avail(@guide.fri_avail)
+    replace_null_avail(@guide.sat_avail)
+
+    if @guide.update(guide_params)
+      flash[:success] = 'Guide profile has been updated'
+      redirect_to @guide
+    else
+      render 'edit'
+    end
+  end
+
+  def mtbachelor
+  end
+
+  def mthood
+  end
+
+  def mtwhistler
+  end
+
+  def new_reservation
+    @guide = Guide.find(params[:id])
+  end
+
+  def create_reservation
+    @guide = Guide.find(params[:id])
+    guide_reservation = Reservation.new(
+      user_id: current_user.id,
+      guide_id: params[:id],
+      time: params[:guide][:reservations][:time],
+      number_of_people: params[:guide][:reservations][:number_of_people]
+    )
+
+    if guide_reservation.save
+      flash[:success] = "Your reservations has been submitted"
+      redirect_to @guide
+    else
+      render 'new'
+    end
   end
 
   private
 
   def guide_params
-    params.require(:guide).permit(:location,
-                                  :specialty,
+    params.require(:guide).permit(:user_id,
+                                  :hood,
+                                  :bachelor,
+                                  :whistler,
+                                  :downhill,
+                                  :crosscountry,
+                                  :snowboard,
                                   :rate,
+                                  :profile,
                                   :sun_avail,
                                   :mon_avail,
                                   :tues_avail,
@@ -64,5 +117,4 @@ class GuidesController < ApplicationController
                                   :fri_avail,
                                   :sat_avail)
   end
-
 end

@@ -1,0 +1,14 @@
+Dear <%= @msg.recipient_name %>,
+
+<%= @msg.name %> has a question for you.
+
+Here is the Message:
+Name: <%= @msg.name %>
+Email: <%= @msg.email %>
+Date: <%= Time.now %>
+Subject: <%= @msg.subject %>
+Message: <%= @msg.content %>
+
+----------
+Thank you,
+Radventure Team

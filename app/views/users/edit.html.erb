@@ -1,12 +1,15 @@
-<% provide(:title, 'Update account information') %>
-<h1>Update profile information</h1>
+<% provide(:title, 'Account Settings') %>
+<h1>Account Settings</h1>
 
-<% if !is_guide? %>
-    <%= link_to "Become a guide", guide_creation_url(id: @user.id),  class: "btn btn-default"%>
-<br></br>
+<% if is_guide? %>
+    <%= link_to "Edit Guide Profile", edit_guide_url(id: current_guide.id),  class: "btn btn-default"%>
+    <br></br>
+<% else %>
+    <%= link_to "Become a guide", new_guide_url(id: current_user.id),  class: "btn btn-default"%>
+    <br></br>
 <% end %>
 
-<%= link_to "Change password", change_password_url(id: @user.id),  class: "btn btn-default"%>
+<%= link_to "Change password", change_password_url(id: current_user.id),  class: "btn btn-default"%>
 <br></br>
 
 <%= form_for(@user) do |formElement| %>
@@ -34,11 +37,6 @@
       </div>
 
       <div class='form-group'>
-        <%= formElement.label :profile, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 %>
-      </div>
-
-      <div class='form-group'>
         <%= formElement.label :address, class: 'col-sm-2 control-label' %>
         <%= formElement.text_field :address, 'size' => 103 %>
       </div>
@@ -50,7 +48,7 @@
 
       <div class='form-group'>
         <%= formElement.label :state, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:state, options_for_select(us_states)) %>
+        <%= formElement.select(:state, options_for_select(us_states, current_user.state)) %>
       </div>
 
       <div class='form-group'>
@@ -60,11 +58,11 @@
 
       <div class='form-group'>
         <%= formElement.label :country, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:country, options_for_select(countries)) %>
+        <%= formElement.select(:country, options_for_select(countries, current_user.country)) %>
       </div>
 
       <div class='form-group'>
-        <%= formElement.submit 'Save changes'%>
+        <%= formElement.submit 'Save changes', class: 'btn btn-success'%>
       </div>
 
     </form>

@@ -1,0 +1,90 @@
+<% provide(:title, 'Edit guide profile') %>
+<h1>Edit guide profile</h1>
+
+<%= form_for(@guide) do |formElement| %>
+    <form class='form-horizontal'>
+      <%= render 'shared/guide_error_messages' %>
+
+      <div class='form-group'>
+        <h3>Locations</h3>
+
+        <ul>
+          <li><%= formElement.check_box :hood %>
+            <%= formElement.label 'Mount Hood'%> </li>
+
+          <li><%= formElement.check_box :bachelor %>
+            <%= formElement.label 'Mount Bachelor' %> </li>
+
+          <li><%= formElement.check_box :whistler %>
+            <%= formElement.label 'Whistler'%> </li>
+        </ul>
+      </div>
+
+      <div class='form-group'>
+        <h3>Specialties</h3>
+
+        <ul>
+          <li><%= formElement.check_box :downhill %>
+            <%= formElement.label 'Downhill Skiing'%> </li>
+
+          <li><%= formElement.check_box :crosscountry %>
+            <%= formElement.label 'Crosscountry Skiing' %> </li>
+
+          <li><%= formElement.check_box :snowboard %>
+            <%= formElement.label 'Snowboarding'%> </li>
+        </ul>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label :rate, class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :rate %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label :profile, class: 'col-sm-1 control-label' %>
+        <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 %>
+      </div>
+
+      <h3>Availability</h3>
+      <div class='form-group'>
+        <%= formElement.label 'Sunday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :sun_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Monday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :mon_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Tuesday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :tues_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Wednesday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :wed_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Thursday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :thurs_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Friday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :fri_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= formElement.label 'Saturday', class: 'col-sm-2 control-label' %>
+        <%= formElement.text_field :sat_avail, 'size' => 50 %>
+      </div>
+
+      <div class='form-group'>
+        <%= link_to "Cancel", guide_url(id: @guide.id),  class: "btn btn-danger"%>
+        <%= formElement.submit 'Save changes!', class: 'btn btn-success'%>
+      </div>
+
+    </form>
+<% end %>

@@ -1,0 +1,15 @@
+<p>Dear <b><%= @msg.name %></b>,</p>
+<% if @msg.subject <=> "Question" %>
+<h3> Here is a copy of the message:</h3>
+<% else %>
+<p>We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible. </p><br>
+<% end %>
+
+<h3>Message Receipt:</h3>
+<p><b>Date:</b> <%= Time.now %></p>
+<p><b>Subject:</b> <%= @msg.subject %></p>
+<p><b>Message:</b> <%= @msg.content %></p>
+
+<p>---------- <br>
+Thank you, <br>
+Radventure Team <br></p>

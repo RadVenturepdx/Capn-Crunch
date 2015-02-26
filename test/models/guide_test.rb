@@ -20,8 +20,12 @@ class GuideTest < ActiveSupport::TestCase
 
     @guide = Guide.new(
       user: @user,
-      location: 'Mount Hood Meadows',
-      specialty: 'Downhill Skiing',
+      hood: true,
+      bachelor: false,
+      whistler: true,
+      downhill: true,
+      crosscountry: true,
+      snowboard: false,
       rate: 25,
       sun_avail: 'Unavailable',
       mon_avail: '8am - 5pm',
@@ -42,31 +46,40 @@ class GuideTest < ActiveSupport::TestCase
     assert_not @guide.valid?
   end
 
-  test "location should be present" do
-    @guide.location = "    "
-    assert_not @guide.valid?
-  end
-
-  test "specialty should be present" do
-    @guide.specialty = "    "
-    assert_not @guide.valid?
-  end
-
   test "rate should be present" do
     @guide.rate = nil
     assert_not @guide.valid?
   end
 
-  test "location should not be too long" do
-    @guide.location = "a" * 51
+  test "hood should be boolean" do
+    @guide.hood = nil
     assert_not @guide.valid?
   end
 
-  test "specialty should not be too long" do
-    @guide.specialty = "a" * 51
+  test "bachelor should be boolean" do
+    @guide.bachelor = nil
     assert_not @guide.valid?
   end
 
+  test "whistler should be boolean" do
+    @guide.whistler = nil
+    assert_not @guide.valid?
+  end
+
+  test "downhill should be boolean" do
+    @guide.downhill = nil
+    assert_not @guide.valid?
+  end
+
+  test "crosscountry should be boolean" do
+    @guide.crosscountry = nil
+    assert_not @guide.valid?
+  end
+
+  test "snowboard should be boolean" do
+    @guide.snowboard = nil
+    assert_not @guide.valid?
+  end
   test "rate should be at least 0" do
     @guide.rate = -1
     assert_not @guide.valid?

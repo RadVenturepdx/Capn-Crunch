@@ -10,17 +10,26 @@
   </div>
   <!-- /.row -->
 
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+      <h2 style="text-align:center">Radventure Mission</h2>
+      <p style="text-align:center">It is Radventure's mission to help travellers maximize their time, pocketbooks, and smiles while experiencing adventures in the great outdoors.</p>
+
+    </div>
+  </div>
+  <!-- /.row -->
+
   <!-- Intro Content -->
   <div class="row">
+    <h2 style="text-align:center">The Radventure Story</h2>
     <div class="col-md-6">
-      <img class="img-responsive" src="http://web.cecs.pdx.edu/~ankgupta/whistler.jpg" alt="">
+      <img class="img-responsive" src="http://web.cecs.pdx.edu/~ankgupta/whistler.jpg" style="padding-top:5px" alt="">
     </div>
     <div class="col-md-6">
-      <h2>About Radventure</h2>
-      <p> It is Radventure’s mission to help travelers maximize their time, pocketbooks, and smiles while experiencing adventures in the great outdoors.
+
+      <p>After parting ways with her “personal adventure guide” (aka break-up with boyfriend), Andrea felt a large void in her ability to really get out and about to experience the outdoors as she had before.  One day, as she was going for a run, she had an A-HA! moment that she was likely not alone in this feeling of frustration.  What if there were others out there with the desire to see, experience and conquer but they just need a local friend to help show them the way?  That was when Radventure was born.
       </p>
-      <h3>The Radventure Story</h3>
-      <p>After parting ways with her “personal adventure guide” (aka break-up with boyfriend), Andrea felt a large void in her ability to really get out and about to experience the outdoors as she had before. One day, as she was going for a run, she had an A-HA! moment that she was likely not alone in this feeling of frustration. What if there were others out there with the desire to see, experience and conquer but they just need a local friend to help show them the way? That was when Radventure was born.
+      <p>
         We’ve all been there. You’re in a rad new place, but aren’t quite sure where to start. You wish you had a local buddy to give you the inside scoop. You chat with ski techs, bike shop staff, and bartenders, but what you really want is local to show you the sick spots so you can make the most your time outside.
       </p>
     </div>
@@ -65,31 +74,148 @@
         </div>
       </div>
     </div>
+  </div>
 
 
-    <!-- Top Radventure Guides -->
+    <!-- Our Customers -->
     <div class="row">
       <div class="col-lg-12">
-        <h2 class="page-header">Top Radventure Guides</h2>
+        <h2 class="page-header" style="text-align:center" >Our Top Guides</h2>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <% top_guides = top_guides(whistler_guides) %>
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <% top_guides = top_guides(bachelor_guides) %>
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <% top_guides = top_guides(hood_guides) %>
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-4 col-xs-6">
-        <img class="img-responsive customer-img" src="http://placehold.it/500x300" alt="">
+
+      <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <img class="img-responsive img-portfolio img-hover"
+                 src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
+                 style="height:100px; width:200px;
+                         margin-bottom: 0px;" alt="">
+            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
+            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
+              <% stars.times do |i| %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+              <% (5 - stars).times do |i| %>
+                  <span class="fa fa-star-o"></span>
+              <% end %>
+            </h5>
+          </div>
+        </div>
       </div>
+
+
     </div>
     <!-- /.row -->
 
