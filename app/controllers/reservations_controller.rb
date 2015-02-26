@@ -1,14 +1,9 @@
 class ReservationsController < ApplicationController
   def create
     @guide = Guide.find(params[:id])
-    @reservation = Reservation.new(
-      reservation_params
-      # user_id: current_user.id,
-      # guide_id: params[:id],
-      # time: params[:guide][:reservations][:time],
-      # number_of_people: params[:guide][:reservations][:number_of_people],
-      # note: params[:guide][:reservations][:note]
-    )
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
+    @reservation.guide = @guide
 
     if @reservation.valid?
       @reservation.save
