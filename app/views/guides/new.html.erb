@@ -1,90 +1,110 @@
-<% provide(:title, 'Become a guide') %>
-<h1>Becoming a guide</h1>
+<!-- Page Heading/Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header" style="text-align:center">Become a guide</h1>
+  </div>
+</div>
 
-<%= form_for(@guide) do |formElement| %>
-    <form class='form-horizontal'>
-      <%= render 'shared/guide_error_messages' %>
+<div class="row">
+  <!-- Alignment -->
+  <div class="col-sm-offset-4 col-sm-6 col-lg-4 well well-sm">
 
-      <div class='form-group'>
-        <h3>Locations</h3>
+    <%= form_for(@guide) do |formElement| %>
+        <form class='form-horizontal'>
+          <%= render 'shared/guide_error_messages' %>
 
-        <ul>
-          <li><%= formElement.check_box :hood %>
-          <%= formElement.label 'Mount Hood'%> </li>
+          <div class='form-group'>
+            <legend>Location</legend>
 
-          <li><%= formElement.check_box :bachelor %>
-          <%= formElement.label 'Mount Bachelor' %> </li>
+            <ul>
+              <%= formElement.check_box :hood %>
+              <%= formElement.label 'Mount Hood'%>
+              <br>
+              <%= formElement.check_box :bachelor %>
+              <%= formElement.label 'Mount Bachelor' %>
+              <br>
+              <%= formElement.check_box :whistler %>
+              <%= formElement.label 'Whistler'%>
+            </ul>
+          </div>
 
-          <li><%= formElement.check_box :whistler %>
-          <%= formElement.label 'Whistler'%> </li>
-        </ul>
-      </div>
+          <div class='form-group'>
+            <legend>Specialties</legend>
 
-      <div class='form-group'>
-        <h3>Specialties</h3>
+            <ul>
+              <%= formElement.check_box :downhill %>
+              <%= formElement.label 'Downhill Skiing'%>
+              <br>
+              <%= formElement.check_box :crosscountry %>
+              <%= formElement.label 'Crosscountry Skiing' %>
+              <br>
+              <%= formElement.check_box :snowboard %>
+              <%= formElement.label 'Snowboarding'%>
+              <br>
+            </ul>
+          </div>
 
-        <ul>
-          <li><%= formElement.check_box :downhill %>
-          <%= formElement.label 'Downhill Skiing'%> </li>
+          <div class="control-group">
+          <legend>Rate</legend>
+            <div class="controls">
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <%= formElement.text_field :rate , class: 'form-control'%>
+                <div class="input-group-addon">.00</div>
+              </div>
+            </div>
+          </div>
+          <br>
 
-          <li><%= formElement.check_box :crosscountry %>
-          <%= formElement.label 'Crosscountry Skiing' %> </li>
+          <legend>Guide Information</legend>
+          <div class="control-group">
+            <div class="controls">
+              <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100, class:'form-control' %>
+            </div>
+          </div>
 
-          <li><%= formElement.check_box :snowboard %>
-          <%= formElement.label 'Snowboarding'%> </li>
-        </ul>
-      </div>
+          <legend>Availability</legend>
+          <div class='form-group'>
+            <%= formElement.label 'Sunday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :sun_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label :rate, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :rate %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Monday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :mon_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label :profile, class: 'col-sm-1 control-label' %>
-        <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Tuesday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :tues_avail, 'size' => 50 %>
+          </div>
 
-      <h3>Availability</h3>
-      <div class='form-group'>
-        <%= formElement.label 'Sunday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :sun_avail, 'size' => 50 %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Wednesday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :wed_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label 'Monday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :mon_avail, 'size' => 50 %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Thursday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :thurs_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label 'Tuesday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :tues_avail, 'size' => 50 %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Friday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :fri_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label 'Wednesday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :wed_avail, 'size' => 50 %>
-      </div>
+          <div class='form-group'>
+            <%= formElement.label 'Saturday', class: 'col-sm-2 control-label' %>
+            <%= formElement.text_field :sat_avail, 'size' => 50 %>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label 'Thursday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :thurs_avail, 'size' => 50 %>
-      </div>
+          <div class='form-group'>
+            <%= link_to "Cancel", edit_user_url(id: current_user.id),  class: "btn btn-danger"%>
+            <%= formElement.submit 'Become a guide!', class: 'btn btn-success'%>
+          </div>
 
-      <div class='form-group'>
-        <%= formElement.label 'Friday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :fri_avail, 'size' => 50 %>
-      </div>
-
-      <div class='form-group'>
-        <%= formElement.label 'Saturday', class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :sat_avail, 'size' => 50 %>
-      </div>
-
-      <div class='form-group'>
-        <%= link_to "Cancel", edit_user_url(id: current_user.id),  class: "btn btn-danger"%>
-        <%= formElement.submit 'Become a guide!', class: 'btn btn-success'%>
-      </div>
-
-    </form>
-<% end %>
+        </form>
+    <% end %>
+  </div>
+</div>
