@@ -6,31 +6,41 @@
   </div>
 </div>
 
-<%= form_for(@user) do |formElement| %>
-  <form class='form-horizontal'>
-    <%= render 'shared/user_error_messages' %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 well" style="text-align:center">
+    <%= form_for @user, :url => url_for(:controller => 'users', :action => 'avatar_upload') do |formElement| %>
+    <%#= form_for(@user) do |formElement| %>
+      <form class='well'>
+        <%= render 'shared/user_error_messages' %>
 
-    <div class='form-group'>
-      <%= formElement.label 'Gravatar password', class: 'col-sm-2 control-label' %>
-      <%= formElement.password_field :g_password %>
-    </div>
+        <div class="row">
+          <div class="control-group col-sm-8 col-sm-offset-2">
+            <%= formElement.label 'Gravatar password', class: 'col-sm-2 control-label' %>
+            <%= formElement.password_field :g_password, required: true %>
+          </div>
+        </div>
 
-    <div class='form-group'>
-      <%= formElement.label 'File to upload', class: 'col-sm-2 control-label' %>
-      <%= formElement.file_field :avatar, :onchange =>"validateFiles(this);",
+        <div class="row">
+          <div class="control-group col-sm-8 col-sm-offset-2">
+            <%= formElement.label 'File to upload', class: 'col-sm-2 control-label' %>
+            <%= formElement.file_field :avatar, :onchange =>"validateFiles(this);",
                        :data => {
                                :max_file_size => 3.megabytes
-                       }%>
-    </div>
+                       }, required: true %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="control-group col-sm-8 col-sm-offset-2">
-        <div class='form-group'>
-          <%= formElement.submit 'Upload This Avatar' %>
+      <div class="row">
+        <div class="control-group col-sm-8 col-sm-offset-2">
+          <div class='form-group'>
+            <%= formElement.submit 'Upload This Avatar' %>
+          </div>
         </div>
       </div>
-    </div>
 
-  </form>
-<% end %>
+    </form>
+  <% end %>
+  </div>
 
+
+</div>

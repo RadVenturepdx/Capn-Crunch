@@ -28,8 +28,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if params[:user][:password].nil?
+    if params['Upload This Avatar']
+      flash[:success] = 'Avatar Uploaded'
+    elsif params[:user][:password].nil?
       if @user.update(user_params)
         flash[:success] = 'Profile has been updated'
         redirect_to @user
@@ -37,25 +38,26 @@ class UsersController < ApplicationController
         render 'edit'
       end
     else
-      if not @user.authenticate(params[:current_password])
-        flash.now[:danger] = 'Your current password is not valid'
-        render 'change_password'
-      else
-        if params[:user][:password].blank?
-          flash.now[:danger] = 'No new password entered'
+        if not @user.authenticate(params[:current_password])
+          flash.now[:danger] = 'Your current password is not valid'
           render 'change_password'
-        elsif params[:user][:password] != params[:user][:password_confirmation]
-          flash.now[:danger] = 'New password does not match confirmation'
-          render 'change_password'
-        elsif @user.update(user_params)
-          flash[:success] = 'Your password has been updated'
-          redirect_to @user
         else
-          render 'change_password'
+          if params[:user][:password].blank?
+            flash.now[:danger] = 'No new password entered'
+            render 'change_password'
+          elsif params[:user][:password] != params[:user][:password_confirmation]
+            flash.now[:danger] = 'New password does not match confirmation'
+            render 'change_password'
+          elsif @user.update(user_params)
+            flash[:success] = 'Your password has been updated'
+            redirect_to @user
+          else
+            render 'change_password'
+          end
         end
-      end
     end
   end
+
 
   def change_password
     @user = User.find(params[:id])
@@ -63,7 +65,16 @@ class UsersController < ApplicationController
 
   def upload_avatar
     @user = User.find(params[:id])
+  end
 
+  def avatar_upload
+    @user = User.find(params[:id])
+    api = Gravatar.new(@user.email, :password => params[:g_password])
+    if api.exists?
+      api.save_data!('PG', params[:avatar])
+      flash[:success] = 'Your avatar has been uploaded'
+    end
+    redirect_to home_url
   end
 
   private
@@ -84,5 +95,9 @@ class UsersController < ApplicationController
         :country,
       )
     end
+
+  def avatar_params
+    params.require().permit(:g_password, :avatar)
+  end
 
 end

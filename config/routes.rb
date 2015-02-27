@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get    'signup'                         => 'users#new'
   get    'guide-creation'                 => 'guides#new', as: 'guide-creation'
   get    'users/:id/upload_avatar'        => 'users#upload_avatar', as: 'upload_avatar'
+  patch  'users/:id/avatar_upload'        => 'users#avatar_upload'
   get    'login'                          => 'sessions#new'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
