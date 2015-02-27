@@ -1,12 +1,17 @@
-<p>Dear <b><%= @msg.name %></b>,</p>
-<% if @msg.subject <=> "Question" %>
-<h3> Here is a copy of the message:</h3>
+<h3>Dear <b><%= @msg.name %></b>,</h3>
+
+<% case %>
+<% when @msg.subject.match("Question") %>
+  <p><b>Here is a copy of the message:</b></p>
+<% when !@msg.subject.match("Question") %>
+  <p>We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible. </p><br>
 <% else %>
-<p>We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible. </p><br>
 <% end %>
 
-<h3>Message Receipt:</h3>
-<p><b>Date:</b> <%= Time.now %></p>
+<p><b>Message Receipt:</b></p>
+<% time = Time.now %>
+
+<p><b>Sent:</b> <%= time.strftime("%A, %B %d, %Y @ %H:%M:%S")%></p>
 <p><b>Subject:</b> <%= @msg.subject %></p>
 <p><b>Message:</b> <%= @msg.content %></p>
 

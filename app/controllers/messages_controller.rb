@@ -7,33 +7,34 @@ class MessagesController < ApplicationController
   end
 
   def show
+    redirect_to "/contact"
   end
 
   def index
-    redirect_to root_url
+    redirect_to "/contact"
   end
 
   def create
     @message = Message.new(message_params)
 
     if @message.valid?
-
-      if @message.subject <=> "Question"
+      case
+      when @message.subject.match("Question")
         MessageMailer.ask_question(@message).deliver
         MessageMailer.message_user(@message).deliver
         MessageMailer.message_it(@message).deliver
         flash[:success] = "Thank you for your message."
         redirect_to :back
-
-      elsif !@message.subject.eql? "Question"
+      when !@message.subject.match("Question")
         MessageMailer.message_it(@message).deliver
         MessageMailer.message_user(@message).deliver
-        flash[:success] = "Thank you for your message."
+        flash[:success] = "Thank you for contacting us."
         redirect_to "/contact"
+      else
+        flash[:danger]="Invalid Message!"
       end
-
     else
-      flash[:danger] = "Message not valid"
+      flash[:danger] = "Invalid Message."
       redirect_to root_url
     end
   end
