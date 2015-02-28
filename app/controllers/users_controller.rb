@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Radventure"
-      redirect_to @user
+      redirect_to home_url
     else
       render 'new'
     end
