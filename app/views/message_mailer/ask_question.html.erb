@@ -1,0 +1,16 @@
+<p>Dear <b><%= @msg.recipient_name %></b>,</p>
+
+<p><%= @msg.name %> has a question for you. Please see the message below.</p><br>
+
+<h3>Here is the Message:</h3>
+<p><b>Name:</b> <%= @msg.name %></p>
+<p><b>Email:</b> <%= @msg.email %></p>
+<% time = Time.now %>
+
+<p><b>Sent:</b> <%= time.strftime("%A, %B %d, %Y @ %H:%M:%S")%></p>
+<p><b>Subject:</b> <%= @msg.subject %></p>
+<p><b>Message:</b> <%= @msg.content %></p>
+
+<p>---------- <br>
+Thank you, <br>
+Radventure Team <br></p>

@@ -1,5 +1,17 @@
 Hey Rad Team,
-<%= @msg.name %> <%= @msg.email %> has sent a message:
-Date: <%= Time.now %>
+
+<% case @msg.subject %>
+<% when "Question" %>
+  <%= @msg.name %> asked <%= @msg.recipient_name %> a question. Here is a copy of the message:
+  To: <%= @msg.recipient_name %>, <%= @msg.recipient_email %>
+  From: <%= @msg.name %>, <%= @msg.email %>
+<% when !"Question" %>
+  <%= @msg.name %> <%= @msg.email %></b> has sent a message:
+<% else %>
+<% end %>
+
+<% time = Time.now %>
+
+Sent: <%= time.strftime("%A, %B %d, %Y @ %H:%M:%S")%>
 Subject: <%= @msg.subject %>
 Message: <%= @msg.content %>

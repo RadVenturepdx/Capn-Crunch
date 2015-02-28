@@ -1,11 +1,19 @@
 Dear <%= @msg.name %>,
 
+<% case @msg.subject %>
+<% when "Question" %>
+  Here is a copy of the message:
+<% when !"Question" %>
+  We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible.
+<% else %>
+<% end %>
+
 Message Receipt:
-Date: Time.now
+<% time = Time.now %>
+
+Sent: <%= time.strftime("%A, %B %d, %Y @ %H:%M:%S")%>
 Subject: <%= @msg.subject %>
 Message: <%= @msg.content %>
-
-We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible.
 
 ----------
 Thank you,

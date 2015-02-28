@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root                                       'static_pages#home'
   get    'home'                           => 'static_pages#home'
   get    'contact'                        => 'messages#new'
-  get    'contact'                        => 'messages#create'
   get    'locations'                      => 'static_pages#locations'
   get    'about'                          => 'static_pages#about'
   get    'faq'                            => 'static_pages#faq'
