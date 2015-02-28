@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get    'locations'                      => 'static_pages#locations'
   get    'about'                          => 'static_pages#about'
   get    'faq'                            => 'static_pages#faq'
+  get    'search'                         => 'static_pages#search'
+  post   'search'                         => 'static_pages#search'
   get    'mtbachelor'                     => 'guides#mtbachelor'
   get    'mthood'                         => 'guides#mthood'
   get    'mtwhistler'                     => 'guides#mtwhistler'
   get    'guides/:id/new-reservation'     => 'guides#new_reservation', as: :new_reservation
   post   'reservation/:id/create'   => 'reservations#create', as: :create_reservation
-  get    'users/:id/change-password'      => 'users#change_password', as: 'change-password'
+  get    'users/:id/change-password'      => 'users#change_password', as: 'change_password'
   get    'signup'                         => 'users#new'
   get    'login'                          => 'sessions#new'
   post   'login'                          => 'sessions#create'
