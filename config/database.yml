@@ -21,7 +21,7 @@
 #   database: db/test.sqlite3
 
 development:
- adapter: postgresqly
+ adapter: postgresql
  database: radventure_development
  username: root
  password: password
