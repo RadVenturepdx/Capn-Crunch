@@ -1,0 +1,16 @@
+Dear <%= @msg.recipient_name %>,
+
+<%= @msg.name %> has a question for you. Please see the message below.
+
+Here is the Message:
+Name: <%= @msg.name %>
+Email: <%= @msg.email %>
+<% time = Time.now %>
+
+Sent: <% time.strftime("%A, %B %d, %Y @ %H:%M:%S")%>
+Subject: <%= @msg.subject %>
+Message: <%= @msg.content %>
+
+----------
+Thank you,
+Radventure Team

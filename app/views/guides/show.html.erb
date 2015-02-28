@@ -47,67 +47,89 @@
                 <% end %>
               </h3>
 
-              <% if !current_guide?(Guide.find_by(user_id: @guide.user_id)) %>
-                <%= link_to "Reservation", new_reservation_path, class: "btn btn-primary" %>
-                <!-- <i class="fa fa-book"></i> -->
-                <button type="button" class="btn btn-primary"
-                  data-toggle="modal" data-target="#contactGuide">
-                    <!-- <i class="fa fa-question-circle"></i> -->
-                    <strong>Ask Guide a Question</strong>
-                </button>
-                <div class="modal fade" id="contactGuide" tabindex="-1"
-                    role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true" style="z-index:99999999999">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"
-                          aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
-                        <h3 class="modal-title" id="contactGuide">Ask Guide a Question</h3>
-                      </div>
-                      <div class="modal-body">
-                        <form name="sentMessage" id="contactGuide"  novalidate>
+              <!-- if user is logged in, then display appropriate buttons -->
+              <% if logged_in? %>
+
+                <% if !current_guide?(Guide.find_by(user_id: @guide.user_id)) %>
+                  <%= link_to '<b>Reservation</b>'.html_safe, new_reservation_path, class: "btn btn-primary" %>
+                  <!-- <i class="fa fa-book"></i> -->
+                  <button type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#contactGuide">
+                      <!-- <i class="fa fa-question-circle"></i> -->
+                      <strong>Ask Guide a Question</strong>
+                  </button>
+                  <div class="modal fade" id="contactGuide" tabindex="-1"
+                      role="dialog" aria-labelledby="myModalLabel"
+                      aria-hidden="true" style="z-index:99999999999">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                          </button>
+                          <h3 class="modal-title" id="contactGuide">Ask Guide a Question</h3>
+                        </div>
+                        <div class="modal-body">
+                          <%= form_for(Message.new) do |formElement| %>
+                          <!--form name="sentMessage" id="contactGuide"  novalidate-->
                           <div class="control-group">
                             <div class="controls">
-                              <input type="text" class="form-control"
-                                placeholder="Your Full Name" id="name" required
-                                data-validation-required-message="Please enter your name"
-                              />
-                              <p class="help-block"></p>
+                              <div class='form-group'>
+
+                                <%= formElement.label "From" %>
+                                     <%= formElement.text_field :name, required: true, class: 'form-control', id: 'name',
+                                       value: "#{current_user.name}", readonly: true %>
+
+                              </div>
                             </div>
                           </div>
                           <div class="control-group">
                             <div class="controls">
-                              <input type="email" class="form-control" placeholder="Your Email"
-                                id="email" required
-                                data-validation-required-message="Please enter your email"
-                              />
-                              <p class="help-block"></p>
+                              <div class='form-group'>
+
+                                <%= formElement.label :email %>
+                                    <%= formElement.email_field :email, required: true, class: 'form-control', id: 'email',
+                                    value: "#{current_user.email}", readonly: true %>
+
+                                <!-- currenly viewing guide's email -->
+                                <%= formElement.hidden_field :recipient_name, value: "#{@guide.user.name}" %>
+                                <%= formElement.hidden_field :recipient_email, value: "#{@guide.user.email}" %>
+
+                              </div>
                             </div>
                           </div>
-                          <div class="control-group">
-                            <div class="controls">
-                              <textarea rows="10" cols="100" class="form-control"
-                                placeholder="Question or Message" id="message" required
-                                data-validation-required-message="Please enter your question"
-                                minlength="5" data-validation-minlength-message="Min 5 characters"
-                                maxlength="999" style="resize:none">
-                              </textarea>
-                            </div>
-                            <p class="help-block"></p>
+                              <div class="control-group">
+                                <div class="controls">
+                                  <div class='form-group'>
+
+                                    <%= formElement.hidden_field :subject, value: "Question" %>
+                                    <%= formElement.label "Message" %>
+                                    <%= formElement.text_area :content, required: true, class: 'form-control', id: 'message',
+                                      placeholder: 'Question or Message', input_html: {rows: 10, cols: 100, minlength: '5',
+                                      maxlength: '999', style: 'resize:none' } %>
+
+                                  </div>
+                                </div>
+                                <p class="help-block"></p>
+                              </div>
+                            <div id="success"> </div> <!-- For success/fail messages -->
+                          <!--/form-->
+                        </div>
+                        <div class="modal-footer">
+                          <div class='form-group'>
+                            <%= formElement.submit 'Submit', class: 'btn btn-success'%>
                           </div>
-                          <div id="success"> </div> <!-- For success/fail messages -->
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                        <% end %>
                       </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
+                <!-- else if user is not logged in, redirect them to login page -->
+              <% elsif !logged_in? %>
+                <%= link_to '<b>Reservation</b>'.html_safe, "/login", class: "btn btn-primary" %>
+                <%= link_to '<b>Ask Guide a Question </b>'.html_safe, "/login", class: "btn btn-primary" %>
               <% end %>
-
             </div>
           </div>
         </div>

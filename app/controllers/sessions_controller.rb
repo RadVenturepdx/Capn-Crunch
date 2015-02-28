@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_back_or root_url
     else
-      flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-      render 'new'
+      flash[:danger] = 'Invalid email/password combination' # Not quite right!
+      redirect_to :back
     end
   end
 
