@@ -45,7 +45,7 @@
               <td class="text-warning">
                 <i class="fa fa-exclamation-circle"></i> Pending
               </td>
-              <td><a href="review.html" >Not Submitted</a></td>
+              <td><%= link_to "Not Submitted", review_path %></td>
             </tr>
           </thread>
           <!-- transaction -->
@@ -58,7 +58,7 @@
               <td class="text-danger">
                 <i class="fa fa-minus"></i> Declined
               </td>
-              <td><a href="review.html" >Not Submitted</a></td>
+              <td><%= link_to "Not Submitted", review_path %></td>
             </tr>
           </thread>
         </table>

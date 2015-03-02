@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get    'signup'                         => 'users#new'
   get    'login'                          => 'sessions#new'
   get    'transaction'                    => 'users#transaction-history'
+  get    'review'                         => 'users#review'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
 
