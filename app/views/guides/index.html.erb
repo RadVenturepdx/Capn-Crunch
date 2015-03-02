@@ -29,7 +29,8 @@ th, td {
       <td><%= guide.user.email %></td>
       <td><%= location_string(guide.hood, guide.bachelor, guide.whistler) %></td>
       <td><%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></td>
-      <td><%= guide.reviews.average(:rating).to_s %></td>
+      <td><%= if !guide.reviews.empty? then guide.reviews.average(:rating).to_s
+              else "N/A" end %></td>
       <td><%= link_to 'Show', guide %></td>
 
     </tr>

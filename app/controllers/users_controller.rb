@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Radventure"
-      redirect_to @user
+      redirect_to home_url
     else
       render 'new'
     end
@@ -32,7 +32,11 @@ class UsersController < ApplicationController
     if params[:user][:password].nil?
       if @user.update(user_params)
         flash[:success] = 'Profile has been updated'
-        redirect_to @user
+        if is_guide?
+          redirect_to @user
+        else
+          redirect_to home_url
+        end
       else
         render 'edit'
       end
@@ -49,7 +53,11 @@ class UsersController < ApplicationController
           render 'change_password'
         elsif @user.update(user_params)
           flash[:success] = 'Your password has been updated'
-          redirect_to @user
+          if is_guide?
+            redirect_to @user
+          else
+            redirect_to home_url
+          end
         else
           render 'change_password'
         end
