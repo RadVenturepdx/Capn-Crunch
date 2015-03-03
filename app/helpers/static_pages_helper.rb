@@ -64,6 +64,7 @@ module StaticPagesHelper
         i = 1
       end
       guides = []
+
       Guide.find_each do |guide|
         if guide.user.name.downcase == string
           guides.push(guide)
