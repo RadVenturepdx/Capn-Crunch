@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get    'users/:id/change_password'      => 'users#change_password', as: 'change_password'
   get    'signup'                         => 'users#new'
   get    'login'                          => 'sessions#new'
+  get    'review'                         => 'users#review'
   get    'transaction'                    => 'users#transaction-history'
+  get    'review'                         => 'users#review'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
 

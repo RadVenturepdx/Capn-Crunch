@@ -16,7 +16,7 @@
               <th>Date</th>
               <th>Location</th>
               <th>Price</th>
-              <th>Guide</th>
+              <th>User</th>
               <th>Payment Status</th>
               <th>Review</th>
             </tr>
@@ -28,7 +28,7 @@
               <td>2015/02/01 09:00</td>
               <td>Bachelor</td>
               <td>$200</td>
-              <td>Jane Doe</td>
+              <td>Jane Dope</td>
               <td class="text-success">
                 <i class="fa fa-check "></i> Paid
               </td>
@@ -45,7 +45,7 @@
               <td class="text-warning">
                 <i class="fa fa-exclamation-circle"></i> Pending
               </td>
-              <td><a href="review.html" >Not Submitted</a></td>
+              <td><%= link_to "Not Submitted", review_path %></td>
             </tr>
           </thread>
           <!-- transaction -->
@@ -58,7 +58,7 @@
               <td class="text-danger">
                 <i class="fa fa-minus"></i> Declined
               </td>
-              <td><a href="review.html" >Not Submitted</a></td>
+              <td><%= link_to "Not Submitted", review_path %></td>
             </tr>
           </thread>
         </table>
