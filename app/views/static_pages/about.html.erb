@@ -89,7 +89,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <%= image_tag Gravatar.new(top_guides[0].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                 style: 'height:100px; width:200px; margin-bottom: 0px;' %>
+                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
             <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
             <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
             <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
@@ -208,47 +208,6 @@
     <!-- /.row -->
 
     <hr>
-
-    <!-- Footer -->
-    <footer class="navbar container"  style="width:100% ; background:#d3d3d3 ; max-width:inherit">
-      <div class="row text-center center-block">
-        <div class="col-md-4">
-          <h4>User Information</h4>
-          <ul class="list-unstyled" style="color:#777777">
-            <li><a href="">Get Started</a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">Guides</a></li>
-            <li><a href="">Locations</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>Guide Information</h4>
-          <ul class="list-unstyled" style="color:#777777">
-            <li><a href="">Become Guide</a></li>
-            <li><a href="">Payment Process</a></li>
-            <li><a href="">How It Works</a></li>
-            <li><a href="">Legal</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>Corporate</h4>
-          <ul class="list-unstyled" style="color:#777777">
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="">Legal</a></li>
-            <li><a href="">Mission</a></li>
-            <li><a href="">Careers</a></li>
-            <li><a href="">Expansion</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center">
-        <p>
-          <br><br>
-          Copyright &copy; Radventure 2014
-        </p>
-      </div>
-    </footer>
 
   </div>
   <!-- /.container -->

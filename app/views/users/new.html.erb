@@ -49,8 +49,6 @@
                 </div>
               </div>
             </div>
-            * Note, avatars on this site are handled via <%= link_to('Gravatar', 'http://www.gravatar.com') %> so make sure to use the same e-mail address
-            <br>
 
             <div class="row">
               <div class="control-group col-sm-8 col-sm-offset-2">
@@ -67,15 +65,6 @@
                       <%= formElement.label :age, class: 'control-label' %>
                       <%= formElement.text_field :age , class: 'form-control'%>
                   </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="control-group col-sm-8 col-sm-offset-2">
-                 <div class='form-group'>
-                  <%= formElement.label :profile, class: 'control-label' %>
-                  <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 , class: 'form-control'%>
-                 </div>
               </div>
             </div>
 
@@ -163,7 +152,7 @@
             <div class="row">
               <div class="control-group col-sm-8 col-sm-offset-2">
               <div class='form-group'>
-                <%= formElement.submit 'Create my account' %>
+                <%= formElement.submit 'Create my account', class: "btn btn-success" %>
               </div>
               </div>
             </div>
@@ -171,3 +160,4 @@
         <% end %>
    </div>
 </div>
+

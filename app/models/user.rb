@@ -31,10 +31,6 @@ class User < ActiveRecord::Base
     presence: true,
     numericality: { only_integer: true, greater_than: 0, less_than: 130 }
 
-  validates :profile,
-    presence: true,
-    length: { maximum: 999 }
-
   validates :address,
     presence: true,
     length: { maximum: 50 }

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Radventure"
-      redirect_to @user
+      redirect_to home_url
     else
       render 'new'
     end
@@ -28,34 +28,42 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if params[:user][:password].nil?
       if @user.update(user_params)
         flash[:success] = 'Profile has been updated'
-        redirect_to @user
+        if is_guide?
+          redirect_to @user
+        else
+          redirect_to home_url
+        end
       else
         render 'edit'
       end
     else
-        if not @user.authenticate(params[:current_password])
-          flash.now[:danger] = 'Your current password is not valid'
+      if not @user.authenticate(params[:current_password])
+        flash.now[:danger] = 'Your current password is not valid'
+        render 'change_password'
+      else
+        if params[:user][:password].blank?
+          flash.now[:danger] = 'No new password entered'
           render 'change_password'
-        else
-          if params[:user][:password].blank?
-            flash.now[:danger] = 'No new password entered'
-            render 'change_password'
-          elsif params[:user][:password] != params[:user][:password_confirmation]
-            flash.now[:danger] = 'New password does not match confirmation'
-            render 'change_password'
-          elsif @user.update(user_params)
-            flash[:success] = 'Your password has been updated'
+        elsif params[:user][:password] != params[:user][:password_confirmation]
+          flash.now[:danger] = 'New password does not match confirmation'
+          render 'change_password'
+        elsif @user.update(user_params)
+          flash[:success] = 'Your password has been updated'
+          if is_guide?
             redirect_to @user
           else
-            render 'change_password'
+            redirect_to home_url
           end
+        else
+          render 'change_password'
         end
+      end
     end
   end
-
 
   def change_password
     @user = User.find(params[:id])
@@ -71,13 +79,13 @@ class UsersController < ApplicationController
         :age,
         :password,
         :password_confirmation,
-        :profile,
         :address,
         :city,
         :state,
         :zipcode,
-        :country,
+        :country
       )
     end
 
 end
+

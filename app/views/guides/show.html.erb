@@ -9,6 +9,9 @@
         <div class="col-lg-12">
             <h1 class="page-header">
                 Guide Profile
+                <% if current_guide?(Guide.find_by(user_id: @guide.user_id)) %>
+                    <%= link_to "Edit Guide Profile", edit_guide_url(id: @guide.id),  class: "btn btn-default"%>
+                <% end %>
             </h1>
         </div>
     </div>
@@ -21,8 +24,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-12 col-sm-5">
-                <%#= image_tag 'guide1.jpg', class: 'img img-circle img-responsive full-width' %>
-                <%= image_tag Gravatar.new(@guide.user.email).image_url(:d => :mm, :s => 300), class: 'img img-circle img-responsive full-width' %>
+              <%= image_tag Gravatar.new(@guide.user.email).image_url(:d => :mm, :s => 300), class: 'img img-circle img-responsive full-width' %>
             </div>
             <div class="col-sm-offset-1 col-xs-12 col-sm-6">
               <h1><strong><%= @guide.user.name %></strong></h1>
@@ -42,64 +44,90 @@
                   No one has reviewed this guide yet. Be the first!
                 <% end %>
               </h3>
-              <%= link_to "Reservation", new_reservation_path, class: "btn btn-primary" %>
-              <!-- <i class="fa fa-book"></i> -->
-              <button type="button" class="btn btn-primary"
-                data-toggle="modal" data-target="#contactGuide">
-                  <!-- <i class="fa fa-question-circle"></i> -->
-                  <strong>Ask Guide a Question</strong>
-              </button>
-              <div class="modal fade" id="contactGuide" tabindex="-1"
-                  role="dialog" aria-labelledby="myModalLabel"
-                  aria-hidden="true" style="z-index:99999999999">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close"><span aria-hidden="true">&times;</span>
-                      </button>
-                      <h3 class="modal-title" id="contactGuide">Ask Guide a Question</h3>
-                    </div>
-                    <div class="modal-body">
-                      <form name="sentMessage" id="contactGuide"  novalidate>
-                        <div class="control-group">
-                          <div class="controls">
-                            <input type="text" class="form-control"
-                              placeholder="Your Full Name" id="name" required
-                              data-validation-required-message="Please enter your name"
-                            />
-                            <p class="help-block"></p>
+
+              <!-- if user is logged in, then display appropriate buttons -->
+              <% if logged_in? %>
+
+                <% if !current_guide?(Guide.find_by(user_id: @guide.user_id)) %>
+                  <%= link_to '<b>Reservation</b>'.html_safe, new_reservation_path, class: "btn btn-primary" %>
+                  <!-- <i class="fa fa-book"></i> -->
+                  <button type="button" class="btn btn-primary"
+                    data-toggle="modal" data-target="#contactGuide">
+                      <!-- <i class="fa fa-question-circle"></i> -->
+                      <strong>Ask Guide a Question</strong>
+                  </button>
+                  <div class="modal fade" id="contactGuide" tabindex="-1"
+                      role="dialog" aria-labelledby="myModalLabel"
+                      aria-hidden="true" style="z-index:99999999999">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                          </button>
+                          <h3 class="modal-title" id="contactGuide">Ask Guide a Question</h3>
+                        </div>
+                        <div class="modal-body">
+                          <%= form_for(Message.new) do |formElement| %>
+                          <!--form name="sentMessage" id="contactGuide"  novalidate-->
+                          <div class="control-group">
+                            <div class="controls">
+                              <div class='form-group'>
+
+                                <%= formElement.label "From" %>
+                                     <%= formElement.text_field :name, required: true, class: 'form-control', id: 'name',
+                                       value: "#{current_user.name}", readonly: true %>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="control-group">
+                            <div class="controls">
+                              <div class='form-group'>
+
+                                <%= formElement.label :email %>
+                                    <%= formElement.email_field :email, required: true, class: 'form-control', id: 'email',
+                                    value: "#{current_user.email}", readonly: true %>
+
+                                <!-- currenly viewing guide's email -->
+                                <%= formElement.hidden_field :recipient_name, value: "#{@guide.user.name}" %>
+                                <%= formElement.hidden_field :recipient_email, value: "#{@guide.user.email}" %>
+
+                              </div>
+                            </div>
+                          </div>
+                              <div class="control-group">
+                                <div class="controls">
+                                  <div class='form-group'>
+
+                                    <%= formElement.hidden_field :subject, value: "Question" %>
+                                    <%= formElement.label "Message" %>
+                                    <%= formElement.text_area :content, required: true, class: 'form-control', id: 'message',
+                                      placeholder: 'Question or Message', input_html: {rows: 10, cols: 100, minlength: '5',
+                                      maxlength: '999', style: 'resize:none' } %>
+
+                                  </div>
+                                </div>
+                                <p class="help-block"></p>
+                              </div>
+                            <div id="success"> </div> <!-- For success/fail messages -->
+                          <!--/form-->
+                        </div>
+                        <div class="modal-footer">
+                          <div class='form-group'>
+                            <%= formElement.submit 'Submit', class: 'btn btn-success'%>
                           </div>
                         </div>
-                        <div class="control-group">
-                          <div class="controls">
-                            <input type="email" class="form-control" placeholder="Your Email"
-                              id="email" required
-                              data-validation-required-message="Please enter your email"
-                            />
-                            <p class="help-block"></p>
-                          </div>
-                        </div>
-                        <div class="control-group">
-                          <div class="controls">
-                            <textarea rows="10" cols="100" class="form-control"
-                              placeholder="Question or Message" id="message" required
-                              data-validation-required-message="Please enter your question"
-                              minlength="5" data-validation-minlength-message="Min 5 characters"
-                              maxlength="999" style="resize:none">
-                            </textarea>
-                          </div>
-                          <p class="help-block"></p>
-                        </div>
-                        <div id="success"> </div> <!-- For success/fail messages -->
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-success">Submit</button>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                <% end %>
+                <!-- else if user is not logged in, redirect them to login page -->
+              <% elsif !logged_in? %>
+                <%= link_to '<b>Reservation</b>'.html_safe, "/login", class: "btn btn-primary" %>
+                <%= link_to '<b>Ask Guide a Question </b>'.html_safe, "/login", class: "btn btn-primary" %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -127,7 +155,7 @@
       <div class="tab-pane fade active in col-sm-12" id="about-Me">
         <h3>About Me</h3>
         <p>
-          <%= @guide.user.profile %>
+          <%= @guide.profile %>
         </p>
       </div>
 
@@ -166,15 +194,16 @@
       </div>
 
       <div class="tab-pane fade col-sm-12" id="reviews">
-        <h3>Reviews</h3>
+       <!-- <h3>Reviews</h3> -->
         <!-- Review Row -->
         <div class="row">
           <% for review in @guide.reviews %>
-            <div class="col-md-1 text-center">
-            <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
-            <p><%= review.created_at %></p>
+            <div class="col-md-2 text-center" style="padding-top:25px">
+              <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
+              <p><i class="fa fa-user fa-4x"></i></p>
+              <p><%= review.created_at %></p>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
               <h3>Review Title1</h3>
               <!-- Rating stars -->
               <% reviewRating = review.rating %>
@@ -192,7 +221,6 @@
               <p>
                 <%= review.content %>
               </p>
-              <br>
             </div>
           <% end %>
         </div>

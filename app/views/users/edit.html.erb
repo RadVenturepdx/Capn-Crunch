@@ -1,71 +1,120 @@
-<% provide(:title, 'Update account information') %>
-<h1>Update profile information</h1>
+<% provide(:title, 'Account Settings') %>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header" style="text-align:center">Account Settings</h1>
+  </div>
+</div>
 
-<% if !is_guide? %>
-    <%= link_to "Become a guide", guide_creation_url(id: @user.id),  class: "btn btn-default" %>
-<br>
-<% end %>
+<div class="row">
+  <!-- Alignment -->
+  <div class="col-sm-offset-4 col-sm-6 col-lg-4 well well-sm">
+    <legend>Settings</legend>
+        <% if is_guide? %>
+            <p>Already a guide?
+            <%= link_to "Edit Guide Profile", edit_guide_url(id: current_guide.id),  class: "btn btn-primary btn-sm pull-right"%>
+            </p>
+            <br><br>
+        <% else %>
+            <p>Want to be a guide?
+            <%= link_to "Become a guide", new_guide_url(id: current_user.id),  class: "btn btn-primary btn-sm pull-right"%>
+            <br><br>
+            </p>
+        <% end %>
 
-<%= link_to "Change password", change_password_url(id: @user.id),  class: "btn btn-default" %>
-<br>
+        <p>Want to change your password?
+        <%= link_to "Change password", change_password_url(id: current_user.id),  class: "btn btn-primary btn-sm pull-right"%>
+        </p>
+        <br>
+        <p>Want to view your transactions?
+        <%= link_to "View Transactions", transaction_path , class: "btn btn-primary btn-sm pull-right"%>
+        </p>
+        <br><br>
 
-<%= form_for(@user) do |formElement| %>
-    <form class='form-horizontal'>
-      <%= render 'shared/user_error_messages' %>
+        <legend>Account Information</legend>
+        <%= form_for(@user) do |formElement| %>
+            <form class='well well-sm'>
+              <%= render 'shared/user_error_messages' %>
 
-      <div class='form-group'>
-        <%= formElement.label :name, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :name %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                    <%= formElement.label :name  %>
+                    <%= formElement.text_field :name , class:'form-control text-center' %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :email, class: 'col-sm-2 control-label' %>
-        <%= formElement.email_field :email %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                    <%= formElement.label :email %>
+                    <%= formElement.email_field :email, class:'form-control text-center'  %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :phone_number, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :phone_number %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                    <%= formElement.label :phone_number, class: 'control-label' %>
+                    <%= formElement.text_field :phone_number , class:'form-control text-center'  %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :age, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :age %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                   <%= formElement.label :age, class: 'control-label' %>
+                   <%= formElement.text_field :age , class:'form-control text-center'  %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :profile, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_area :profile, 'rows' => 10, 'cols' => 100 %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                   <%= formElement.label :address, class: 'control-label' %>
+                   <%= formElement.text_field :address, class:'form-control text-center'  %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :address, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :address, 'size' => 103 %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                  <%= formElement.label :city, class: 'control-label' %>
+                  <%= formElement.text_field :city , class:'form-control text-center' %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :city, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :city %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                  <%= formElement.label :state, class: 'control-label' %>
+                  <br>
+                  <%= formElement.select(:state, options_for_select(us_states, current_user.state)) %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :state, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:state, options_for_select(us_states)) %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                  <%= formElement.label :zipcode, class: 'control-label' %>
+                  <%= formElement.text_field :zipcode , class:'form-control text-center' %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :zipcode, class: 'col-sm-2 control-label' %>
-        <%= formElement.text_field :zipcode %>
-      </div>
+              <div class="control-group">
+                <div class="controls text-center">
+                  <%= formElement.label :country, class: 'control-label' %>
+                  <br>
+                  <%= formElement.select(:country, options_for_select(countries, current_user.country)) %>
+                </div>
+              </div>
+              <br>
 
-      <div class='form-group'>
-        <%= formElement.label :country, class: 'col-sm-2 control-label' %>
-        <%= formElement.select(:country, options_for_select(countries)) %>
-      </div>
+              <div class='form-group text-center'>
+                <%= formElement.submit 'Save changes', class: 'btn btn-success'%>
+              </div>
 
-      <div class='form-group'>
-        <%= formElement.submit 'Save changes', class: 'btn btn-success'%>
-      </div>
+            </form>
+        <% end %>
+  </div>
+</div>
 
-    </form>
-<% end %>

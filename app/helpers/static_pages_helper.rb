@@ -41,4 +41,38 @@ module StaticPagesHelper
     return top_guides
   end
 
+  # Returns an array of up to two objects,where String is the
+  # location, and Array is an array of guides.
+  # There are four possible return values: results = [String]
+  #                                        results = [Array]
+  #                                        results = [String, Array]
+  #                                        results = []
+  def searchDB(string)
+    results = []
+    if !string.nil?
+      string = string.downcase
+      if string == "Mount Hood".downcase
+        results.push "Mount Hood"
+      elsif string == "Mount Bachelor".downcase
+        results.push "Mount Bachelor"
+      elsif string == "Whistler".downcase
+        results.push "Whistler"
+      end
+
+      i = 0
+      if !results[0].nil?
+        i = 1
+      end
+      guides = []
+
+      Guide.find_each do |guide|
+        if guide.user.name.downcase == string
+          guides.push(guide)
+        end
+      end
+      results[i] =(guides)
+    end
+    results
+  end
+
 end

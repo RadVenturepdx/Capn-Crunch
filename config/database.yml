@@ -26,6 +26,7 @@ development:
  username: root
  password: password
  host: localhost
+
 test:
  adapter: postgresql
  database: radventure_test
@@ -36,7 +37,3 @@ test:
 production:
  adapter: postgresql
  encoding: unicode
- database: Dev1
- username: pdxcapstone
- password: password
- host: development.c3dwzraw1jcj.us-west-2.rds.amazonaws.com
