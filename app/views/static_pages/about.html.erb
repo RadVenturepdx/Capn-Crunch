@@ -84,125 +84,82 @@
       </div>
 
       <% top_guides = top_guides(whistler_guides) %>
+      <% two_guides = top_guides.take(2) %>
 
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[0].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
+      <% two_guides.each do |guide| %>
+        <% if !guide.nil? %>
+          <div class="col-lg-2 col-md-3 col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
+                            style: 'height:100px; width:200px; margin-bottom: 0px;' %>
+                <h5><%= link_to guide.user.name, guide %></h5>
+                <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+                <h5>Rating: <% stars = guide.reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                      <span class="fa fa-star-o"></span>
+                  <% end %>
+                </h5>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[1].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
 
       <% top_guides = top_guides(bachelor_guides) %>
+      <% two_guides = top_guides.take(2) %>
 
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[0].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
+      <% two_guides.each do |guide| %>
+        <% if !guide.nil? %>
+          <div class="col-lg-2 col-md-3 col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
+                              style: 'height:100px; width:200px; margin-bottom: 0px;' %>
+                <h5><%= link_to guide.user.name, guide %></h5>
+                <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+                <h5>Rating: <% stars = guide.reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                  <% end %>
+                </h5>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[1].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
 
       <% top_guides = top_guides(hood_guides) %>
+      <% two_guides = top_guides.take(2) %>
 
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[0].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[0].user.name, top_guides[0] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
+      <% two_guides.each do |guide| %>
+        <% if !guide.nil? %>
+          <div class="col-lg-2 col-md-3 col-sm-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
+                              style: 'height:100px; width:200px; margin-bottom: 0px;' %>
+                <h5><%= link_to guide.user.name, guide %></h5>
+                <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+                <h5>Rating: <% stars = guide.reviews.average(:rating).round %>
+                  <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+                  <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                  <% end %>
+                </h5>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= image_tag Gravatar.new(top_guides[1].user.email).image_url(:d => :mm, :s => 120), class: 'img img-responsive img-portfolio img-hover',
-                          style: 'height:100px; width:200px; margin-bottom: 0px;' %>
-            <h5><%= link_to top_guides[1].user.name, top_guides[1] %></h5>
-            <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-            <h5>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-              <% stars.times do |i| %>
-                  <span class="fa fa-star"></span>
-              <% end %>
-              <% (5 - stars).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-              <% end %>
-            </h5>
-          </div>
-        </div>
-      </div>
-
+        <% end %>
+      <% end %>
 
     </div>
     <!-- /.row -->

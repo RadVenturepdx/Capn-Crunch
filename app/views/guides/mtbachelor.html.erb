@@ -54,69 +54,30 @@
 
     <% top_guides = top_guides(bachelor_guides) %>
 
-    <div class="col-md-4 col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= image_tag Gravatar.new(top_guides[0].user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
-                        style: 'height:200px; width:325px; margin-bottom: 0px;' %>
-          <h4><%= link_to top_guides[0].user.name, top_guides[0] %></h4>
-          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-          <h4>Sports: <%= sports_string(top_guides[0].downhill, top_guides[0].crosscountry, top_guides[0].snowboard) %></h4>
-          <h4>Rate: <%= number_to_currency(top_guides[0].rate) %>/Hour</h4>
-          <h4>Rating: <% stars = top_guides[0].reviews.average(:rating).round %>
-            <% stars.times do |i| %>
-                <span class="fa fa-star"></span>
-            <% end %>
-            <% (5 - stars).times do |i| %>
-                <span class="fa fa-star-o"></span>
-            <% end %>
-          </h4>
+    <% top_guides.each do |guide| %>
+      <% if !guide.nil? %>
+        <div class="col-md-4 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
+                          style: 'height:200px; width:325px; margin-bottom: 0px;' %>
+              <h4><%= link_to guide.user.name, guide %></h4>
+              <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
+              <h4>Sports: <%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></h4>
+              <h4>Rate: <%= number_to_currency(guide.rate) %>/Hour</h4>
+              <h4>Rating: <% stars = guide.reviews.average(:rating).round %>
+                <% stars.times do |i| %>
+                    <span class="fa fa-star"></span>
+                <% end %>
+                <% (5 - stars).times do |i| %>
+                    <span class="fa fa-star-o"></span>
+                <% end %>
+              </h4>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= image_tag Gravatar.new(top_guides[1].user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
-                        style: 'height:200px; width:325px; margin-bottom: 0px;' %>
-          <h4><%= link_to top_guides[1].user.name, top_guides[1] %></h4>
-          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-          <h4>Sports: <%= sports_string(top_guides[1].downhill, top_guides[1].crosscountry, top_guides[1].snowboard) %></h4>
-          <h4>Rate: <%= number_to_currency(top_guides[1].rate) %>/Hour</h4>
-          <h4>Rating: <% stars = top_guides[1].reviews.average(:rating).round %>
-            <% stars.times do |i| %>
-                <span class="fa fa-star"></span>
-            <% end %>
-            <% (5 - stars).times do |i| %>
-                <span class="fa fa-star-o"></span>
-            <% end %>
-          </h4>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= image_tag Gravatar.new(top_guides[2].user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
-                        style: 'height:200px; width:325px; margin-bottom: 0px;' %>
-          <h4><%= link_to top_guides[2].user.name, top_guides[2] %></h4>
-          <!-- <img class="img-responsive img-hover img-related" src="../img/guide-n-location/guide1.jpg" alt=""> -->
-          <h4>Sports: <%= sports_string(top_guides[2].downhill, top_guides[2].crosscountry, top_guides[2].snowboard) %></h4>
-          <h4>Rate: <%= number_to_currency(top_guides[2].rate) %>/Hour</h4>
-          <h4>Rating: <% stars = top_guides[2].reviews.average(:rating).round %>
-            <% stars.times do |i| %>
-                <span class="fa fa-star"></span>
-            <% end %>
-            <% (5 - stars).times do |i| %>
-                <span class="fa fa-star-o"></span>
-            <% end %>
-          </h4>
-        </div>
-      </div>
-    </div>
-
+      <% end %>
+    <% end %>
 
   </div>
   <!-- /.row -->
