@@ -200,7 +200,6 @@
           <% for review in @guide.reviews %>
             <div class="col-md-2 text-center" style="padding-top:25px">
               <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
-              <p><i class="fa fa-user fa-4x"></i></p>
               <p><%= review.created_at %></p>
             </div>
             <div class="col-md-10">
@@ -221,6 +220,7 @@
               <p>
                 <%= review.content %>
               </p>
+              <br>
             </div>
           <% end %>
         </div>
