@@ -64,5 +64,4 @@ module UsersHelper
     ]
   end
 
-
 end

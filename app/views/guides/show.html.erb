@@ -24,9 +24,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-12 col-sm-5">
-              <img class="img img-circle img-responsive full-width"
-                src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
-                style="position:relative; overflow: hidden;" alt="">
+              <%= image_tag Gravatar.new(@guide.user.email).image_url(:d => :mm, :s => 300), class: 'img img-circle img-responsive full-width' %>
             </div>
             <div class="col-sm-offset-1 col-xs-12 col-sm-6">
               <h1><strong><%= @guide.user.name %></strong></h1>
@@ -201,7 +199,7 @@
         <div class="row">
           <% for review in @guide.reviews %>
             <div class="col-md-2 text-center" style="padding-top:25px">
-              <p><i class="fa fa-user fa-4x"></i></p>
+              <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
               <p><%= review.created_at %></p>
             </div>
             <div class="col-md-10">
@@ -222,6 +220,7 @@
               <p>
                 <%= review.content %>
               </p>
+              <br>
             </div>
           <% end %>
         </div>

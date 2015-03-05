@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get    'mthood'                         => 'guides#mthood'
   get    'mtwhistler'                     => 'guides#mtwhistler'
   get    'guides/:id/new-reservation'     => 'guides#new_reservation', as: :new_reservation
-  post   'reservation/:id/create'   => 'reservations#create', as: :create_reservation
+  post   'reservation/:id/create'         => 'reservations#create', as: :create_reservation
   get    'users/:id/change_password'      => 'users#change_password', as: 'change_password'
   get    'signup'                         => 'users#new'
   get    'login'                          => 'sessions#new'

@@ -111,10 +111,8 @@
         <div class="col-md-4 col-sm-6">
            <div class="panel panel-default">
              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mthood.jpg"
-                   style="height:200px; width:400px;
-                   margin-bottom: 0px;" alt="">
+                <%= image_tag 'mthood.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
                 <h4><strong>Name: Mount Hood</strong></h4>
                 <h4>Location: Portland, Oregon</h4>
                 <a href="mthood.html" class="btn btn-primary">See More</a>
@@ -125,10 +123,8 @@
         <div class="col-md-4 col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mtbachelor.jpg"
-                   style="height:200px; width:400px;
-                           margin-bottom: 0px;" alt="">
+              <%= image_tag 'mtbachelor.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
               <h4><strong>Name: Mount Bachelor</strong></h4>
               <h4>Location: Bend, Oregon</h4>
               <a href="mtbachelor.html" class="btn btn-primary">See More</a>
@@ -139,10 +135,8 @@
         <div class="col-md-4 col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mtwhistler.jpg"
-                   style="height:200px; width:400px;
-                           margin-bottom: 0px;" alt="">
+              <%= image_tag 'mtwhistler.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
               <h4><strong>Name: Mount Whistler</strong></h4>
               <h4>Location: Vancouver, Canada</h4>
               <a href="mtwhistler.html" class="btn btn-primary">See More</a>
@@ -159,10 +153,8 @@
             <div class="panel panel-default">
             <!--  <a href="<%= guide_path(guide) %>"> -->
                 <div class="panel-heading">
-                  <img class="img-responsive img-portfolio img-hover"
-                    src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
-                    style="height:200px; width:400px;
-                    margin-bottom: 0px;" alt="">
+                  <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
+                    style: 'height:200px; width:325px; margin-bottom: 0px;' %>
                   <h4>Name:  <%= guide.user.name %> </h4>
                   <h4>Sports: <%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></h4>
                   <h4>Location: <%= location_string(guide.hood, guide.bachelor, guide.whistler) %></h4>
