@@ -1,12 +1,8 @@
-<body>
-
-  <!-- Page Content -->
-  <div class="container">
 
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
+        <h1 class="page-header" style="text-align:center">
           Guide Reservation
         </h1>
       </div>
@@ -26,6 +22,7 @@
                   url: create_reservation_path,
                   html: { class: "well", id: @guide.id, method: "post" } do |formElement| %>
                 <%= render 'shared/reservation_error_messages' %>
+
                 <legend>To: <%= @guide.user.name %></legend>
                 <div class="control-group">
                   <div class="controls">
@@ -48,7 +45,7 @@
                     </span>
                     <%= formElement.text_field :time,
                       class: "form-control",
-                      value: "01/22/2015 1:00 PM - 01/22/2015 1:30 PM",
+                     # value: "01/22/2015 1:00 PM - 01/22/2015 1:30 PM",
                       required: true,
                       placeholder: "Date & time of your reservation"
                     %>
@@ -64,9 +61,8 @@
                       });
                     </script >
                   </div>
-                  <p class="help-block"></p>
                 </div>
-
+                <br>
                 <div class="control-group">
                   <div class="controls">
                     <div class="input-group">
@@ -79,9 +75,10 @@
                       placeholder: "Number of people in your team"
                     %>
                     </div>
-                    <p class="help-block"></p>
                   </div>
                 </div>
+                <br>
+
                 <div class="control-group">
                   <div class="controls">
                     <%= formElement.text_area :note,
@@ -104,10 +101,3 @@
       </div>
     </div>
     <!-- ./row -->
-  </div>
-  <!-- container -->
-
-<script type="text/javascript" src="../javascripts/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="../stylesheets/daterangepicker-bs3.css" />
-<script type="text/javascript" src="../javascripts/moment.js"></script>
-</body>
