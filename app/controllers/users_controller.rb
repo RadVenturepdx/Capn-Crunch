@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :logged_in_user, only: [:edit, :show, :update, :change_password]
-  before_action :correct_user,   only: [:edit, :show, :update, :change_password]
+  before_action :logged_in_user,    only: [:edit, :show, :update, :change_password, :transaction_history]
+  before_action :correct_user,      only: [:edit, :show, :update, :change_password]
+  before_action :already_signed_up, only: [:new]
 
   def show
     @user = User.find(params[:id])
@@ -52,17 +53,32 @@ class UsersController < ApplicationController
           flash.now[:danger] = 'New password does not match confirmation'
           render 'change_password'
         elsif @user.update(user_params)
-          flash[:success] = 'Your password has been updated'
-          if is_guide?
-            redirect_to @user
-          else
-            redirect_to home_url
-          end
+          flash.now[:success] = 'Your password has been updated'
+          render 'edit'
         else
           render 'change_password'
         end
       end
     end
+  end
+
+  def transaction_history
+    @user_reservations = Reservation.where(user_id: current_user.id)
+    if is_guide?
+      @guide_reservations = Reservation.where(guide_id: current_guide.id)
+    end
+  end
+
+  def review
+    @user = User.find(params[:id])
+    @guide = Guide.find_by(user_id: @user.id)
+    @reservation = Reservation.find_by(user_id: current_user.id, guide_id: @guide.id)
+
+    #flash.now[:success] = @user.id
+    @review = Review.new
+    @review.guide_id = @guide
+    @review.user_id = current_user.id
+    #@guide = Guide.find_by(id: res.guide.id) #guide_id])
   end
 
   def change_password

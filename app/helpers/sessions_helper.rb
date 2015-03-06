@@ -60,6 +60,13 @@ module SessionsHelper
     end
   end
 
+  def already_signed_up
+    unless !current_user
+      flash[:danger] = "Already signed up!"
+      redirect_to home_path
+    end
+  end
+
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])

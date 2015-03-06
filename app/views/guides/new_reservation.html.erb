@@ -39,6 +39,19 @@
                     <p class="help-block"></p>
                   </div>
                 </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <p><strong>Price: </strong> <%= number_to_currency(@guide.rate) %> per hour</p>
+                    <p class="help-block"></p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <%= formElement.label :location, class: 'control-label' %>
+                    <%= formElement.select :location, options_for_select(locations) %>
+                    <p class="help-block"></p>
+                  </div>
+                </div>
                 <!-- Calendar Reservation -->
                 <div class="control-group">
                   <label for="reservationtime">Reservation Times:</label>
