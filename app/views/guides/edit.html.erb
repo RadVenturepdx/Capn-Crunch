@@ -7,7 +7,7 @@
 
 <div class="row">
   <!-- Alignment -->
-  <div class="col-sm-offset-4 col-sm-6 col-lg-4 well well-sm">
+  <div class="col-sm-offset-3 col-sm-6 col-lg-6 well well-sm">
 
     <%= form_for(@guide) do |formElement| %>
         <form class='form-horizontal'>
@@ -66,44 +66,44 @@
           <legend>Availability</legend>
           <div class='form-group'>
             <%= formElement.label 'Sunday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :sun_avail, 'size' => 50 %>
+            <%= formElement.text_field :sun_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Monday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :mon_avail, 'size' => 50 %>
+            <%= formElement.text_field :mon_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Tuesday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :tues_avail, 'size' => 50 %>
+            <%= formElement.text_field :tues_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Wednesday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :wed_avail, 'size' => 50 %>
+            <%= formElement.text_field :wed_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Thursday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :thurs_avail, 'size' => 50 %>
+            <%= formElement.text_field :thurs_avail, 'size' => 50, class: 'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Friday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :fri_avail, 'size' => 50 %>
+            <%= formElement.text_field :fri_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
 
           <div class='form-group'>
             <%= formElement.label 'Saturday', class: 'col-sm-2 control-label' %>
-            <%= formElement.text_field :sat_avail, 'size' => 50 %>
+            <%= formElement.text_field :sat_avail, 'size' => 50, class:'form-control', style: 'width: 80%' %>
           </div>
-
+          <div class="text-center">
           <div class='form-group'>
             <%= link_to "Cancel", edit_user_url(id: current_user.id),  class: "btn btn-danger"%>
-            <%= formElement.submit 'Become a guide!', class: 'btn btn-success'%>
+            <%= formElement.submit 'Update', class: 'btn btn-success'%>
           </div>
-
+          </div>
         </form>
     <% end %>
   </div>
