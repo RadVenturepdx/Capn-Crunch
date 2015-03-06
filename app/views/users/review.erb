@@ -14,7 +14,6 @@
     <!-- Alignment -->
     <div class="col-sm-offset-3 col-sm-6">
       <!-- Form itself -->
-      <!-- <form name="sentMessage" class="well" id="guideProfileForm"  novalidate> -->
       <%= form_for @review do |formElement| %>
           <%= render 'shared/review_error_messages' %>
           <legend>Radventure Review for</legend>
@@ -22,8 +21,8 @@
           <%= hidden_field_tag :guide_id, @guide.id %>
           <%= hidden_field_tag :reservation_id, @reservation.id %>
           <p><b>Guide: <%= @guide.user.name %>
-            <br>Reservation Time: <%= @reservation.time %>   <!--01/22/2015 1:00 PM - 01/22/2015 1:30 PM-->
-            <br>Location: <%= @reservation.location %>  <!--Bachelor-->
+            <br>Reservation Time: <%= @reservation.time %>
+            <br>Location: <%= @reservation.location %>
           </b></p>
           <br>
 
@@ -35,8 +34,6 @@
               <div class="controls">
                 <p class="col-sm-1 help-block control-label">Rating:</p>
                 <div class="col-xs-1">
-                  <!--select class="form-control col-sm-3" name="rating" id="rating"-->
-
                   <%= formElement.select(:rating, options_for_select(ratings)) %>
                   <!--/select-->
                 </div>
@@ -51,19 +48,12 @@
                                         placeholder: "Write a Review",
                                         minlength: "5",
                                         maxlength: "999", style: "resize:none"%>
-              <!--textarea rows="10" cols="100" class="form-control"
-                        placeholder="Write a Review" id="message" required
-                        data-validation-required-message="Please enter a review for the guide" minlength="5"
-                        data-validation-minlength-message="Min 5 characters"
-                        maxlength="999" style="resize:none"></textarea-->
             </div>
             <p class="help-block"></p>
           </div>
           <% params[:res_id] = @reservation %>
           <%= formElement.submit 'Submit Review', class: "btn btn-primary btn-sm pull-right" %>
-          <!---button type="submit" class="btn btn-primary btn-sm pull-right">Submit Review</button><br /-->
           <br>
-          <!--</form> -->
       <% end %>
     </div>
   </div>

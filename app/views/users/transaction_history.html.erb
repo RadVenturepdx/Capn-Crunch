@@ -36,7 +36,6 @@
               <td><%=guide_reservation.time%></td>
               <td><%=guide_reservation.location%></td>
               <td><%=number_to_currency(guide_reservation.price)%></td>
-              <!--td><!--%=user_reservation.guide.user.name%></td-->
               <td><%=link_to user.name, guide_reservation.guide %></td>
               <% if guide_reservation.payment_status == 'Paid' %>
                   <td class="text-success">
@@ -89,7 +88,6 @@
                 <td><%=user_reservation.time%></td>
                 <td><%=user_reservation.location%></td>
                 <td><%=number_to_currency(user_reservation.price)%></td>
-                <!--td><!--%=user_reservation.guide.user.name%></td-->
                 <td><%=link_to guide.user.name, guide %></td>
                 <% if user_reservation.payment_status == 'Paid' %>
                   <td class="text-success">

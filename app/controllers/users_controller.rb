@@ -74,11 +74,7 @@ class UsersController < ApplicationController
     @guide = Guide.find_by(user_id: @user.id)
     @reservation = Reservation.find_by(user_id: current_user.id, guide_id: @guide.id)
 
-    #flash.now[:success] = @user.id
     @review = Review.new
-    @review.guide_id = @guide
-    @review.user_id = current_user.id
-    #@guide = Guide.find_by(id: res.guide.id) #guide_id])
   end
 
   def change_password
