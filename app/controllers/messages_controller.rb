@@ -19,19 +19,17 @@ class MessagesController < ApplicationController
 
     if @message.valid?
       case
-      when @message.subject.match("Question")
+      when @message.subject.match("Question") && !@message.recipient_name.match("user")
         MessageMailer.ask_question(@message).deliver
         MessageMailer.message_user(@message).deliver
         MessageMailer.message_it(@message).deliver
-        flash[:success] = "Thank you for your message."
+        flash[:success] = "Your message has been sent. Thank you!"
         redirect_to :back
-      when !@message.subject.match("Question")
+      else
         MessageMailer.message_it(@message).deliver
         MessageMailer.message_user(@message).deliver
         flash[:success] = "Thank you for contacting us."
         redirect_to "/contact"
-      else
-        flash[:danger]="Invalid Message!"
       end
     else
       flash[:danger] = "Invalid Message."
