@@ -92,19 +92,7 @@
             <div class="row">
               <div class="control-group col-sm-8 col-sm-offset-2">
                 <div class='form-group'>
-                    <br>
-                    <%= formElement.label :state, class: 'control-label' %>
-                    <br>
-                    <%= formElement.select(:state, options_for_select(us_states))  %>
-                    <br><br>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="control-group col-sm-8 col-sm-offset-2">
-                <div class='form-group'>
-                  <%= formElement.label :zipcode, class: 'control-label' %>
+                  <%= formElement.label :zipcode, 'ZIP code', class: 'control-label' %>
                   <%= formElement.text_field :zipcode , class: 'form-control'%>
                 </div>
               </div>
@@ -113,11 +101,21 @@
             <div class="row">
               <div class="control-group col-sm-8 col-sm-offset-2">
                 <div class='form-group'>
-                  <br>
                   <%= formElement.label :country, class: 'control-label' %>
                   <br>
                   <%= formElement.select(:country, options_for_select(countries)) %>
-                  <br><br>
+                  <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row", id = 'state_control'>
+              <div class="control-group col-sm-8 col-sm-offset-2">
+                <div class='form-group'>
+                  <%= formElement.label :state, class: 'control-label' %>
+                  <br>
+                  <%= formElement.select(:state, options_for_select(us_states))  %>
+                  <br>
                 </div>
               </div>
             </div>
@@ -161,3 +159,20 @@
    </div>
 </div>
 
+<script>
+    var country_start = $('#user_country :selected').val();
+    if(country_start != 'United States of America') {
+        $('#state_control').hide();
+    } else {
+        $('#state_control').show();
+    }
+    // when the country field changes
+    $("#user_country").change(function() {
+        var country = $('#user_country :selected').val();
+        if(country != 'United States of America') {
+            $('#state_control').hide();
+        } else {
+            $('#state_control').show();
+        }
+    });
+</script>

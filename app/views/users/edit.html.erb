@@ -85,16 +85,7 @@
 
               <div class="control-group">
                 <div class="controls text-center">
-                  <%= formElement.label :state, class: 'control-label' %>
-                  <br>
-                  <%= formElement.select(:state, options_for_select(us_states, current_user.state)) %>
-                </div>
-              </div>
-              <br>
-
-              <div class="control-group">
-                <div class="controls text-center">
-                  <%= formElement.label :zipcode, class: 'control-label' %>
+                  <%= formElement.label :zipcode, 'ZIP code', class: 'control-label' %>
                   <%= formElement.text_field :zipcode , class:'form-control text-center' %>
                 </div>
               </div>
@@ -109,6 +100,20 @@
               </div>
               <br>
 
+              <div class="control-group", id = 'state_control'>
+                <div class="controls text-center">
+                  <%= formElement.label :state, class: 'control-label' %>
+                  <br>
+                  <% if current_user.state == 'None' %>
+                    <%= formElement.select(:state, options_for_select(us_states)) %>
+                  <% else %>
+                    <%= formElement.select(:state, options_for_select(us_states, current_user.state)) %>
+                  <% end %>
+                </div>
+                <br>
+              </div>
+
+
               <div class='form-group text-center'>
                 <%= formElement.submit 'Save changes', class: 'btn btn-success'%>
               </div>
@@ -118,3 +123,20 @@
   </div>
 </div>
 
+<script>
+    var country_start = $('#user_country :selected').val();
+    if(country_start != 'United States of America') {
+        $('#state_control').hide();
+    } else {
+        $('#state_control').show();
+    }
+    // when the country field changes
+    $("#user_country").change(function() {
+        var country = $('#user_country :selected').val();
+        if(country != 'United States of America') {
+            $('#state_control').hide();
+        } else {
+            $('#state_control').show();
+        }
+    });
+</script>

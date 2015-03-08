@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if not params[:user][:country] == 'United States of America'
+      params[:user][:state] = "None"
+    end
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Radventure"
@@ -31,13 +34,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if params[:user][:password].nil?
+      if not params[:user][:country] == 'United States of America'
+        params[:user][:state] = "None"
+      end
       if @user.update(user_params)
         flash[:success] = 'Profile has been updated'
-        if is_guide?
-          redirect_to @user
-        else
-          redirect_to home_url
-        end
+        render 'edit'
       else
         render 'edit'
       end
