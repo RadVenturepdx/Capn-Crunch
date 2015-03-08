@@ -1,13 +1,12 @@
 Hey Rad Team,
 
-<% case @msg.subject %>
-<% when "Question" %>
+<% case %>
+<% when @msg.subject.match("Question") && !@msg.recipient_name.match("user") %>
   <%= @msg.name %> asked <%= @msg.recipient_name %> a question. Here is a copy of the message:
   To: <%= @msg.recipient_name %>, <%= @msg.recipient_email %>
   From: <%= @msg.name %>, <%= @msg.email %>
-<% when !"Question" %>
-  <%= @msg.name %> <%= @msg.email %></b> has sent a message:
 <% else %>
+  <%= @msg.name %>(<%= @msg.email %>) has a question.
 <% end %>
 
 <% time = Time.now %>

@@ -1,11 +1,10 @@
 <h3>Dear <b><%= @msg.name %></b>,</h3>
 
 <% case %>
-<% when @msg.subject.match("Question") %>
+<% when @msg.subject.match("Question") && !@msg.recipient_name.match("user") %>
   <p><b>Here is a copy of the message:</b></p>
-<% when !@msg.subject.match("Question") %>
-  <p>We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible. </p><br>
 <% else %>
+  <p>We have received your message. Thank you for reaching out to us. Our team will respond to you as soon as possible. </p><br>
 <% end %>
 
 <p><b>Message Receipt:</b></p>
