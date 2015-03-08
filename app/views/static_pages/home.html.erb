@@ -58,8 +58,8 @@
             You’re in a rad new place, but aren’t quite sure where to start.
             You wish you had a local buddy to give you the inside scoop.
             You chat with ski techs, bike shop staff, and bartenders, but what
-             you really want is local to show you the sick spots so you can
-             make the most your time outside.
+             you really want is a local that can show you around the sick spots
+             so you can make the most your time outside.
           </p>
           <a href="about.html" class="btn btn-default">Learn More</a>
           </div>
@@ -72,9 +72,15 @@
           </div>
           <div class="panel-body">
             <p>
-              It is Radventure's mission to help travellers maximize their time, pocketbooks, and smiles while experiencing adventures in the great outdoors.
+              It is Radventure's mission to help travellers maximize their time,
+              pocketbooks, and smiles while experiencing adventures in the great
+              outdoors.
               <br>
-              We’ve all been there. You’re in a rad new place, but aren’t quite sure where to start. You wish you had a local buddy to give you the inside scoop. You chat with ski techs, bike shop staff, and bartenders, but what you really want is local to show you the sick spots so you can make the most your time outside.
+              We’ve all been there. You’re in a rad new place, but aren’t quite
+              sure where to start. You wish you had a local buddy to give you the
+              inside scoop. You chat with ski techs, bike shop staff, and bartenders,
+              but what you really want is local to show you the sick spots so you
+              can make the most your time outside.
             </p>
             <a href="about.html" class="btn btn-default">Learn More</a>
           </div>
@@ -89,10 +95,10 @@
             <p style="margin-left:25px">
               <li>Create an account</li>
               <li>View a <%= link_to "Location", locations_path %></li>
-              <li>Find a guide!!</li>
-              <li>Book it!!!</li>
-              <li>Had a radventurous time!!!</li>
-              <li>Write your review!!!</li>
+              <li>Find a guide</li>
+              <li>Book it!!</li>
+              <li>Have a radventurous time!</li>
+              <li>Write your review</li>
             </p>
             <a href="signup.html" class="btn btn-default">Sign Up</a>
             <a href="faq.html" class="btn btn-default">Questions?</a>
@@ -111,10 +117,8 @@
         <div class="col-md-4 col-sm-6">
            <div class="panel panel-default">
              <div class="panel-heading">
-                <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mthood.jpg"
-                   style="height:200px; width:400px;
-                   margin-bottom: 0px;" alt="">
+                <%= image_tag 'mthood.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
                 <h4><strong>Name: Mount Hood</strong></h4>
                 <h4>Location: Portland, Oregon</h4>
                 <a href="mthood.html" class="btn btn-primary">See More</a>
@@ -125,10 +129,8 @@
         <div class="col-md-4 col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mtbachelor.jpg"
-                   style="height:200px; width:400px;
-                           margin-bottom: 0px;" alt="">
+              <%= image_tag 'mtbachelor.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
               <h4><strong>Name: Mount Bachelor</strong></h4>
               <h4>Location: Bend, Oregon</h4>
               <a href="mtbachelor.html" class="btn btn-primary">See More</a>
@@ -139,10 +141,8 @@
         <div class="col-md-4 col-sm-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <img class="img-responsive img-portfolio img-hover"
-                   src="http://radventurepdx.github.io/img/mtwhistler.jpg"
-                   style="height:200px; width:400px;
-                           margin-bottom: 0px;" alt="">
+              <%= image_tag 'mtwhistler.jpg', class: 'img-responsive img-portfolio img-hover', style: 'height:200px; width:400px;
+                   margin-bottom: 0px;' %>
               <h4><strong>Name: Mount Whistler</strong></h4>
               <h4>Location: Vancouver, Canada</h4>
               <a href="mtwhistler.html" class="btn btn-primary">See More</a>
@@ -159,10 +159,8 @@
             <div class="panel panel-default">
             <!--  <a href="<%= guide_path(guide) %>"> -->
                 <div class="panel-heading">
-                  <img class="img-responsive img-portfolio img-hover"
-                    src="http://web.cecs.pdx.edu/~ankgupta/guide-n-location/guide1.jpg"
-                    style="height:200px; width:400px;
-                    margin-bottom: 0px;" alt="">
+                  <%= image_tag Gravatar.new(guide.user.email).image_url(:d => :mm), class: 'img img-circle img-portfolio img-hover',
+                    style: 'height:200px; width:325px; margin-bottom: 0px;' %>
                   <h4>Name:  <%= guide.user.name %> </h4>
                   <h4>Sports: <%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></h4>
                   <h4>Location: <%= location_string(guide.hood, guide.bachelor, guide.whistler) %></h4>

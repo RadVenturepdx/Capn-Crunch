@@ -1,5 +1,6 @@
 # Users
 
+
 99.times do |n|
   name = Faker::Name.name
   email = Faker::Internet.email
@@ -19,6 +20,7 @@
     else
       country = 'Mexico'
   end
+
   User.create!(name: name,
                email: email,
                phone_number: phone_number,
@@ -29,8 +31,35 @@
                city: city,
                state: state,
                zipcode: zipcode,
-               country: country )
+               country: country)
 end
+
+
+User.create!(name: 'Jeff Rust',
+             email: 'beazley2@pdx.edu',
+             phone_number: '5034300746',
+             age: '43',
+             password: 'password',
+             password_confirmation: 'password',
+             address: '123 Main St',
+             city: 'Portland',
+             state: 'OR',
+             zipcode: '97229',
+             country: 'United States of America'
+)
+
+User.create!(name: 'Aiden Jeffries',
+             email: 'gallione11@yahoo.com',
+             phone_number: '5037451245',
+             age: '34',
+             password: 'password',
+             password_confirmation: 'password',
+             address: '123 Main St',
+             city: 'Portland',
+             state: 'OR',
+             zipcode: '97229',
+             country: 'United States of America'
+)
 
 users = User.order(:created_at).take(40)
 users.each { |user|
@@ -122,7 +151,7 @@ users.each { |user|
   )
 }
 
-reviewers = User.where(id: 41..60)
+reviewers = User.where(id: 60..101)
 10.times do
   reviewers.each { |reviewer|
     content = Faker::Lorem.sentences(5).join(" ")
@@ -139,10 +168,14 @@ reservers = User.where(id: 61..90)
 5.times do
   reservers.each { |reserver|
     guide_id = rand(40) + 1
-    number_of_people = rand(9) + 1
+    people = rand(9) + 1
+    time = "7am"
+    note = "Radventure!"
     Reservation.create!(user_id: reserver.id,
                         guide_id: Guide.find(guide_id).id,
-                        number_of_people: number_of_people)
+                        time: time,
+                        number_of_people: people,
+                        note: note)
     }
 end
 
