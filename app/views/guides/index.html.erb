@@ -23,7 +23,7 @@ th, td {
   </tr>
   </thead>
 
-  <% @guides.each do |guide| %>
+  <% Array(@guides).each do |guide| %>
     <tr>
       <td><%= guide.user.name %></td>
       <td><%= guide.user.email %></td>

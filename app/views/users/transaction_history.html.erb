@@ -1,0 +1,117 @@
+<!-- Page Heading/Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header" style="text-align:center">Transaction History</h1>
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- Transaction Section -->
+<div id="transactionHistory">
+  <div class="row">
+    <% if !@guide_reservations.nil? and !@guide_reservations.empty? %>
+      <div class="control-group text-center">
+        <h2>As a Guide</h2>
+      </div>
+      <table class="table table-responsive" style="table-layout: fixed">
+      <!-- Transaction Heading-->
+      <thread>
+        <tr>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Price (per hour)</th>
+          <th>User</th>
+          <th>Payment Status</th>
+          <th>Review</th>
+        </tr>
+      </thread>
+
+      <% Array(@guide_reservations).each do |guide_reservation| %>
+          <% user = guide_reservation.user %>
+          <% review = Review.find_by(user_id: user.id,
+                                     guide_id: current_guide.id) %>
+          <!-- transaction -->
+          <thread>
+            <tr>
+              <td><%=guide_reservation.time%></td>
+              <td><%=guide_reservation.location%></td>
+              <td><%=number_to_currency(guide_reservation.price)%></td>
+              <td><%=link_to user.name, guide_reservation.guide %></td>
+              <% if guide_reservation.payment_status == 'Paid' %>
+                  <td class="text-success">
+                    <i class="fa fa-check "></i> Paid
+                  </td>
+              <% elsif guide_reservation.payment_status == 'Denied' %>
+                  <td class="text-danger">
+                    <i class="fa fa-minus"></i> Declined
+                  </td>
+              <% else %>
+                  <td class="text-warning">
+                    <i class="fa fa-exclamation-circle"></i> Pending
+                  </td>
+              <% end %>
+              <% if !review.nil?  %>
+                  <td>Completed</td>
+              <% else %>
+                  <td>Not Submitted</td>
+              <% end %>
+            </tr>
+          </thread>
+      <% end %>
+    </table>
+    <% end %>
+
+    <% if !@user_reservations.nil? %>
+      <div class="control-group text-center">
+        <h2>As a User</h2>
+      </div>
+      <table class="table table-responsive" style="table-layout: fixed">
+          <!-- Transaction Heading-->
+          <thread>
+            <tr>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Price (per hour)</th>
+              <th>Guide</th>
+              <th>Payment Status</th>
+              <th>Review</th>
+            </tr>
+          </thread>
+
+          <% Array(@user_reservations).each do |user_reservation| %>
+            <% review = Review.find_by(user_id: current_user.id,
+                                       guide_id: user_reservation.guide.id) %>
+            <% guide = user_reservation.guide %>
+            <!-- transaction -->
+            <thread>
+              <tr>
+                <td><%=user_reservation.time%></td>
+                <td><%=user_reservation.location%></td>
+                <td><%=number_to_currency(user_reservation.price)%></td>
+                <td><%=link_to guide.user.name, guide %></td>
+                <% if user_reservation.payment_status == 'Paid' %>
+                  <td class="text-success">
+                    <i class="fa fa-check "></i> Paid
+                  </td>
+                <% elsif user_reservation.payment_status == 'Denied' %>
+                    <td class="text-danger">
+                      <i class="fa fa-minus"></i> Declined
+                    </td>
+                <% else %>
+                  <td class="text-warning">
+                    <i class="fa fa-exclamation-circle"></i> Pending
+                  </td>
+                <% end %>
+                <% if !review.nil?  %>
+                  <td>Completed</td>
+                <% else %>
+                  <td><%= link_to "Not Submitted", review_url(guide.user.id) %></td>
+              <% end %>
+              </tr>
+            </thread>
+          <% end %>
+        </table>
+      <% end %>
+  </div>
+</div>
+<!-- /.row -->

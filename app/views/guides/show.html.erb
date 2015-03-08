@@ -203,7 +203,7 @@
               <p><%= review.created_at %></p>
             </div>
             <div class="col-md-10">
-              <h3>Review Title1</h3>
+              <h3><% if !review.title.nil? then %><%=review.title%><% else %>Review Title<% end %></h3>
               <!-- Rating stars -->
               <% reviewRating = review.rating %>
               <p>

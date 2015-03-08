@@ -4,10 +4,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
     @reservation.guide = @guide
+    @reservation.payment_status = 'Pending'
+    @reservation.price = @guide.rate
 
     if @reservation.valid?
       @reservation.save
-      flash[:success] = "Your reservations has been submitted"
+      flash[:success] = "Your reservation has been submitted"
       redirect_to @guide
     else
       render 'guides/new_reservation'
@@ -19,7 +21,11 @@ class ReservationsController < ApplicationController
       params.require(:reservation).permit(
         :user_id,
         :guide_id,
+        :price,
+        :location,
         :time,
+        :payment_status,
+        :price,
         :number_of_people,
         :note
       )
