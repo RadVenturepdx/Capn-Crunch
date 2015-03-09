@@ -36,7 +36,7 @@
               <td><%=guide_reservation.time%></td>
               <td><%=guide_reservation.location%></td>
               <td><%=number_to_currency(guide_reservation.price)%></td>
-              <td><%=link_to user.name, guide_reservation.guide %></td>
+              <td><%=guide_reservation.user.name %></td>
               <% if guide_reservation.payment_status == 'Paid' %>
                   <td class="text-success">
                     <i class="fa fa-check "></i> Paid
@@ -61,7 +61,7 @@
     </table>
     <% end %>
 
-    <% if !@user_reservations.nil? %>
+    <% if !@user_reservations.nil? and !@user_reservations.empty? %>
       <div class="control-group text-center">
         <h2>As a User</h2>
       </div>
