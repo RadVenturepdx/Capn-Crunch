@@ -197,32 +197,35 @@
        <!-- <h3>Reviews</h3> -->
         <!-- Review Row -->
         <div class="row">
-          <% for review in @guide.reviews %>
-            <div class="col-md-2 text-center" style="padding-top:25px">
-              <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
-              <p><%= review.created_at %></p>
-            </div>
-            <div class="col-md-10">
-              <h3><% if !review.title.nil? then %><%=review.title%><% else %>Review Title<% end %></h3>
-              <!-- Rating stars -->
-              <% reviewRating = review.rating %>
-              <p>
-                <% reviewRating.times do |i| %>
-                  <span class="fa fa-star"></span>
-                <% end %>
-                <% (5 - reviewRating).times do |i| %>
-                  <span class="fa fa-star-o"></span>
-                <% end %>
-              </p>
-              <p>
-                by <%= review.user.name %>
-              </p>
-              <p>
-                <%= review.content %>
-              </p>
-              <br>
-            </div>
+          <% if @guide.reviews.count > 0 %>
+              <% for review in @guide.reviews %>
+                <div class="col-md-2 text-center" style="padding-top:25px">
+                  <p><%= image_tag Gravatar.new(review.user.email).image_url(:d => :mm) %></p>
+                  <p><%= review.created_at %></p>
+                </div>
+                <div class="col-md-10">
+                  <h3><% if !review.title.nil? then %><%=review.title%><% else %>Review Title<% end %></h3>
+                  <!-- Rating stars -->
+                  <% reviewRating = review.rating %>
+                  <p>
+                    <% reviewRating.times do |i| %>
+                      <span class="fa fa-star"></span>
+                    <% end %>
+                    <% (5 - reviewRating).times do |i| %>
+                      <span class="fa fa-star-o"></span>
+                    <% end %>
+                  </p>
+                  <p>
+                    by <%= review.user.name %>
+                  </p>
+                  <p>
+                    <%= review.content %>
+                  </p>
+                  <br>
+                </div>
+              <% end %>
           <% end %>
+
         </div>
         <!-- /.row -->
       </div>
