@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get    'login'                          => 'sessions#new'
   get    'transactions'                   => 'users#transaction_history'
   get    'users/:id/review'               => 'users#review', as: 'review'
+  get    'payment'                        => 'guides#payment'
   post   'review'                         => 'reviews#new'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
