@@ -154,13 +154,15 @@ users.each { |user|
 reviewers = User.where(id: 60..101)
 10.times do
   reviewers.each { |reviewer|
-    content = Faker::Lorem.sentences(5).join(" ")
+    content  = Faker::Lorem.sentences(5).join(" ")
     guide_id = rand(40) + 1
-    rating = rand(5) + 1
+    rating   = rand(5) + 1
+    title    = 'Review Title'
     Review.create!(user_id: reviewer.id,
                    guide_id: Guide.find(guide_id).id,
                    content: content,
-                   rating: rating)
+                   rating: rating,
+                   title: title)
   }
 end
 
@@ -169,10 +171,32 @@ reservers = User.where(id: 61..90)
   reservers.each { |reserver|
     guide_id = rand(40) + 1
     people = rand(9) + 1
+    price = rand(25) + 20
+    rand_location = rand(3)
+    case rand_location
+      when 0
+        location = 'Whistler'
+      when 1
+        location = 'Mount Hood'
+      else
+        location = 'Mount Bachelor'
+    end
+    rand_status = rand(5)  # More likely to have more 'Pending' transactions
+    case rand_status
+      when 0
+        payment_status = 'Paid'
+      when 1
+        payment_status = 'Denied'
+      else
+        payment_status = 'Pending'
+    end
     time = "7am"
     note = "Radventure!"
     Reservation.create!(user_id: reserver.id,
                         guide_id: Guide.find(guide_id).id,
+                        price: price,
+                        location: location,
+                        payment_status: payment_status,
                         time: time,
                         number_of_people: people,
                         note: note)
