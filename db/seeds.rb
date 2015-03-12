@@ -34,33 +34,6 @@
                country: country)
 end
 
-
-User.create!(name: 'Jeff Rust',
-             email: 'beazley2@pdx.edu',
-             phone_number: '5034300746',
-             age: '43',
-             password: 'password',
-             password_confirmation: 'password',
-             address: '123 Main St',
-             city: 'Portland',
-             state: 'OR',
-             zipcode: '97229',
-             country: 'United States of America'
-)
-
-User.create!(name: 'Aiden Jeffries',
-             email: 'gallione11@yahoo.com',
-             phone_number: '5037451245',
-             age: '34',
-             password: 'password',
-             password_confirmation: 'password',
-             address: '123 Main St',
-             city: 'Portland',
-             state: 'OR',
-             zipcode: '97229',
-             country: 'United States of America'
-)
-
 users = User.order(:created_at).take(40)
 users.each { |user|
   n = rand(2)
