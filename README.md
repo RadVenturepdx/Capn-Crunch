@@ -65,7 +65,7 @@ again.
 ## Credits
 * Some code in this project is from
 [railstutorial.org](https://www.railstutorial.org/book) book by Michael Hartl
-* [Bootstrap](https://github.com/IronSummitMedia/startbootstrap-modern-business) used is created by David Miller
+* [Bootstrap Template](https://github.com/IronSummitMedia/startbootstrap-modern-business) used is created by David Miller
 * [Calendar](https://github.com/dangrossman/bootstrap-daterangepicker) for reservations is written by Dan Grossman
 
 
