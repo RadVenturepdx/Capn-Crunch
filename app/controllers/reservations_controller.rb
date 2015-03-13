@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     if @reservation.valid?
       @reservation.save
       flash[:success] = "Your reservation has been submitted"
-      redirect_to @guide
+      redirect_to payment_path
     else
       render 'guides/new_reservation'
     end
