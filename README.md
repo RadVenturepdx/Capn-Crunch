@@ -63,7 +63,10 @@ simply go to temp/pids/server.pid and delete this file. Then run ```rails server
 again.
 
 ## Credits
-Some codes in this project is used from
+* Some code in this project is from
 [railstutorial.org](https://www.railstutorial.org/book) book by Michael Hartl
+* [Bootstrap](https://github.com/IronSummitMedia/startbootstrap-modern-business) used is created by David Miller
+* [Calendar](https://github.com/dangrossman/bootstrap-daterangepicker) for reservations is written by Dan Grossman
+
 
 ## Test comment
