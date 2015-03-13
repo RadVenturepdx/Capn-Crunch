@@ -1,4 +1,8 @@
-<h1>Listing Guides</h1>
+<% if !params[:location].nil? %>
+  <h1>Guides for <%=params[:location]%></h1>
+<% else %>
+  <h1>Guide Listing</h1>
+<% end %>
 
 <style>
 table, th, td {
@@ -24,16 +28,31 @@ th, td {
   </thead>
 
   <% Array(@guides).each do |guide| %>
-    <tr>
-      <td><%= guide.user.name %></td>
-      <td><%= guide.user.email %></td>
-      <td><%= location_string(guide.hood, guide.bachelor, guide.whistler) %></td>
-      <td><%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></td>
-      <td><%= if !guide.reviews.empty? then guide.reviews.average(:rating).to_s
-              else "N/A" end %></td>
-      <td><%= link_to 'Show', guide %></td>
+    <% if !params[:location].nil? %>
+      <% loc_str = location_string(guide.hood, guide.bachelor, guide.whistler) %>
+      <% if loc_str.include?(params[:location]) %>
+        <tr>
 
-    </tr>
+          <td><%= guide.user.name %></td>
+          <td><%= guide.user.email %></td>
+          <td><%= loc_str %></td>
+          <td><%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></td>
+          <td><%= if !guide.reviews.empty? then guide.reviews.average(:rating).to_s
+                  else "N/A" end %></td>
+          <td><%= link_to 'Show', guide %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td><%= guide.user.name %></td>
+        <td><%= guide.user.email %></td>
+        <td><%= location_string(guide.hood, guide.bachelor, guide.whistler) %></td>
+        <td><%= sports_string(guide.downhill, guide.crosscountry, guide.snowboard) %></td>
+        <td><%= if !guide.reviews.empty? then guide.reviews.average(:rating).to_s
+                else "N/A" end %></td>
+        <td><%= link_to 'Show', guide %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 

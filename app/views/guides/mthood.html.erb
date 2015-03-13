@@ -60,7 +60,10 @@
   <div class="row">
 
     <div class="col-lg-12">
-      <h3 class="page-header">Top Guides for Mt. Hood</h3>
+      <h3 class="page-header">Top Guides for Mt. Hood
+        <%= link_to 'More Guides', index_path(location: 'Mount Hood'), class: "btn btn-default" %>
+      </h3>
+
     </div>
 
     <% top_guides = top_guides(hood_guides) %>

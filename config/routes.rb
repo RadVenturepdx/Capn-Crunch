@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post   'review'                         => 'reviews#new'
   post   'login'                          => 'sessions#create'
   delete 'logout'                         => 'sessions#destroy'
+  get    'guides'                         => 'guides#index', as: 'index'
 
   resources :users
   resources :guides
