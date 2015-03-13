@@ -105,9 +105,9 @@
                   </div>
                 </div>
                 <div id="success"> </div> <!-- For success/fail messages -->
-                <!-- <button type="submit" class="btn btn-primary pull-right">Send</button> -->
+                <%= formElement.submit 'Submit', class: "btn btn-primary pull-right" %>
                <!--  #formElement.submit 'Send', class: 'btn btn-primary pull-right' %> -->
-                  <%= link_to '<b>Submit</b>'.html_safe, payment_path, class: "btn btn-primary pull-right" %>
+                  <!--%= link_to '<b>Submit</b>'.html_safe, payment_path, class: "btn btn-primary pull-right" %-->
 
                   <br>
               <% end %>
