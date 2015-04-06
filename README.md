@@ -62,6 +62,13 @@ If you forget to shutdown your server after a coding session and get this error,
 simply go to temp/pids/server.pid and delete this file. Then run ```rails server```
 again.
 
+## Deployments
+- https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction
+- Any commands that may happen on heroku must use the heroku keyword
+- - heroku rake db:seed
+- - heroku rake db:migrate
+- etc...
+
 ## Credits
 Some code in this project is from
 - [railstutorial.org](https://www.railstutorial.org/book) book by Michael Hartl
