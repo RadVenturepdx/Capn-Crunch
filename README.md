@@ -28,6 +28,12 @@ In database.yml
 - Note that seeds are cumulative; running ```rake db:seed``` three times will grant 297 records
 - To clear DB, simply run ```rake db:migrate:reset``` again
 
+
+## Database Seeding on Heroku
+- heroku run rake db:seed
+- heroku run rake db:migrate
+- heroku pg:reset DATABASE
+
 ## Configurations
 Since we are running this app locally and our repository is public we should
 make the following configuration, and make sure to not commit these changes or
@@ -52,15 +58,25 @@ rails dbconsole [test|development|production]
 
 # Rails console that will rollback after you exit the console
 rails console --sandbox
+# Console
+heroku run rails c --sandbox
 
 # Run tests
 rake test
 rake test TEST=/the/test/path # Runs only one test
 ```
+
 ## "A server is already running" error
 If you forget to shutdown your server after a coding session and get this error,
 simply go to temp/pids/server.pid and delete this file. Then run ```rails server```
 again.
+
+## Deployments
+- https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction
+- Any commands that may happen on heroku must use the heroku keyword
+- - heroku rake db:seed
+- - heroku rake db:migrate
+- etc...
 
 ## Credits
 Some code in this project is from
