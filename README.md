@@ -30,9 +30,9 @@ In database.yml
 
 
 ## Database Seeding on Heroku
-- heroku run rake db:seed
-- heroku run rake db:migrate
-- heroku pg:reset DATABASE
+- Run: ```heroku run rake db:seed```
+- Followed by: ```heroku run rake db:migrate```
+- To clear the DB, run: ```heroku pg:reset DATABASE```
 
 ## Configurations
 Since we are running this app locally and our repository is public we should
